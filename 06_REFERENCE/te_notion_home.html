@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terrible Enfant — HQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f3ee;
+    --bone: #e8e4da;
+    --ink: #1a1a1a;
+    --muted: #6b6860;
+    --border: rgba(26,26,26,0.12);
+    --border-strong: rgba(26,26,26,0.25);
+
+    --marca: #1a1a1a;
+    --ops: #2c3e2d;
+    --arg: #2a2040;
+    --bra: #3d2010;
+
+    --marca-light: #f0ede8;
+    --ops-light: #eaf0ea;
+    --arg-light: #eceaf5;
+    --bra-light: #f5ece5;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'DM Mono', monospace;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    padding: 56px 64px 40px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .brand-lockup { display: flex; flex-direction: column; gap: 8px; }
+
+  .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--black);
+  }
+
+  .brand-name em {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .brand-sub {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .header-meta {
+    text-align: right;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .header-meta strong {
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  /* ── Nav pills ── */
+  .nav-bar {
+    padding: 16px 64px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .nav-pill {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    color: var(--muted);
+    background: transparent;
+    font-family: 'DM Mono', monospace;
+    font-weight: 300;
+  }
+
+  .nav-pill:hover { color: var(--ink); border-color: var(--border-strong); }
+  .nav-pill.active { color: var(--white); background: var(--ink); border-color: var(--ink); }
+
+  .nav-sep { width: 1px; height: 16px; background: var(--border); margin: 0 8px; }
+
+  /* ── Main layout ── */
+  .main {
+    padding: 48px 64px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 2px;
+    background: var(--border);
+  }
+
+  /* ── Section cards ── */
+  .section-card {
+    background: var(--white);
+    padding: 32px 28px 28px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  .section-card:hover { background: var(--bone); }
+
+  .section-card.wide { grid-column: span 2; }
+  .section-card.full { grid-column: span 3; }
+
+  /* Color accents per section */
+  .card-marca::before { background: var(--marca); }
+  .card-ops::before { background: var(--ops); }
+  .card-arg::before { background: var(--arg); }
+  .card-bra::before { background: var(--bra); }
+  .card-neutral::before { background: var(--border-strong); }
+
+  .section-tag {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-tag::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--black);
+    margin-bottom: 6px;
+  }
+
+  .section-owner {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 20px;
+  }
+
+  /* ── Sub-items ── */
+  .sub-items { display: flex; flex-direction: column; gap: 1px; margin-top: 8px; }
+
+  .sub-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 12px;
+    background: rgba(26,26,26,0.03);
+    border-radius: 2px;
+    font-size: 11px;
+    color: var(--ink);
+    transition: all 0.15s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+    letter-spacing: 0.01em;
+  }
+
+  .sub-item:hover {
+    background: rgba(26,26,26,0.07);
+    border-color: var(--border);
+  }
+
+  .sub-item-arrow {
+    font-size: 10px;
+    color: var(--muted);
+    transition: transform 0.15s ease;
+  }
+
+  .sub-item:hover .sub-item-arrow { transform: translateX(3px); }
+
+  .sub-badge {
+    font-size: 9px;
+    padding: 2px 7px;
+    border-radius: 2px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .badge-new { background: var(--ops-light); color: var(--ops); }
+  .badge-live { background: #eef5e8; color: #2d5a1a; }
+  .badge-pending { background: #f5ede5; color: #8b4513; }
+  .badge-draft { background: #eceaf5; color: #3d3080; }
+
+  /* ── OPS special layout ── */
+  .ops-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .ops-block {
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .ops-block:hover { border-color: var(--border-strong); background: rgba(26,26,26,0.02); }
+
+  .ops-block-title {
+    font-size: 11px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  .ops-block-meta { font-size: 10px; color: var(--muted); }
+
+  /* ── Mercados: side-by-side ── */
+  .mercados-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    grid-column: span 3;
+    background: var(--border);
+  }
+
+  .mercado-card {
+    background: var(--white);
+    padding: 32px 28px 28px;
+    position: relative;
+  }
+
+  .mercado-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  .card-arg-m::before { background: var(--arg); }
+  .card-bra-m::before { background: var(--bra); }
+
+  .mercado-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .mercado-flag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--black);
+    line-height: 1;
+  }
+
+  .mercado-status {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 2px;
+  }
+
+  .status-active { background: #eef5e8; color: #2d5a1a; }
+  .status-launch { background: var(--bra-light); color: var(--bra); }
+
+  .area-list { display: flex; flex-direction: column; gap: 1px; }
+
+  .area-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 10px;
+    font-size: 11px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+
+  .area-row:hover { background: rgba(26,26,26,0.04); }
+  .area-name { color: var(--ink); }
+  .area-owner { font-size: 10px; color: var(--muted); text-align: right; }
+  .area-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .dot-green { background: #5a9e3a; }
+  .dot-amber { background: #c47a1a; }
+  .dot-gray { background: #aaa; }
+
+  /* ── Footer ── */
+  .site-footer {
+    padding: 24px 64px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-card, .mercado-card {
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .section-card:nth-child(1) { animation-delay: 0.05s; }
+  .section-card:nth-child(2) { animation-delay: 0.10s; }
+  .section-card:nth-child(3) { animation-delay: 0.15s; }
+  .mercado-card:nth-child(1) { animation-delay: 0.20s; }
+  .mercado-card:nth-child(2) { animation-delay: 0.25s; }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .site-header { padding: 40px 28px 32px; flex-direction: column; align-items: flex-start; }
+    .nav-bar { padding: 12px 28px; overflow-x: auto; }
+    .main { padding: 28px 0 60px; grid-template-columns: 1fr; }
+    .section-card.wide, .section-card.full { grid-column: span 1; }
+    .mercados-grid { grid-template-columns: 1fr; }
+    .mercado-card { padding: 28px; }
+    .site-footer { padding: 20px 28px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="brand-lockup">
+    <div class="brand-name"><em>Terrible</em> Enfant</div>
+    <div class="brand-sub">Workspace · Headquarters</div>
+  </div>
+  <div class="header-meta">
+    <strong>Última actualización</strong><br>
+    Semana del 30 mar 2026<br><br>
+    <strong>PM</strong> Fanny &nbsp;·&nbsp; <strong>Dir. Creativo</strong> Mariano
+  </div>
+</header>
+
+<!-- Nav -->
+<nav class="nav-bar">
+  <button class="nav-pill active">Overview</button>
+  <button class="nav-pill">OPS</button>
+  <div class="nav-sep"></div>
+  <button class="nav-pill">Marca</button>
+  <button class="nav-pill">ARG</button>
+  <button class="nav-pill">BRA</button>
+  <div class="nav-sep"></div>
+  <button class="nav-pill">Task Board</button>
+  <button class="nav-pill">Decision Log</button>
+</nav>
+
+<!-- Main grid -->
+<main class="main">
+
+  <!-- MARCA -->
+  <div class="section-card card-marca" style="grid-row: 1;">
+    <div class="section-tag">Marca</div>
+    <div class="section-title">Brand &amp;<br>Identidad</div>
+    <div class="section-owner">Comando · global</div>
+    <div class="sub-items">
+      <div class="sub-item">
+        <span>Brand Bible</span>
+        <span class="sub-badge badge-live">activo</span>
+      </div>
+      <div class="sub-item">
+        <span>Copy maestro · zapatos</span>
+        <span class="sub-item-arrow">→</span>
+      </div>
+      <div class="sub-item">
+        <span>Campañas globales</span>
+        <span class="sub-badge badge-new">en curso</span>
+      </div>
+      <div class="sub-item">
+        <span>Asset library</span>
+        <span class="sub-item-arrow">→</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPS -->
+  <div class="section-card card-ops wide" style="grid-row: 1;">
+    <div class="section-tag">Operaciones</div>
+    <div class="section-title">OPS</div>
+    <div class="section-owner">Fanny · transversal</div>
+    <div class="ops-grid">
+      <div class="ops-block">
+        <div class="ops-block-title">Task Board</div>
+        <div class="ops-block-meta">DB global · ARG + BRA</div>
+      </div>
+      <div class="ops-block">
+        <div class="ops-block-title">Decision Log</div>
+        <div class="ops-block-meta">append-only · Fanny</div>
+      </div>
+      <div class="ops-block">
+        <div class="ops-block-title">Meeting Notes</div>
+        <div class="ops-block-meta">1 página / sync</div>
+      </div>
+      <div class="ops-block">
+        <div class="ops-block-title">Weekly Reports</div>
+        <div class="ops-block-meta">por área · por mercado</div>
+      </div>
+      <div class="ops-block" style="grid-column: span 2;">
+        <div class="ops-block-title">Launch Tracker — BRA</div>
+        <div class="ops-block-meta" style="display:flex;justify-content:space-between;margin-top:6px;">
+          <span>Showroom <span class="sub-badge badge-pending" style="font-size:9px">pendiente</span></span>
+          <span>Dover Market <span class="sub-badge badge-pending" style="font-size:9px">pendiente</span></span>
+          <span>E-commerce <span class="sub-badge badge-new" style="font-size:9px">en curso</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MERCADOS -->
+  <div class="mercados-grid" style="grid-column: span 3; grid-row: 2;">
+
+    <!-- ARG -->
+    <div class="mercado-card card-arg-m">
+      <div class="section-tag">Mercado</div>
+      <div class="mercado-header">
+        <div class="mercado-flag">Argentina</div>
+        <span class="mercado-status status-active">activo</span>
+      </div>
+      <div class="area-list">
+        <div class="area-row">
+          <span class="area-name">Finance + Admin</span>
+          <span class="area-owner">Hache</span>
+          <span class="area-dot dot-green"></span>
+        </div>
+        <div class="area-row">
+          <span class="area-name">Legal + Contable</span>
+          <span class="area-owner">Nacho</span>
+          <span class="area-dot dot-green"></span>
+        </div>
+        <div class="area-row">
+          <span class="area-name">Producto</span>
+          <span class="area-owner">Hache</span>
+          <span class="area-dot dot-green"></span>
+        </div>
+        <div class="area-row">
+          <span class="area-name">Operations</span>
+          <span class="area-owner">Comando · Fanny</span>
+          <span class="area-dot dot-green"></span>
+        </div>
+        <div class="area-row">
+          <span class="area-name">Logistics</span>
+          <span class="area-owner">Jorge</span>
+          <span class="area-dot dot-green"></span>
+        </div>
+        <div class="area-row">
+          <span class="area-name">Mktng + Comms</span>
+          <span class="area-owner">Comando</span>
+          <span class="area-dot dot-green"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BRA -->
+    <div class="mercado-card card-bra-m">
+      <div class="section-tag">Mercado</div>
+      <div class="mercado-header">
+        <div class="mercado-flag">Brasil</div>
+        <span class="mercado-status status-launch">lanzamiento</span>
+      </div>
+      <div class="area-list">
+        <div class="area-row">
+          <span class="area-name">Finance + Admin</span>
+          <span class="area-owner">Hache · admin local</span>
+          <span class="area-dot dot-amber"></span>
+        </div>
+        <div class="area-row">
+          <span class="area-name">Legal + Contable</span>
+          <span class="area-owner">Estudio BRA — <em style="font-style:italic;font-size:10px">sin asignar</em></span>
+          <span class="area-dot dot-amber"></span>
+        </div>
+        <div class="area-row">
+          <span class="area-name">Producto</span>
+          <span class="area-owner">Hache · Tiago</span>
+          <span class="area-dot dot-green"></span>
+        </div>
+        <div class="area-row">
+          <span class="area-name">Operations</span>
+          <span class="area-owner">Comando · Fanny</span>
+          <span class="area-dot dot-amber"></span>
+        </div>
+        <div class="area-row">
+          <span class="area-name">Logistics</span>
+          <span class="area-owner">Jorge · Tiago</span>
+          <span class="area-dot dot-amber"></span>
+        </div>
+        <div class="area-row">
+          <span class="area-name">Mktng + Comms</span>
+          <span class="area-owner">Freequency · Comando</span>
+          <span class="area-dot dot-green"></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <span>Terrible Enfant · HQ · v1.0</span>
+  <span>Una marca &nbsp;·&nbsp; dos mercados &nbsp;·&nbsp; un solo workspace</span>
+  <span>Fanny — PM transversal</span>
+</footer>
+
+<script>
+  // Nav interaction
+  document.querySelectorAll('.nav-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+    });
+  });
+
+  // Sub-items hover feedback
+  document.querySelectorAll('.sub-item, .ops-block, .area-row').forEach(el => {
+    el.style.cursor = 'pointer';
+  });
+</script>
+</body>
+</html>
