@@ -165,6 +165,7 @@ Boris opera Claude Code en VS Code. Antes de improvisar cualquier proceso, verif
 | "nuevo proyecto" | `AUTOMATION/workflows/new-project-setup.md` | Carpeta en `PROJECTS/active/` |
 | "cerrá el proyecto" | `AUTOMATION/workflows/project-close.md` | Carpeta movida a `PROJECTS/completed/` |
 | "nueva collab" | `AUTOMATION/workflows/collab-launch.md` | Brief + estructura de collab |
+| "pulse" / "¿dónde estamos?" / "leé el sistema" | `AUTOMATION/agents/pulse-strategist.md` | `OPERATIONS/_GLOBAL/pulse.md` |
 
 Playbook completo con pasos detallados: `AUTOMATION/boris-playbook.md`.
 

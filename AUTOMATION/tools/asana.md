@@ -45,3 +45,32 @@ El responsable de la tarea (owner) actualiza el estado. Fanny hace seguimiento.
 - **Status:** Por hacer / En curso / Bloqueada / Completada / Cancelada
 - **Prioridad:** Alta / Media / Baja
 - **Deadline:** obligatorio
+
+---
+
+## Conexión MCP (Claude Code)
+
+**Estado:** activo · configurado en `~/.claude/settings.json` (global)
+**Paquete:** `@roychri/mcp-server-asana` (community, PAT-based)
+**Modo:** read-only — Claude Code no crea ni modifica tareas
+
+### IDs del workspace TE
+
+| Recurso | ID |
+|---------|----|
+| Workspace | `1214079921372448` |
+| Proyecto principal | `1214109688126860` |
+| Sección activa | `1214103633061371` |
+
+### Cómo usar en una sesión de Claude Code
+
+Dentro de cualquier sesión, Boris puede pedir:
+- "Listá las tareas abiertas en el proyecto Asana de TE"
+- "¿Qué tareas están bloqueadas esta semana?"
+- "Mostrá las tareas de Fanny con deadline esta semana"
+
+Claude Code consulta Asana en vivo via MCP y devuelve los datos en el contexto de la sesión.
+
+### Upgrade pendiente
+
+La configuración actual usa un Personal Access Token (PAT). El upgrade recomendado es migrar al servidor oficial de Asana V2 (`mcp.asana.com`) con OAuth — más seguro, sin token que rotar. Requiere crear una OAuth app en el portal de desarrolladores de Asana.
