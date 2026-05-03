@@ -1,4 +1,4 @@
-# CLAUDE.md — Terrible Enfant OS1
+    # CLAUDE.md — Terrible Enfant OS1
 
 Este archivo es el punto de entrada para cualquier instancia de Claude Code que trabaje en este repositorio. Léelo completo antes de ejecutar cualquier tarea.
 
@@ -49,7 +49,7 @@ Terrible Enfant es una marca de calzado y accesorios masculinos de autor con ide
 - **Mercados:** Argentina (activo) + Brasil (lanzamiento abril 2026)
 - **Canales BRA:** e-commerce · showroom Centro SP · Dover Market / Rosewood
 
-Para contexto completo de marca, leer `00_CORE/brand-narrative.md` y `00_CORE/brand-bible.md`.
+Para contexto completo de marca, leer `CORE/brand-narrative.md` y `CORE/brand-bible.md`.
 
 ---
 
@@ -78,13 +78,13 @@ Brasil
 └── Marketing & Comms  → Freequency + Comando
 ```
 
-Para estructura completa, leer `00_CORE/team-structure.md`.
+Para estructura completa, leer `CORE/team-structure.md`.
 
 ---
 
 ## Las seis áreas operacionales
 
-Cada área existe para ARG y BRA. Los archivos de estado y KPIs viven en `02_OPERATIONS/`:
+Cada área existe para ARG y BRA. Los archivos de estado y KPIs viven en `OPERATIONS/`:
 
 | Área | Carpeta | Responsable ARG | Responsable BRA |
 |------|---------|----------------|----------------|
@@ -124,20 +124,21 @@ La reunión del martes no es para informar — los updates se leen antes. La reu
 ## Lo que puedes hacer en este repo
 
 - Leer cualquier archivo para obtener contexto
-- Redactar o actualizar archivos STATUS.md cuando se te pida
-- Compilar el reporte semanal leyendo todos los STATUS.md (ver prompt en `04_AUTOMATION/prompts/`)
+- Redactar o actualizar archivos STATUS.md de OPERATIONS/ y PROJECTS/ cuando se te pida
+- Compilar el reporte semanal leyendo STATUS.md de OPERATIONS/ y PROJECTS/active/ (ver prompts en `AUTOMATION/prompts/`)
 - Redactar agendas de reunión a partir del reporte compilado
 - Actualizar el decisions log después de una reunión cuando te den notas
 - Redactar briefs de campaña, textos de marca, documentos operacionales
 - Generar narrativas de KPIs cuando se te provean datos
-- Señalar inconsistencias entre estados de ambos mercados
-- Archivar reportes semanales completados en `03_WEEKLY/2026/`
+- Señalar inconsistencias entre estados de ambos mercados o entre proyectos y operaciones
+- Archivar reportes semanales completados en `WEEKLY/2026/`
+- Crear la carpeta de un proyecto nuevo desde los templates en `PROJECTS/_templates/` (siguiendo el workflow en `AUTOMATION/workflows/new-project-setup.md`)
 
 ---
 
 ## Lo que NO debes hacer
 
-- No modificar archivos en `00_CORE/` sin instrucción explícita de Hache o Comando
+- No modificar archivos en `CORE/` sin instrucción explícita de Hache o Comando
 - No hacer proyecciones financieras sin datos provistos en el contexto de la conversación
 - No asumir que una tarea está completada a menos que un STATUS.md lo diga explícitamente
 - No crear archivos fuera de la estructura de carpetas establecida sin consultar a Boris
@@ -150,13 +151,14 @@ La reunión del martes no es para informar — los updates se leen antes. La reu
 
 Boris opera Claude Code en VS Code. Cuando Boris dice "compilá el semanal" o similar:
 
-1. Leer todos los archivos `STATUS.md` en `02_OPERATIONS/ARG/` y `02_OPERATIONS/BRA/`
-2. Extraer por área y mercado: estado general (🟢🟡🔴), avances, bloqueadores, notas para el martes
-3. Producir un reporte consolidado usando la plantilla en `03_WEEKLY/_template-weekly-report.md`
-4. Guardar el resultado como `03_WEEKLY/2026/W[XX]-[fecha-lunes].md`
+1. Leer todos los archivos `STATUS.md` en `OPERATIONS/ARG/` y `OPERATIONS/BRA/` (12 archivos)
+2. Leer todos los archivos `STATUS.md` en `PROJECTS/active/` (proyectos en ejecución)
+3. Extraer por área/mercado/proyecto: estado general (🟢🟡🔴), avances, bloqueadores, notas para el martes
+4. Producir un reporte consolidado usando la plantilla en `WEEKLY/_template-weekly-report.md`
+5. Guardar el resultado como `WEEKLY/2026/W[XX]-[fecha-lunes].md`
 
-Prompts reutilizables completos en `04_AUTOMATION/prompts/`.
-Instrucciones del playbook completo en `04_AUTOMATION/boris-playbook.md`.
+Prompts reutilizables completos en `AUTOMATION/prompts/`.
+Instrucciones del playbook completo en `AUTOMATION/boris-playbook.md`.
 
 ---
 
@@ -167,22 +169,108 @@ TERRIBLE ENFANT | OS1/
 ├── CLAUDE.md                    ← este archivo
 ├── README.md                    ← orientación para humanos
 │
-├── 00_CORE/                     ← ADN de marca (no duplicar por mercado)
-├── 01_STRATEGY/                 ← documentos estratégicos globales
+├── CORE/                        ← ADN de marca (no duplicar por mercado)
+├── STRATEGY/                    ← documentos de dirección estratégica (roadmaps, no briefs)
 │
-├── 02_OPERATIONS/               ← corazón operacional
+├── OPERATIONS/                  ← corazón operacional — ritmo semanal
 │   ├── _GLOBAL/                 ← coordinación transversal (Fanny)
+│   │   └── project-touchpoints.md  ← puente entre PROJECTS/ y OPERATIONS/
 │   ├── ARG/                     ← 6 áreas con STATUS.md + kpis.md
 │   └── BRA/                     ← espejo de las 6 áreas ARG
 │
-├── 03_WEEKLY/                   ← reportes semanales compilados
+├── PROJECTS/                    ← iniciativas time-bounded — con ciclo de vida
+│   ├── _templates/              ← kits de inicio por tipo de proyecto
+│   ├── active/                  ← proyectos en ejecución (con STATUS.md actualizable)
+│   ├── pipeline/                ← planificados, aún no iniciados (brief stub only)
+│   └── completed/               ← proyectos cerrados (carpeta intacta como registro)
+│
+├── WEEKLY/                      ← reportes semanales compilados
 │   └── 2026/                    ← archivo por semana
 │
-├── 04_AUTOMATION/               ← dominio de Boris
+├── AUTOMATION/                  ← dominio de Boris — 4 capas
+│   ├── agents/                  ← definición de tareas automatizables (specs V1→V3)
+│   ├── workflows/               ← procesos paso a paso para humanos y Claude
+│   ├── tools/                   ← catálogo de integraciones externas
 │   ├── prompts/                 ← prompts reutilizables para Claude
-│   └── logs/                    ← registro de automatizaciones
+│   └── logs/                    ← registro de ejecuciones
 │
-├── 05_ARCHIVE/                  ← campañas cerradas, ciclos completados
+├── ARCHIVE/                     ← ciclos cerrados, reportes de años anteriores
 │
-└── 06_REFERENCE/                ← documentos originales, Notion, legacy
+└── REFERENCE/                   ← documentos originales, Notion, legacy
 ```
+
+---
+
+## Stack operacional
+
+Ver catálogo completo en `AUTOMATION/tools/_tools-index.md`.
+
+| Herramienta | Propósito | Owner |
+|-------------|-----------|-------|
+| GitHub | Fuente de verdad del OS | Boris |
+| Asana | Tareas con deadline y responsable | Fanny |
+| Claude Code (VS Code) | Automatizaciones, redacción, compilaciones | Boris |
+| Google Drive | Assets, contratos, planillas | Hache / Fanny |
+| WhatsApp | Comunicación interna | Todos |
+| Instagram / TikTok | Canales de marca | Comando |
+
+---
+
+## Voz para redacción
+
+Cuando Claude redacta contenido de marca — copy, briefs, comunicaciones — debe seguir estas reglas:
+
+- **Registro:** preciso, cargado, nunca aspiracional-genérico
+- **Evitar:** "innovador", "tendencia", "exclusivo", "lujo" (sin elaboración) — palabras vacías para esta marca
+- **Preferir:** contradicción productiva ("elegancia que incomoda"), brevedad cargada, frases que dejan silencio
+- Frases cortas. Fragmentos aceptables. Sin exclamaciones.
+- **Referentes:** ERD, Helmut Lang tardío, Nick Cave, cine de Haneke
+- **Idioma:** seguir la política de idioma del repo según destino de la pieza
+
+---
+
+## Sistema de automatización (capas)
+
+`AUTOMATION/` tiene cuatro capas. Antes de improvisar un proceso, revisar si ya existe algo en alguna de estas carpetas.
+
+| Capa | Carpeta | Qué contiene |
+|------|---------|--------------|
+| Agentes | `AUTOMATION/agents/` | Definición de tareas automatizables: trigger, inputs, output, evolución V1→V3 |
+| Workflows | `AUTOMATION/workflows/` | Procesos paso a paso para humanos y Claude (cadencia semanal, setup de proyectos, etc.) |
+| Tools | `AUTOMATION/tools/` | Catálogo de integraciones externas y cómo se usan |
+| Prompts | `AUTOMATION/prompts/` | Fragmentos de texto listos para usar con Claude Code |
+
+Prompts disponibles:
+
+| Prompt | Propósito |
+|--------|-----------|
+| `compile-weekly-status.md` | Compila los STATUS.md de OPERATIONS/ en reporte semanal |
+| `compile-project-status.md` | Compila los STATUS.md de PROJECTS/active/ |
+| `draft-meeting-agenda.md` | Genera agenda del martes desde el reporte compilado |
+| `generate-decision-log.md` | Extrae decisiones de notas de reunión |
+
+Playbook completo: `AUTOMATION/boris-playbook.md`.
+
+---
+
+## Sistema de proyectos
+
+Los proyectos time-bounded (campañas, collabs, lanzamientos) viven en `PROJECTS/`. No mantener tabla de iniciativas en este archivo — se desactualiza. Leer directamente las carpetas.
+
+- `PROJECTS/active/` → proyectos en ejecución. Cada carpeta tiene `STATUS.md` actualizable semanalmente (mismo formato que OPERATIONS/).
+- `PROJECTS/pipeline/` → proyectos planificados, aún no iniciados. Solo tienen `brief.md` con fecha y owner.
+- `PROJECTS/completed/` → proyectos cerrados. Carpeta intacta como registro histórico.
+
+Para leer el estado de todos los proyectos activos: leer todos los `PROJECTS/active/*/STATUS.md`.
+
+Para iniciar un nuevo proyecto: seguir el workflow en `AUTOMATION/workflows/new-project-setup.md`.
+
+Para cerrar un proyecto: seguir el workflow en `AUTOMATION/workflows/project-close.md`.
+
+Dependencias entre proyectos y áreas operacionales: `OPERATIONS/_GLOBAL/project-touchpoints.md`.
+
+---
+
+## Protocolo de auto-auditoría
+
+Después de cualquier tarea sustancial: ¿cambió algo en el equipo, herramientas, campañas activas o estructura del repo? Si sí, proponer una actualización concreta de este archivo. Una fuente de verdad. Sin bloat.

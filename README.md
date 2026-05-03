@@ -2,7 +2,7 @@
 
 Sistema Operativo de Terrible Enfant — documentación viva, coordinación operacional y archivo institucional.
 
-**Versión:** V1 · Abril 2026  
+**Versión:** V2 · Mayo 2026  
 **Mercados activos:** Argentina · Brasil (lanzamiento)
 
 ---
@@ -12,8 +12,8 @@ Sistema Operativo de Terrible Enfant — documentación viva, coordinación oper
 Si eres nuevo en este repo, lee en este orden:
 
 1. [CLAUDE.md](CLAUDE.md) — cómo funciona este sistema (especialmente si usas Claude Code)
-2. [00_CORE/team-structure.md](00_CORE/team-structure.md) — quién hace qué
-3. [02_OPERATIONS/](02_OPERATIONS/) — encuentra tu área y mercado
+2. [CORE/team-structure.md](CORE/team-structure.md) — quién hace qué
+3. [OPERATIONS/](OPERATIONS/) — encuentra tu área y mercado
 
 ---
 
@@ -21,13 +21,14 @@ Si eres nuevo en este repo, lee en este orden:
 
 | Carpeta | Contenido | Quién escribe |
 |---------|-----------|---------------|
-| [00_CORE/](00_CORE/) | ADN de marca — brand bible, narrativa, voz, equipo | Hache · Comando |
-| [01_STRATEGY/](01_STRATEGY/) | Estrategia global, lanzamiento BRA, campañas | Hache · Comando |
-| [02_OPERATIONS/](02_OPERATIONS/) | Estado semanal y KPIs por área y mercado | Cada líder de área |
-| [03_WEEKLY/](03_WEEKLY/) | Reportes semanales compilados | Boris (compilado) |
-| [04_AUTOMATION/](04_AUTOMATION/) | Automatizaciones y prompts Claude — dominio de Boris | Boris |
-| [05_ARCHIVE/](05_ARCHIVE/) | Campañas cerradas, ciclos completados | Boris |
-| [06_REFERENCE/](06_REFERENCE/) | Documentación original, Notion, legacy | Referencia |
+| [CORE/](CORE/) | ADN de marca — brand bible, narrativa, voz, equipo | Hache · Comando |
+| [STRATEGY/](STRATEGY/) | Documentos de dirección estratégica (roadmaps, no briefs) | Hache · Comando |
+| [OPERATIONS/](OPERATIONS/) | Estado semanal y KPIs por área y mercado | Cada líder de área |
+| [PROJECTS/](PROJECTS/) | Campañas, collabs y lanzamientos — con ciclo de vida (active/pipeline/completed) | Owner del proyecto |
+| [WEEKLY/](WEEKLY/) | Reportes semanales compilados | Boris (compilado) |
+| [AUTOMATION/](AUTOMATION/) | Agentes, workflows, tools y prompts Claude — dominio de Boris | Boris |
+| [ARCHIVE/](ARCHIVE/) | Ciclos cerrados, reportes de años anteriores | Boris |
+| [REFERENCE/](REFERENCE/) | Documentación original, Notion, legacy | Referencia |
 
 ---
 
@@ -35,7 +36,7 @@ Si eres nuevo en este repo, lee en este orden:
 
 Cada área tiene un archivo `STATUS.md`. Para actualizarlo desde el navegador:
 
-1. Navega a tu carpeta: `02_OPERATIONS/ARG/` o `02_OPERATIONS/BRA/` + tu área
+1. Navega a tu carpeta: `OPERATIONS/ARG/` o `OPERATIONS/BRA/` + tu área
 2. Abre el archivo `STATUS.md`
 3. Haz click en el ícono de lápiz (Edit this file) en GitHub
 4. Completa los campos
@@ -43,7 +44,9 @@ Cada área tiene un archivo `STATUS.md`. Para actualizarlo desde el navegador:
 
 Listo. No necesitas saber Git.
 
-**Deadline:** Lunes antes de las 18:00.
+**Deadline operacional:** Lunes antes de las 18:00.
+
+Si sos owner de un proyecto en `PROJECTS/active/`, actualizá también tu `STATUS.md` en esa carpeta con el mismo deadline.
 
 ---
 

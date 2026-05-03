@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terrible Enfant OS1 — System Diagram</title>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: {
+        primaryColor: '#1e1e1e',
+        primaryTextColor: '#c8c8c8',
+        primaryBorderColor: '#3c3c3c',
+        lineColor: '#505050',
+        secondaryColor: '#141414',
+        tertiaryColor: '#1a1a1a',
+        background: '#0e0e0e',
+        mainBkg: '#1c1c1c',
+        nodeBorder: '#3a3a3a',
+        clusterBkg: '#111111',
+        clusterBorder: '#282828',
+        titleColor: '#c0c0c0',
+        edgeLabelBackground: '#0e0e0e',
+        fontFamily: '"Montserrat", "Helvetica Neue", sans-serif',
+        fontSize: '12px',
+      },
+      flowchart: { curve: 'basis', padding: 20 },
+    });
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --g0: #070707;
+      --g1: #0d0d0d;
+      --g2: #151515;
+      --g3: #202020;
+      --g4: #303030;
+      --g5: #505050;
+      --g6: #707070;
+      --g7: #909090;
+      --g8: #b8b8b8;
+      --g9: #d8d8d8;
+      --gw: #efefef;
+
+      /* reptile scale tile — header (40×26, dark on darker) */
+      --scale-header: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='26'%3E%3Crect width='40' height='26' fill='%230a0a0a'/%3E%3Cellipse cx='10' cy='9' rx='9.5' ry='6.5' fill='%23141414' stroke='%231f1f1f' stroke-width='0.75'/%3E%3Cellipse cx='30' cy='9' rx='9.5' ry='6.5' fill='%23121212' stroke='%231d1d1d' stroke-width='0.75'/%3E%3Cellipse cx='20' cy='21' rx='9.5' ry='6.5' fill='%23131313' stroke='%231e1e1e' stroke-width='0.75'/%3E%3Cellipse cx='0' cy='21' rx='9.5' ry='6.5' fill='%23111111' stroke='%231b1b1b' stroke-width='0.75'/%3E%3Cellipse cx='40' cy='21' rx='9.5' ry='6.5' fill='%23111111' stroke='%231b1b1b' stroke-width='0.75'/%3E%3C/svg%3E");
+
+      /* reptile scale tile — cards (24×16, very subtle) */
+      --scale-card: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='16'%3E%3Crect width='24' height='16' fill='%23151515'/%3E%3Cellipse cx='6' cy='5' rx='6' ry='4' fill='%23181818' stroke='%231d1d1d' stroke-width='0.5'/%3E%3Cellipse cx='18' cy='5' rx='6' ry='4' fill='%23171717' stroke='%231c1c1c' stroke-width='0.5'/%3E%3Cellipse cx='12' cy='13' rx='6' ry='4' fill='%23181818' stroke='%231d1d1d' stroke-width='0.5'/%3E%3Cellipse cx='0' cy='13' rx='6' ry='4' fill='%23161616' stroke='%231b1b1b' stroke-width='0.5'/%3E%3Cellipse cx='24' cy='13' rx='6' ry='4' fill='%23161616' stroke='%231b1b1b' stroke-width='0.5'/%3E%3C/svg%3E");
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--g0);
+      color: var(--g8);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 1.75;
+      padding-bottom: 80px;
+    }
+
+    /* ── FILM GRAIN overlay ── */
+    #grain {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.04;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 72px 60px;
+      border-bottom: 1px solid var(--g3);
+      background-color: var(--g1);
+      background-image: var(--scale-header);
+      background-repeat: repeat;
+    }
+
+    /* gradient veil over the scale texture */
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg,
+        rgba(7,7,7,0.55) 0%,
+        rgba(7,7,7,0.82) 60%,
+        rgba(7,7,7,0.95) 100%
+      );
+      pointer-events: none;
+    }
+
+    /* subtle left stripe accent */
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: linear-gradient(180deg, var(--g5) 0%, transparent 100%);
+    }
+
+    .header-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--g5);
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(42px, 6vw, 68px);
+      line-height: 1.02;
+      color: var(--gw);
+      letter-spacing: -0.02em;
+      margin-bottom: 22px;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--g9);
+    }
+
+    .subtitle {
+      color: var(--g6);
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      max-width: 480px;
+      line-height: 1.9;
+    }
+
+    /* ── NAV ── */
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 26px 72px;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--g3);
+    }
+
+    nav a {
+      color: var(--g5);
+      text-decoration: none;
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 400;
+      transition: color 0.18s;
+    }
+
+    nav a:hover { color: var(--g9); }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 72px;
+    }
+
+    /* ── SECTION ── */
+    .diagram-section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--g3);
+    }
+
+    .diagram-section:last-child { border-bottom: none; }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 10px;
+    }
+
+    .n {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 56px;
+      line-height: 0.88;
+      color: var(--g3);
+      min-width: 52px;
+      user-select: none;
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 30px;
+      color: var(--g9);
+      letter-spacing: 0.01em;
+      padding-top: 6px;
+    }
+
+    .desc {
+      padding-left: 72px;
+      margin-bottom: 36px;
+      max-width: 580px;
+      color: var(--g6);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      line-height: 1.85;
+    }
+
+    /* ── DIAGRAM CARD ── */
+    .card {
+      background-color: var(--g2);
+      background-image: var(--scale-card);
+      background-repeat: repeat;
+      border: 1px solid var(--g3);
+      border-radius: 1px;
+      padding: 44px 36px;
+      overflow-x: auto;
+    }
+
+    .card .mermaid {
+      display: flex;
+      justify-content: center;
+      min-width: 580px;
+    }
+
+    /* ── ALERT ── */
+    .alert {
+      margin-top: 18px;
+      padding: 13px 18px;
+      border-left: 2px solid var(--g5);
+      background: rgba(255,255,255,0.02);
+      font-size: 11px;
+      color: var(--g6);
+      letter-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    .alert strong { color: var(--g8); font-weight: 400; }
+
+    /* ── DIVIDER RULE ── */
+    .rule {
+      border: none;
+      border-top: 1px solid var(--g3);
+      margin: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: 1100px;
+      margin: 56px auto 0;
+      padding: 32px 72px;
+      border-top: 1px solid var(--g3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      background-image: var(--scale-header);
+      background-repeat: repeat;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(7,7,7,0.9);
+      pointer-events: none;
+    }
+
+    footer p, footer .brand {
+      position: relative;
+      z-index: 1;
+    }
+
+    footer p {
+      font-size: 9px;
+      color: var(--g5);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    footer .brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--g7);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      header, nav, main, footer { padding-left: 24px; padding-right: 24px; }
+      .desc { padding-left: 0; }
+      .card .mermaid { min-width: 400px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Film grain overlay -->
+  <svg id="grain" xmlns="http://www.w3.org/2000/svg">
+    <filter id="f">
+      <feTurbulence type="fractalNoise" baseFrequency="0.88" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#f)"/>
+  </svg>
+
+  <header>
+    <div class="header-inner">
+      <p class="eyebrow">Terrible Enfant &middot; Operating System 1</p>
+      <h1>How <em>OS1</em> works</h1>
+      <p class="subtitle">Diagrama del sistema operacional — personas, archivos, automatizaciones y ciclo semanal.</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#layers">System layers</a>
+    <a href="#cycle">Weekly cycle</a>
+    <a href="#dataflow">Data flow</a>
+    <a href="#folders">Folder structure</a>
+  </nav>
+
+  <main>
+
+    <!-- ── 01 ── -->
+    <section class="diagram-section" id="layers">
+      <div class="section-header">
+        <span class="n">01</span>
+        <h2>System Layers Overview</h2>
+      </div>
+      <p class="desc">Tres capas: personas que alimentan el sistema → archivos en GitHub → automatización que convierte updates en reportes y decisiones.</p>
+      <div class="card">
+        <div class="mermaid">
+graph LR
+    subgraph PEOPLE["👥 Capa de personas"]
+        P1["Hache\nCEO"]
+        P2["Comando\nDir. Creativo"]
+        P3["Fanny\nPM Transversal"]
+        P4["Nacho · Jorge\nLegal · Logística"]
+        P5["Freequency\nBrasil"]
+    end
+
+    subgraph FILES["📁 Repo GitHub"]
+        F1["12 × STATUS.md\nARG + BRA · 6 áreas c/u"]
+        F2["12 × kpis.md\nMensuales"]
+        F3["W·XX Report\n03_WEEKLY/2026/"]
+        F4["Decisions Log\n_GLOBAL/"]
+        F5["Brand & Strategy\n00_CORE · 01_STRATEGY"]
+    end
+
+    subgraph AUTO["⚙️ Automatización — Boris + Claude Code"]
+        A1["compile-weekly-status\nLee 12 STATUS → reporte"]
+        A2["draft-meeting-agenda\nReporte → agenda martes"]
+        A3["generate-decision-log\nNotas reunión → decisiones"]
+    end
+
+    subgraph OUT["📤 Outputs"]
+        O1["Reporte semanal\nHache lo lee el martes AM"]
+        O2["Agenda WhatsApp\nantes de las 10:00"]
+        O4["Asana Tasks\nsolo Fanny crea"]
+        O5["KPI Narrative\nJorge · mensual"]
+    end
+
+    P1 & P2 & P3 & P4 & P5 -->|escribe cada lunes| F1
+    P1 & P2 -->|actualiza docs| F5
+    P4 -->|KPIs mensuales| F2
+    F1 --> A1 --> F3
+    F3 --> A2 --> O2
+    F3 --> O1
+    A3 --> F4 --> O4
+    F2 --> O5
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 02 ── -->
+    <section class="diagram-section" id="cycle">
+      <div class="section-header">
+        <span class="n">02</span>
+        <h2>Weekly Operational Cycle</h2>
+      </div>
+      <p class="desc">El ciclo de 5 días que estructura todo el sistema. Lunes se alimenta, martes se decide, miércoles a viernes se ejecuta.</p>
+      <div class="card">
+        <div class="mermaid">
+graph TD
+    START(["🔁 Ciclo semanal"])
+    START --> MON1
+
+    subgraph LUNES["LUNES"]
+        MON1["12 líderes de área\nactualizan STATUS.md\n📝 deadline: 18:00"]
+        MON2{"¿Todos\nentregaron?"}
+        MON3["Fanny hace seguimiento\na quien falta"]
+        MON4["Boris abre VS Code\nClaude lee 12 STATUS.md"]
+        MON5["Claude compila reporte\ncon _template-weekly-report.md"]
+        MON6["Reporte guardado\nW·XX-fecha.md\ngit commit + push"]
+    end
+
+    subgraph MARTES["MARTES"]
+        TUE1["Boris genera agenda\ndraft-meeting-agenda.md"]
+        TUE2["Agenda enviada por WhatsApp\n⏰ antes de 10:00 AM"]
+        TUE3["📅 Reunión 10:00–10:45\nHache · Comando · Fanny\n+ líderes relevantes"]
+        TUE4["Solo decisiones\nlos updates ya fueron leídos"]
+        TUE5["Boris y Fanny capturan\nnotas crudas"]
+        TUE6["Claude formatea decisiones\ngenerate-decision-log.md"]
+        TUE7["Decisions log actualizado\nappend-only · git commit"]
+        TUE8["Fanny crea tareas en Asana\n⚠️ solo ella puede hacerlo"]
+    end
+
+    subgraph SEMANA["MIÉRCOLES – VIERNES"]
+        WF1["Ejecución\ncada responsable avanza sus tareas"]
+        WF2["Updates en Asana\nno en STATUS.md"]
+        WF3["Sin commits al repo\nhasta el próximo lunes"]
+    end
+
+    MON1 --> MON2
+    MON2 -->|Sí — antes 18:00| MON4
+    MON2 -->|No| MON3 --> MON4
+    MON4 --> MON5 --> MON6
+    MON6 --> TUE1 --> TUE2 --> TUE3 --> TUE4 --> TUE5 --> TUE6 --> TUE7 --> TUE8
+    TUE8 --> WF1 --> WF2 --> WF3 --> START
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 03 ── -->
+    <section class="diagram-section" id="dataflow">
+      <div class="section-header">
+        <span class="n">03</span>
+        <h2>Data Flow — Quién escribe, quién lee</h2>
+      </div>
+      <p class="desc">Mapa de personas a archivos a outputs. Cada nodo es un actor; cada flecha es un archivo o acción.</p>
+      <div class="card">
+        <div class="mermaid">
+graph LR
+    subgraph WR["✍️ Escritores"]
+        WH["Hache"]
+        WN["Nacho"]
+        WC["Comando"]
+        WF["Fanny"]
+        WJ["Jorge"]
+        WFR["Freequency"]
+    end
+
+    subgraph REPO["📂 Repo"]
+        SFA["STATUS.md\nFinance-Admin ARG"]
+        SLC["STATUS.md\nLegal ARG"]
+        SPR["STATUS.md\nProducto ARG"]
+        SOP["STATUS.md\nOperations ARG"]
+        SLG["STATUS.md\nLogistics ARG"]
+        SMC["STATUS.md\nMktg-Comms ARG"]
+        SBRA["STATUS.md ×6\nBRA"]
+        RPT["W·XX Report\n03_WEEKLY/"]
+        DLG["Decisions Log\n_GLOBAL/"]
+    end
+
+    subgraph BORIS["⚙️ Boris + Claude"]
+        B1["Lee 12 STATUS.md"]
+        B2["Compila W·XX"]
+        B3["Genera agenda"]
+        B4["Formatea decisiones"]
+    end
+
+    subgraph RD["👁 Consumidores"]
+        RH["Hache\nexec summary"]
+        RF["Fanny → Asana"]
+        RJ["Jorge\nKPI narrative"]
+        RM["Equipo\nagenda martes"]
+    end
+
+    WH -->|Finance · Producto ARG| SFA & SPR
+    WN -->|Legal ARG| SLC
+    WC -->|Producto · Mktg ARG| SPR & SMC
+    WF -->|Operations ARG + BRA| SOP & SBRA
+    WJ -->|Logistics ARG| SLG
+    WFR -->|BRA Mktg + Ops| SBRA
+
+    SFA & SLC & SPR & SOP & SLG & SMC & SBRA --> B1
+    B1 --> B2 --> RPT
+    RPT --> B3 --> RM
+    RPT --> RH
+    B4 --> DLG --> RF
+        </div>
+      </div>
+      <div class="alert">
+        <strong>⚠️ BRA &middot; Legal &amp; Contable — sin asignar.</strong>&ensp;No hay responsable para el STATUS.md de legal-contable Brasil. Requiere resolución urgente antes del lanzamiento.
+      </div>
+    </section>
+
+    <!-- ── 04 ── -->
+    <section class="diagram-section" id="folders">
+      <div class="section-header">
+        <span class="n">04</span>
+        <h2>Folder Structure</h2>
+      </div>
+      <p class="desc">Árbol completo del repositorio. Cada carpeta tiene un propósito único — no crear fuera de estructura sin consultar a Boris.</p>
+      <div class="card">
+        <div class="mermaid">
+graph TD
+    ROOT["📦 TERRIBLE ENFANT · OS1"]
+
+    ROOT --> CORE["CORE/\n🔒 ADN de marca\nNo modificar sin Hache o Comando"]
+    ROOT --> STRAT["STRATEGY/\nDocumentos estratégicos globales\nExpansión BRA · Estado de Gracia"]
+    ROOT --> OPS["OPERATIONS/\n❤️ Corazón operacional"]
+    ROOT --> WEEKLY["WEEKLY/\nReportes semanales compilados"]
+    ROOT --> AUTO["AUTOMATION/\n⚙️ Dominio de Boris"]
+    ROOT --> ARCH["ARCHIVE/\nCampañas cerradas · ciclos completados"]
+    ROOT --> REF["REFERENCE/\nDocs originales · Notion · legacy"]
+    ROOT --> CL["CLAUDE.md\n📖 Leer PRIMERO"]
+
+    OPS --> GLOBAL["_GLOBAL/\nDecisions log · Asana guidelines\ncoordinación transversal — Fanny"]
+    OPS --> ARG["ARG/ 🇦🇷\n6 áreas operacionales"]
+    OPS --> BRA["BRA/ 🇧🇷\nEspejo de las 6 áreas"]
+
+    ARG --> A1["finance-admin/ → Hache"]
+    ARG --> A2["legal-contable/ → Nacho"]
+    ARG --> A3["producto/ → Hache + Comando"]
+    ARG --> A4["operations/ → Fanny"]
+    ARG --> A5["logistics/ → Jorge"]
+    ARG --> A6["marketing-comms/ → Comando"]
+
+    BRA --> BRAN["Misma estructura ×6\n⚠️ legal-contable SIN ASIGNAR — urgente"]
+
+    WEEKLY --> WT["_template-weekly-report.md"]
+    WEEKLY --> WY["2026/ — W01 → W52"]
+
+    AUTO --> AP["prompts/ — compile · agenda · decisions"]
+    AUTO --> AB["boris-playbook.md"]
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>OS1 &middot; Terrible Enfant &middot; Buenos Aires — São Paulo &middot; 2026</p>
+    <p class="brand">Elegance born from disobedience.</p>
+  </footer>
+
+</body>
+</html>
