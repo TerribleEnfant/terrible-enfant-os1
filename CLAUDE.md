@@ -144,21 +144,29 @@ La reunión del martes no es para informar — los updates se leen antes. La reu
 - No crear archivos fuera de la estructura de carpetas establecida sin consultar a Boris
 - No crear tareas en Asana — eso es dominio exclusivo de Fanny
 - No modificar el decisions log de manera retroactiva — es append-only
+- No publicar ni enviar contenido de marca (copy, briefs, comunicaciones externas) sin aprobación de Comando
+- No redactar copy de campaña sin el brief correspondiente como contexto — el brief es la autorización
+- No hacer commit ni push al repo sin que Boris haya revisado los cambios
 
 ---
 
 ## Protocolo de automatización (Boris)
 
-Boris opera Claude Code en VS Code. Cuando Boris dice "compilá el semanal" o similar:
+Boris opera Claude Code en VS Code. Antes de improvisar cualquier proceso, verificar si ya existe un prompt o workflow en `AUTOMATION/`.
 
-1. Leer todos los archivos `STATUS.md` en `OPERATIONS/ARG/` y `OPERATIONS/BRA/` (12 archivos)
-2. Leer todos los archivos `STATUS.md` en `PROJECTS/active/` (proyectos en ejecución)
-3. Extraer por área/mercado/proyecto: estado general (🟢🟡🔴), avances, bloqueadores, notas para el martes
-4. Producir un reporte consolidado usando la plantilla en `WEEKLY/_template-weekly-report.md`
-5. Guardar el resultado como `WEEKLY/2026/W[XX]-[fecha-lunes].md`
+**Routing de automatización — cuándo usar qué:**
 
-Prompts reutilizables completos en `AUTOMATION/prompts/`.
-Instrucciones del playbook completo en `AUTOMATION/boris-playbook.md`.
+| Trigger / tarea | Recurso | Output |
+|-----------------|---------|--------|
+| "compilá el semanal" | `AUTOMATION/prompts/compile-weekly-status.md` | `WEEKLY/2026/W##-YYYY-MM-DD.md` |
+| "generá la agenda del martes" | `AUTOMATION/prompts/draft-meeting-agenda.md` | Agenda para enviar al equipo |
+| "loggueá las decisiones" | `AUTOMATION/prompts/generate-decision-log.md` | Entradas en `weekly-decisions-log.md` |
+| "estado de proyectos" | `AUTOMATION/prompts/compile-project-status.md` | Resumen de `PROJECTS/active/` |
+| "nuevo proyecto" | `AUTOMATION/workflows/new-project-setup.md` | Carpeta en `PROJECTS/active/` |
+| "cerrá el proyecto" | `AUTOMATION/workflows/project-close.md` | Carpeta movida a `PROJECTS/completed/` |
+| "nueva collab" | `AUTOMATION/workflows/collab-launch.md` | Brief + estructura de collab |
+
+Playbook completo con pasos detallados: `AUTOMATION/boris-playbook.md`.
 
 ---
 
@@ -226,6 +234,15 @@ Cuando Claude redacta contenido de marca — copy, briefs, comunicaciones — de
 - Frases cortas. Fragmentos aceptables. Sin exclamaciones.
 - **Referentes:** ERD, Helmut Lang tardío, Nick Cave, cine de Haneke
 - **Idioma:** seguir la política de idioma del repo según destino de la pieza
+
+**Audiencia — segmentos y registro para cada uno:**
+
+| Segmento | Quiénes son | Qué buscan | Ángulo de entrada |
+|----------|-------------|------------|-------------------|
+| Románticos decadentes | Creativos urbanos, intelectuales, artistas | Identidad no negociable, estética como posición | "Uniformes para los que se niegan a ser nadie." |
+| Luxury explorers | Compradores HNWI ARG/BRA/EU, 28–45 | Objeto con narrativa, no moda de temporada | "Hecho para destruirse bellamente." |
+| Luxury punk circle | Referentes de gusto, insiders de moda | Credibilidad cultural, no masividad | "Lujo para los que vieron demasiado." |
+| Compradores Brasil (BRA launch) | Mercado SP, consumidor de marca autor | Marca con origen y posición, no genérico | "Elegancia nacida de la desobediencia." |
 
 ---
 
