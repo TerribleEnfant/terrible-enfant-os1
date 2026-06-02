@@ -421,6 +421,28 @@ timeline
     </table>
     </div>
     <p style="margin-top:24px">El <strong>CMO Strategist agent</strong> (<span class="mono">AUTOMATION/agents/cmo-strategist.md</span>) es la pieza de IA que lee este dashboard y produce, por trimestre, la lectura estratégica + las apuestas de marketing.</p>
+
+    <h3>Stack recomendado — borrador</h3>
+    <p class="lede" style="margin-bottom:22px"><span class="warnflag">Borrador</span> &nbsp;Baseline de arquitectura para adquisición + retención + automatización. No es el setup actual de TE — es una recomendación a evaluar. Sin IDs de cuenta ni credenciales: eso vive fuera del repo.</p>
+    <div class="tblscroll">
+    <table>
+      <thead><tr><th>Capa</th><th>Recomendación</th><th>Nota</th></tr></thead>
+      <tbody>
+        <tr><td>E-commerce</td><td class="who">Plataforma Shopify-class</td><td>TE hoy: Nuvemshop (BR) + WooCommerce (ARG). Headless si escala.</td></tr>
+        <tr><td>Tracking</td><td class="who">GTM → GA4 + Meta Pixel + Google Ads + TikTok Pixel</td><td>Un solo contenedor orquestando todo; eventos server-side donde se pueda.</td></tr>
+        <tr><td>Email marketing</td><td class="who">Klaviyo</td><td>Integración nativa con la plataforma; flows de bienvenida, carrito y post-compra.</td></tr>
+        <tr><td>Email transaccional / outbound</td><td class="who">SendGrid</td><td>Sobre dominio operativo dedicado, DKIM 2048.</td></tr>
+        <tr><td>CRM + pipeline</td><td class="who">Airtable</td><td>Fuente del pipeline comercial.</td></tr>
+        <tr><td>Enriquecimiento de datos</td><td class="who">Clay</td><td>Enriquecer leads antes del outbound (~US$185/mo Launch).</td></tr>
+        <tr><td>Cold email a escala</td><td class="who">Instantly.ai</td><td>Warm-up multi-inbox (~US$37–97/mo Starter).</td></tr>
+        <tr><td>Inbound conversacional IG</td><td class="who">ManyChat</td><td>Auto-reply, sin outbound.</td></tr>
+        <tr><td>Capa de inteligencia</td><td class="who">Claude Code + Claude Agent SDK (local)</td><td>Subagents propios (tracking-verifier, copy-reviewer…) + Playwright MCP para admin de ecomm/GTM/GA4 cuando los tokens API friccionan.</td></tr>
+        <tr><td>Capa de equipo</td><td class="who">Paperclip AI</td><td>Self-hosted en VPS.</td></tr>
+        <tr><td>Mensajería futura</td><td class="who">OpenClaw</td><td>WhatsApp / Slack / Telegram. Diferido.</td></tr>
+        <tr><td>Coordinación</td><td class="who">Slack + Asana + GitHub</td><td>Repo como single source of truth.</td></tr>
+      </tbody>
+    </table>
+    </div>
   </div>
 </section>
 
