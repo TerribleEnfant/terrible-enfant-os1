@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Los Siete — Terrible Enfant · Campaña 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400..600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0a0a0a;
+    --ink-2:#3a3a3a;
+    --ink-3:#6e6e6e;
+    --paper:#f6f4ef;
+    --paper-2:#ffffff;
+    --line:#d8d4cb;
+    --line-2:#e7e3da;
+    --black:#000;
+    --maxw:980px;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--serif);font-optical-sizing:auto;
+    font-weight:400;line-height:1.55;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--ink);color:var(--paper)}
+
+  /* ---------- layout ---------- */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  section{padding:62px 0;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:0}
+
+  /* ---------- mono / labels ---------- */
+  .mono{font-family:var(--mono);font-weight:400}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
+
+  /* ---------- hero ---------- */
+  header.hero{background:var(--black);color:var(--paper);padding:0;border:0}
+  .hero-inner{max-width:var(--maxw);margin:0 auto;padding:92px 28px 64px}
+  .hero .kicker{color:#9a958a}
+  .hero h1{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(64px,18vw,184px);line-height:.9;letter-spacing:-.03em;
+    margin:.2em 0 .22em;text-transform:uppercase;
+  }
+  .hero .tagline{font-style:italic;font-weight:300;font-size:clamp(20px,3.2vw,30px);color:#efece4;margin:0 0 6px;max-width:24ch}
+  .hero .tagline-en{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:#7d7a72;margin:0 0 42px}
+  .hero-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:22px;border-top:1px solid #2a2a2a;padding-top:26px}
+  .hero-meta dt{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#7d7a72;margin-bottom:6px}
+  .hero-meta dd{margin:0;font-family:var(--mono);font-size:13px;color:#efece4}
+  .hero-meta dd .flag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;border:1px solid #4a4a4a;padding:2px 7px;color:#cfcabd;display:inline-block}
+
+  /* ---------- sticky nav ---------- */
+  nav.toc{position:sticky;top:0;z-index:20;background:rgba(246,244,239,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav.toc .wrap{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;padding:0 28px}
+  nav.toc .wrap::-webkit-scrollbar{display:none}
+  nav.toc a{
+    font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-3);
+    text-decoration:none;white-space:nowrap;padding:14px 13px;border-bottom:2px solid transparent;
+    transition:color .15s,border-color .15s;
+  }
+  nav.toc a:hover{color:var(--ink);border-color:var(--ink)}
+
+  /* ---------- headings ---------- */
+  h2{font-weight:340;font-size:clamp(26px,4.4vw,40px);line-height:1.04;letter-spacing:-.015em;margin:0 0 8px;display:flex;align-items:baseline;gap:16px}
+  h2 .h-num{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--ink);letter-spacing:0;flex:none;transform:translateY(-.35em)}
+  .lede{font-size:18px;color:var(--ink-2);max-width:64ch;margin:0 0 34px}
+  p{max-width:68ch}
+  strong{font-weight:600}
+  em{font-style:italic}
+
+  /* ---------- hypothesis ---------- */
+  .hyp{font-size:clamp(20px,2.8vw,27px);font-weight:340;line-height:1.4;letter-spacing:-.01em;max-width:30ch;margin:0 0 30px}
+  .hyp em{font-style:italic}
+  .hyp-body p{font-size:16px;color:var(--ink-2);margin:0 0 18px}
+  .pull{border-left:2px solid var(--ink);padding:2px 0 2px 24px;margin:26px 0;font-size:18px;max-width:60ch}
+
+  /* ---------- archetype cards ---------- */
+  .arch{border-top:1px solid var(--line);padding:46px 0;display:grid;grid-template-columns:118px 1fr;gap:0 34px;align-items:start}
+  .arch:first-of-type{border-top:0}
+  .arch .rn{font-family:var(--serif);font-weight:300;font-size:clamp(52px,8vw,86px);line-height:.82;letter-spacing:-.02em;color:var(--ink)}
+  .arch .pilar{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-top:14px;line-height:1.5}
+  .arch-body{min-width:0}
+  .arch-body .name{font-weight:360;font-size:clamp(27px,4.6vw,40px);line-height:1.02;letter-spacing:-.018em;margin:0 0 6px}
+  .arch-body .line{font-style:italic;font-size:19px;color:var(--ink);margin:0 0 22px}
+  .arch-body .label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin:0 0 7px}
+  .arch-body .momento{font-size:16px;color:var(--ink-2);max-width:62ch;margin:0 0 26px}
+  .refs{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px 30px;border-top:1px solid var(--line-2);padding-top:20px}
+  .refs dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+  .refs dd{margin:0;font-size:14px;line-height:1.5;color:var(--ink-2)}
+  .refs dd em{font-style:italic;color:var(--ink)}
+
+  /* ---------- execution steps ---------- */
+  ol.steps{list-style:none;counter-reset:st;padding:0;margin:0}
+  ol.steps li{counter-increment:st;position:relative;padding:0 0 26px 64px;max-width:72ch}
+  ol.steps li:last-child{padding-bottom:0}
+  ol.steps li::before{content:counter(st,decimal-leading-zero);position:absolute;left:0;top:2px;font-family:var(--mono);font-size:12px;color:var(--ink);border:1px solid var(--ink);width:38px;height:38px;display:flex;align-items:center;justify-content:center}
+  ol.steps .st-name{font-family:var(--mono);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);display:block;margin:8px 0 6px}
+  ol.steps p{font-size:15.5px;color:var(--ink-2);margin:0}
+
+  /* ---------- pending decisions ---------- */
+  ol.pend{list-style:none;counter-reset:pd;padding:0;margin:0}
+  ol.pend li{counter-increment:pd;padding:13px 0 13px 44px;border-bottom:1px solid var(--line-2);position:relative;max-width:74ch;font-size:15.5px}
+  ol.pend li::before{content:counter(pd,decimal-leading-zero);position:absolute;left:0;top:14px;font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.05em}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--black);color:#cfcabd;border:0}
+  footer .wrap{padding:54px 28px}
+  footer .tagline{font-family:var(--serif);font-style:italic;font-weight:300;font-size:26px;color:var(--paper);margin:0 0 22px}
+  footer .meta{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:#7d7a72;line-height:1.9}
+  footer a{color:#cfcabd}
+
+  @media(max-width:620px){
+    section{padding:46px 0}
+    .hero-inner{padding:72px 28px 50px}
+    .arch{grid-template-columns:1fr;gap:8px}
+    .arch .rn{font-size:54px}
+    .arch .pilar{margin-top:2px}
+    ol.steps li{padding-left:54px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="kicker">Campaña 2026 · Capítulo II de Estado de Gracia · Siete arquetipos</div>
+    <h1>Los&nbsp;Siete</h1>
+    <p class="tagline">Hay siete maneras de ocupar el espacio.</p>
+    <p class="tagline-en">There are seven ways to occupy space.</p>
+    <dl class="hero-meta">
+      <div><dt>Tipo</dt><dd>campaign</dd></div>
+      <div><dt>Owner</dt><dd>Comando</dd></div>
+      <div><dt>Mercado</dt><dd>ARG + BRA</dd></div>
+      <div><dt>Inicio</dt><dd>2026·05</dd></div>
+      <div><dt>Producción</dt><dd>Híbrida — foto + AI</dd></div>
+      <div><dt>Casting</dt><dd>1 modelo único</dd></div>
+      <div><dt>Estado</dt><dd><span class="flag">Brief v2 — pend. re-aprobación</span></dd></div>
+    </dl>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#hipotesis">00 Hipótesis</a>
+    <a href="#repertorio">01 Repertorio</a>
+    <a href="#ejecucion">02 Ejecución</a>
+    <a href="#pendientes">03 Pendientes</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ===== 0 HIPÓTESIS ===== -->
+<section id="hipotesis">
+  <div class="wrap">
+    <h2><span class="h-num">00</span> Hipótesis central</h2>
+    <p class="hyp">La identidad no es una unidad estable sino un conjunto de posiciones que se alternan según el contexto. Cada persona contiene un repertorio — <em>al menos siete posiciones</em> — que toman el control en momentos específicos del orden social, espiritual y estético.</p>
+    <div class="hyp-body">
+      <p>El Hereje aparece frente a una demanda de adherir a algo que ya rechazamos. El Espectro emerge en el período posterior a una pérdida no procesada. El Verdugo se activa cuando hay que ejecutar una decisión costosa sin reabrir el debate. El Aristócrata Desheredado opera en situaciones sociales que perdieron su función original pero a las que seguimos asistiendo por inercia.</p>
+      <p class="pull"><strong>Los Siete no son tipos de personalidad ni categorías de autoidentificación. Son posiciones existenciales que cualquier sujeto puede ocupar.</strong></p>
+      <p>La campaña no propone elegir una posición fija. Propone reconocer las siete como repertorio interno. El zapato acompaña la posición ocupada en el momento, no el carácter de quien lo usa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 1 REPERTORIO ===== -->
+<section id="repertorio">
+  <div class="wrap">
+    <h2><span class="h-num">01</span> Repertorio de posiciones</h2>
+    <p class="lede">Siete configuraciones. Una misma identidad de fondo activando posiciones contrastantes según el momento. Cada arquetipo se ancla a un pilar de Estado de Gracia.</p>
+
+    <!-- I -->
+    <article class="arch">
+      <div>
+        <div class="rn">I</div>
+        <div class="pilar">Pilar EdG<br />VI · Gracia y<br />desobediencia</div>
+      </div>
+      <div class="arch-body">
+        <h3 class="name">El Hereje</h3>
+        <p class="line">Conoce el dogma. Eligió salirse.</p>
+        <div class="label">Momento en que aparece</div>
+        <p class="momento">Frente a una demanda de adherir a un dogma o sistema de creencias que ya fue rechazado intelectualmente. La formación institucional permanece como postura corporal aunque su contenido haya sido abandonado.</p>
+        <dl class="refs">
+          <div><dt>Figuras</dt><dd>Nietzsche · Kierkegaard · Cesare Borgia · Simone Weil</dd></div>
+          <div><dt>Cine</dt><dd><em>La Ricotta</em> (Pasolini) · <em>Hadewijch</em> (Dumont) · <em>El sacrificio</em> (Tarkovsky)</dd></div>
+          <div><dt>Libros</dt><dd><em>El Anticristo</em> · <em>Bajo el sol de Satán</em> (Bernanos) · <em>La gravedad y la gracia</em> (Weil)</dd></div>
+          <div><dt>Imagen</dt><dd>Serrano · Mapplethorpe temprano · Caravaggio · Salgado</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- II -->
+    <article class="arch">
+      <div>
+        <div class="rn">II</div>
+        <div class="pilar">Pilar EdG<br />VII · Posición<br />de marca</div>
+      </div>
+      <div class="arch-body">
+        <h3 class="name">El Aristócrata Desheredado</h3>
+        <p class="line">Modales sin la estructura que los justificaba.</p>
+        <div class="label">Momento en que aparece</div>
+        <p class="momento">En situaciones sociales que perdieron su función original pero que seguimos honrando por inercia o por formación. La cortesía opera como performance autónoma de la estructura que la justificaba.</p>
+        <dl class="refs">
+          <div><dt>Figuras</dt><dd>Lampedusa · Lord Byron · Mallarmé · Karl Lagerfeld</dd></div>
+          <div><dt>Cine</dt><dd><em>El Gatopardo</em> · <em>Senso</em> (Visconti) · <em>La gran belleza</em> (Sorrentino)</dd></div>
+          <div><dt>Libros</dt><dd><em>El Gatopardo</em> · <em>Marca de agua</em> (Brodsky) · <em>Diario de un seductor</em> (Kierkegaard)</dd></div>
+          <div><dt>Imagen</dt><dd>Sargent · Lucian Freud · Helmut Newton 80s · Wes Anderson</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- III -->
+    <article class="arch">
+      <div>
+        <div class="rn">III</div>
+        <div class="pilar">Pilar EdG<br />II · Identidad<br />como aparición</div>
+      </div>
+      <div class="arch-body">
+        <h3 class="name">El Confesor</h3>
+        <p class="line">Sabe lo suficiente para arruinar. Elige el silencio.</p>
+        <div class="label">Momento en que aparece</div>
+        <p class="momento">Cuando acumulamos información comprometedora sobre otros y decidimos no usarla. La discreción como ejercicio voluntario del poder retenido.</p>
+        <dl class="refs">
+          <div><dt>Figuras</dt><dd>Cardinal Richelieu · Sigmund Freud · Andrei Rublev</dd></div>
+          <div><dt>Cine</dt><dd><em>Ida</em> (Pawlikowski) · <em>El club</em> (Larraín) · <em>El silencio</em> (Bergman)</dd></div>
+          <div><dt>Libros</dt><dd><em>Diario de un cura rural</em> (Bernanos) · <em>Bajo el volcán</em> (Lowry)</dd></div>
+          <div><dt>Imagen</dt><dd>El Greco · Zurbarán · Diane Arbus · Robert Frank</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- IV -->
+    <article class="arch">
+      <div>
+        <div class="rn">IV</div>
+        <div class="pilar">Pilar EdG<br />V · Romanticismo<br />oscuro</div>
+      </div>
+      <div class="arch-body">
+        <h3 class="name">El Mártir Voluntario</h3>
+        <p class="line">Disciplina al servicio de un final decidido.</p>
+        <div class="label">Momento en que aparece</div>
+        <p class="momento">Cuando se asume un costo personal alto por una causa elegida. El sacrificio se planifica con la misma precisión que cualquier otro acto deliberado — no es resignación sino estrategia.</p>
+        <dl class="refs">
+          <div><dt>Figuras</dt><dd>Yukio Mishima · Pier Paolo Pasolini · Jan Palach · Saint Sébastien</dd></div>
+          <div><dt>Cine</dt><dd><em>Mishima</em> (Schrader) · <em>Salò</em> (Pasolini) · <em>Nostalgia</em> (Tarkovsky)</dd></div>
+          <div><dt>Libros</dt><dd><em>Confesiones de una máscara</em> (Mishima) · <em>El libro del desasosiego</em> (Pessoa)</dd></div>
+          <div><dt>Imagen</dt><dd>Guido Reni "St Sebastian" · Joel-Peter Witkin · Eikoh Hosoe</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- V -->
+    <article class="arch">
+      <div>
+        <div class="rn">V</div>
+        <div class="pilar">Pilar EdG<br />IV · Indumentaria<br />como técnica<br />de presencia</div>
+      </div>
+      <div class="arch-body">
+        <h3 class="name">El Verdugo</h3>
+        <p class="line">Precisión sin moralización.</p>
+        <div class="label">Momento en que aparece</div>
+        <p class="momento">Cuando hay que ejecutar una decisión costosa sin reabrir el debate moral. La función reemplaza al juicio. Operativo, no malvado.</p>
+        <dl class="refs">
+          <div><dt>Figuras</dt><dd>Charles-Henri Sanson · Albrecht Dürer · Caravaggio</dd></div>
+          <div><dt>Cine</dt><dd><em>Pickpocket</em> (Bresson) · <em>El listón blanco</em> · <em>Caché</em> (Haneke)</dd></div>
+          <div><dt>Libros</dt><dd><em>El verdugo</em> (Lagerkvist) · <em>El extranjero</em> (Camus)</dd></div>
+          <div><dt>Imagen</dt><dd>Bernd &amp; Hilla Becher · Boltanski · Roy Andersson</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- VI -->
+    <article class="arch">
+      <div>
+        <div class="rn">VI</div>
+        <div class="pilar">Pilar EdG<br />III · Umbral entre<br />carne y concepto</div>
+      </div>
+      <div class="arch-body">
+        <h3 class="name">El Espectro</h3>
+        <p class="line">Vuelve cambiado de algo que no nombra.</p>
+        <div class="label">Momento en que aparece</div>
+        <p class="momento">En el período posterior a una pérdida no procesada. La experiencia no se verbaliza pero altera la presencia en cualquier espacio. Distancia voluntaria como mecanismo de protección.</p>
+        <dl class="refs">
+          <div><dt>Figuras</dt><dd>Primo Levi · Paul Celan · W. G. Sebald · Aharon Appelfeld</dd></div>
+          <div><dt>Cine</dt><dd><em>Stalker</em> · <em>El espejo</em> (Tarkovsky) · <em>Silent Light</em> (Reygadas) · <em>Caché</em> (Haneke)</dd></div>
+          <div><dt>Libros</dt><dd><em>Si esto es un hombre</em> (Levi) · <em>Los anillos de Saturno</em> (Sebald)</dd></div>
+          <div><dt>Imagen</dt><dd>Bill Henson · Andrew Wyeth · Saul Leiter · Reygadas</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- VII -->
+    <article class="arch">
+      <div>
+        <div class="rn">VII</div>
+        <div class="pilar">Pilar EdG<br />I · La gracia como<br />problema ontológico</div>
+      </div>
+      <div class="arch-body">
+        <h3 class="name">El Niño Terrible</h3>
+        <p class="line">Rechazo del rol asignado.</p>
+        <div class="label">Momento en que aparece</div>
+        <p class="momento">Cuando el rol social esperado se vuelve insostenible y elegimos no asumirlo. Adulto que se niega a actuar la versión socialmente correcta de sí mismo. Articula la posición pública de la marca.</p>
+        <dl class="refs">
+          <div><dt>Figuras</dt><dd>Arthur Rimbaud · Jean Cocteau · Helmut Lang · Hedi Slimane</dd></div>
+          <div><dt>Cine</dt><dd><em>Les Enfants Terribles</em> (Melville) · <em>Tulsa</em> (Larry Clark) · <em>Mauvais Sang</em> (Carax)</dd></div>
+          <div><dt>Libros</dt><dd><em>Una temporada en el infierno</em> (Rimbaud) · <em>Los hijos terribles</em> (Cocteau)</dd></div>
+          <div><dt>Imagen</dt><dd>Larry Clark <em>Tulsa</em> · ERD · Helmut Lang 90s · Nick Cave retratos 80s</dd></div>
+        </dl>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== 2 EJECUCIÓN ===== -->
+<section id="ejecucion">
+  <div class="wrap">
+    <h2><span class="h-num">02</span> Ejecución</h2>
+    <p class="lede">Método híbrido en tres capas. Un solo modelo, siete identidades — la repetición es parte del concepto.</p>
+    <ol class="steps">
+      <li>
+        <span class="st-name">Captura fotográfica</span>
+        <p>Un solo modelo, dirigido por Comando, en siete setups con dirección de arte distinta. Luz, postura, gestualidad, encuadre — todo diferenciado por arquetipo.</p>
+      </li>
+      <li>
+        <span class="st-name">Post tradicional</span>
+        <p>Color grade, paleta y atmósfera ajustadas a cada arquetipo.</p>
+      </li>
+      <li>
+        <span class="st-name">Deformación AI de cara</span>
+        <p>Capa final. El rostro del modelo se procesa con AI para diferenciarlo entre arquetipos. La modificación mantiene la identidad de fondo reconocible — no convierte al modelo en otra persona — pero altera rasgos lo suficiente para que cada arquetipo sea visualmente distinto. Boris define los rangos de deformación antes del shoot para evitar resultados que parezcan filtros automáticos.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== 3 PENDIENTES ===== -->
+<section id="pendientes">
+  <div class="wrap">
+    <h2><span class="h-num">03</span> Decisiones pendientes · Comando</h2>
+    <p class="lede">Brief v2 a la espera de re-aprobación. Siete decisiones abren la producción.</p>
+    <ol class="pend">
+      <li>Aprobación del pivot al set decadente.</li>
+      <li>Perfil del modelo único.</li>
+      <li>Mapeo zapato-arquetipo (acompaña, no protagoniza).</li>
+      <li>Formato de publicación — hero única o mini-serie.</li>
+      <li>Presentación externa — sub-serie de EdG o autónoma.</li>
+      <li>Shortlist y selección de fotógrafo ARG.</li>
+      <li>Calendario de shoot, post y lanzamiento.</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="tagline">Elegance born from disobedience.</p>
+    <p class="meta">
+      Terrible Enfant — Campaña 2026 · Los Siete · Brief v2 (2026·05·11) — pendiente re-aprobación · ARG · BRA<br />
+      Capítulo II de Estado de Gracia · Owner: Comando · Documento vivo — fuente: PROJECTS/active/campaign-los-siete/brief.md<br />
+      <a href="#top">↑ volver arriba</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
