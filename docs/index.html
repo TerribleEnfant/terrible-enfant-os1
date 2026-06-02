@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>GTM São Paulo — Terrible Enfant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400..600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0a0a0a;
+    --ink-2:#3a3a3a;
+    --ink-3:#6e6e6e;
+    --paper:#f6f4ef;
+    --paper-2:#ffffff;
+    --line:#d8d4cb;
+    --line-2:#e7e3da;
+    --black:#000;
+    --maxw:980px;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--serif);font-optical-sizing:auto;
+    font-weight:400;line-height:1.55;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--ink);color:var(--paper)}
+
+  /* ---------- layout ---------- */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  section{padding:62px 0;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:0}
+
+  /* ---------- mono / labels ---------- */
+  .mono{font-family:var(--mono);font-weight:400}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
+  .num{font-family:var(--mono);font-size:12px;color:var(--ink-3);letter-spacing:.1em}
+
+  /* ---------- hero ---------- */
+  header.hero{background:var(--black);color:var(--paper);padding:0;border:0}
+  .hero-inner{max-width:var(--maxw);margin:0 auto;padding:96px 28px 72px}
+  .hero .kicker{color:#9a958a}
+  .hero h1{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(44px,9vw,104px);line-height:.94;letter-spacing:-.02em;
+    margin:.32em 0 .12em;
+  }
+  .hero h1 em{font-style:italic;font-weight:400}
+  .hero .tagline{font-style:italic;font-weight:300;font-size:clamp(17px,2.4vw,23px);color:#cfcabd;margin:0 0 40px;max-width:30ch}
+  .hero-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:22px;border-top:1px solid #2a2a2a;padding-top:26px}
+  .hero-meta dt{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#7d7a72;margin-bottom:6px}
+  .hero-meta dd{margin:0;font-family:var(--mono);font-size:13px;color:#efece4}
+
+  /* ---------- sticky nav ---------- */
+  nav.toc{position:sticky;top:0;z-index:20;background:rgba(246,244,239,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav.toc .wrap{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;padding:0 28px}
+  nav.toc .wrap::-webkit-scrollbar{display:none}
+  nav.toc a{
+    font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-3);
+    text-decoration:none;white-space:nowrap;padding:14px 14px;border-bottom:2px solid transparent;
+    transition:color .15s,border-color .15s;
+  }
+  nav.toc a:hover{color:var(--ink);border-color:var(--ink)}
+
+  /* ---------- headings ---------- */
+  h2{font-weight:340;font-size:clamp(28px,4.6vw,42px);line-height:1.04;letter-spacing:-.015em;margin:0 0 8px;display:flex;align-items:baseline;gap:16px}
+  h2 .h-num{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--ink);letter-spacing:0;flex:none;transform:translateY(-.35em)}
+  .lede{font-size:18px;color:var(--ink-2);max-width:64ch;margin:0 0 34px}
+  h3{font-weight:500;font-size:15px;font-family:var(--mono);letter-spacing:.02em;text-transform:none;margin:38px 0 14px;color:var(--ink)}
+
+  p{max-width:68ch}
+  strong{font-weight:600}
+  a.inlink{color:var(--ink);text-underline-offset:3px;text-decoration-thickness:1px}
+
+  /* ---------- TL;DR callout ---------- */
+  .tldr{font-size:19px;line-height:1.6;border-left:2px solid var(--ink);padding:4px 0 4px 26px;margin:0 0 26px;max-width:70ch}
+  .tldr.last{margin-bottom:0}
+
+  /* ---------- status bar component ---------- */
+  .sb{display:inline-flex;gap:3px;vertical-align:middle}
+  .sb i{width:13px;height:7px;background:var(--line);display:inline-block}
+  .sb.go i,.sb.warn i:nth-child(-n+2),.sb.block i:first-child{background:var(--ink)}
+  .status-pill{font-family:var(--mono);font-size:11px;letter-spacing:.04em;display:inline-flex;align-items:center;gap:9px;white-space:nowrap}
+
+  .legend{display:flex;flex-wrap:wrap;gap:26px;margin:0 0 34px;padding:16px 18px;border:1px solid var(--line);background:var(--paper-2)}
+  .legend .status-pill{color:var(--ink-2)}
+
+  /* ---------- tables ---------- */
+  .tblscroll{overflow-x:auto;margin:0 0 8px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  thead th{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:0 16px 10px 0;border-bottom:1px solid var(--ink);vertical-align:bottom}
+  tbody td{padding:13px 16px 13px 0;border-bottom:1px solid var(--line-2);vertical-align:top;line-height:1.4}
+  tbody tr:hover{background:rgba(0,0,0,.022)}
+  td .who{font-family:var(--mono);font-size:12.5px}
+  .tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);padding:2px 7px;color:var(--ink-2);white-space:nowrap}
+
+  /* ---------- diagram frames ---------- */
+  .figure{background:var(--paper-2);border:1px solid var(--line);padding:30px 18px;margin:6px 0 14px;overflow-x:auto}
+  .figure .mermaid{display:flex;justify-content:center}
+  figcaption{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.04em;margin-top:10px}
+
+  /* ---------- gap / priority blocks ---------- */
+  .gap-group{margin:0 0 30px}
+  .gap-head{font-family:var(--mono);font-size:12px;letter-spacing:.06em;display:flex;align-items:center;gap:12px;margin:0 0 14px;padding-bottom:8px;border-bottom:1px solid var(--ink)}
+  .gap-head .dot{width:9px;height:9px;border-radius:50%;background:var(--ink);flex:none}
+  .gap-head .dot.hollow{background:transparent;border:1.5px solid var(--ink)}
+  .gap-head .dot.half{background:linear-gradient(90deg,var(--ink) 50%,transparent 50%);border:1.5px solid var(--ink)}
+
+  /* ---------- blind spots / numbered list ---------- */
+  ol.bs{list-style:none;counter-reset:bs;padding:0;margin:0}
+  ol.bs li{counter-increment:bs;position:relative;padding:0 0 22px 56px;max-width:72ch}
+  ol.bs li::before{content:counter(bs,decimal-leading-zero);position:absolute;left:0;top:2px;font-family:var(--mono);font-size:12px;color:var(--ink-3);border:1px solid var(--line);width:34px;height:34px;display:flex;align-items:center;justify-content:center}
+
+  /* ---------- checklist ---------- */
+  ul.checks{list-style:none;padding:0;margin:0}
+  ul.checks li{padding:13px 0 13px 34px;border-bottom:1px solid var(--line-2);position:relative;max-width:72ch}
+  ul.checks li::before{content:"";position:absolute;left:0;top:16px;width:14px;height:14px;border:1.5px solid var(--ink)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--black);color:#cfcabd;border:0}
+  footer .wrap{padding:54px 28px}
+  footer .tagline{font-family:var(--serif);font-style:italic;font-weight:300;font-size:26px;color:var(--paper);margin:0 0 22px}
+  footer .meta{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:#7d7a72;line-height:1.9}
+  footer a{color:#cfcabd}
+
+  .warnflag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;border:1px solid var(--ink);padding:2px 7px;text-transform:uppercase}
+
+  @media(max-width:620px){
+    section{padding:46px 0}
+    .hero-inner{padding:72px 28px 54px}
+    ol.bs li{padding-left:46px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="kicker">GTM São Paulo · Dashboard &amp; Explainer · v0.1</div>
+    <h1>Go&#8209;to&#8209;Market<br /><em>São Paulo</em></h1>
+    <p class="tagline">Elegance born from disobedience. Una marca global, dos motores comerciales.</p>
+    <dl class="hero-meta">
+      <div><dt>Proyecto</dt><dd>gtm-sao-paulo</dd></div>
+      <div><dt>Semana</dt><dd>W23 · 2026-06-01</dd></div>
+      <div><dt>Owner</dt><dd>Boris · Comando · Freequency</dd></div>
+      <div><dt>Estado general</dt><dd>🟡 → ver §1</dd></div>
+    </dl>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#tldr">00 TL;DR</a>
+    <a href="#hoy">01 Hoy</a>
+    <a href="#funnel">02 Funnel Y</a>
+    <a href="#canales">03 Canales</a>
+    <a href="#calendario">04 Calendario</a>
+    <a href="#gaps">05 Gaps</a>
+    <a href="#blindspots">06 Blind spots</a>
+    <a href="#conflictos">07 Conflictos</a>
+    <a href="#stack">08 Stack IA</a>
+    <a href="#next">09 Próximos pasos</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ===== 0 TL;DR ===== -->
+<section id="tldr">
+  <div class="wrap">
+    <h2><span class="h-num">00</span> TL;DR — la lectura de 30 segundos</h2>
+    <p class="tldr">Terrible Enfant corre una operación con forma de <strong>Y</strong>: un tronco de awareness global —una sola cuenta IG, producida desde Buenos Aires— que se bifurca en dos sub&#8209;funnels con lógicas distintas. <strong>ARG</strong>, mercado maduro con ecommerce y paid activos. <strong>BR</strong>, mercado nuevo que lanza en julio 2026 y todavía se está construyendo.</p>
+    <p class="tldr">El launch de BR no está bloqueado por producto ni por demanda —585 pares ya vendidos a brasileños en 2024—. Está bloqueado por <strong>cuatro huecos de coordinación</strong>: la división de paid media entre dos proveedores, el documental que es el asset central del launch, la falta de dueño del contenido orgánico BR, y la informalidad del nodo de PR.</p>
+    <p class="tldr">El blind spot más caro no es ninguno de esos cuatro. Es estructural: <strong>nadie produce el contenido orgánico de São Paulo entre collab y collab</strong>. Hay activación cultural en julio, agosto, septiembre… pero el MOFU local queda vacío en los huecos. Y no hay retención (newsletter / CRM) en el radar de nadie — el canal de mayor LTV no tiene dueño.</p>
+    <p class="tldr last"><strong>Estado general 🟡</strong> — arquitectura clara, demanda validada, ejecución con gaps de ownership que hay que cerrar antes de julio.</p>
+  </div>
+</section>
+
+<!-- ===== 1 HOY ===== -->
+<section id="hoy">
+  <div class="wrap">
+    <h2><span class="h-num">01</span> Dónde estamos hoy</h2>
+
+    <div class="legend">
+      <span class="status-pill"><span class="sb go"><i></i><i></i><i></i></span> En marcha</span>
+      <span class="status-pill"><span class="sb warn"><i></i><i></i><i></i></span> Atención / gap abierto</span>
+      <span class="status-pill"><span class="sb block"><i></i><i></i><i></i></span> Bloqueado / ausente</span>
+    </div>
+
+    <h3>Semáforo por mercado</h3>
+    <div class="tblscroll">
+    <table>
+      <thead><tr><th>Mercado</th><th>Etapa</th><th>Estado</th><th>Lectura</th></tr></thead>
+      <tbody>
+        <tr><td><strong>ARG</strong></td><td>Maduro</td><td><span class="sb go"><i></i><i></i><i></i></span></td><td>Ecommerce (WooCommerce) + Meta Ads activos. Orgánico históricamente débil.</td></tr>
+        <tr><td><strong>BR</strong></td><td>Pre-launch</td><td><span class="sb warn"><i></i><i></i><i></i></span></td><td>Demanda validada, canales en construcción, gaps de ownership abiertos.</td></tr>
+        <tr><td><strong>Global (tronco)</strong></td><td>Activo</td><td><span class="sb warn"><i></i><i></i><i></i></span></td><td>IG global produciendo desde BsAs. Documental launch sin equipo.</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>Semáforo por etapa de funnel · foco BR</h3>
+    <div class="tblscroll">
+    <table>
+      <thead><tr><th>Etapa</th><th>¿Qué tan listo?</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td><strong>TOFU</strong> awareness</td><td>Documental + evento + seeding + dark posts + PR — varios sin owner formal</td><td><span class="sb warn"><i></i><i></i><i></i></span></td></tr>
+        <tr><td><strong>MOFU</strong> consideración</td><td>Collabs cubren los picos; <strong>los huecos entre collabs están vacíos</strong></td><td><span class="sb block"><i></i><i></i><i></i></span></td></tr>
+        <tr><td><strong>BOFU</strong> conversión</td><td>Ecomm Nuvemshop + Meta Ads performance — depende de contrato Lucas</td><td><span class="sb warn"><i></i><i></i><i></i></span></td></tr>
+        <tr><td><strong>Retención</strong> LTV</td><td>Newsletter / CRM — <strong>nadie lo tiene en scope</strong></td><td><span class="sb block"><i></i><i></i><i></i></span></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2 FUNNEL Y ===== -->
+<section id="funnel">
+  <div class="wrap">
+    <h2><span class="h-num">02</span> La arquitectura Funnel Y</h2>
+    <p class="lede">Una marca global, dos motores comerciales separados. ARG produce el contenido editorial que alimenta el tronco; BR consume ese tronco y le suma activación cultural local. El dark post es el puente parcial — contenido segmentado para audiencia BR sin ensuciar el feed global.</p>
+
+    <figure class="figure">
+      <div class="mermaid">
+flowchart TD
+  T["TRONCO GLOBAL · TOFU<br/><b>IG @terribleenfant</b><br/>Documental BsAs · Campaña Arquetipos<br/><i>producido desde ARG</i>"]
+  T --> ARG
+  T --> BR
+
+  subgraph ARG ["SUB-FUNNEL ARG · mercado maduro"]
+    direction TB
+    A1["TOFU&nbsp;&nbsp;IG + Meta"] --> A2["MOFU&nbsp;&nbsp;feed / reels"] --> A3["BOFU&nbsp;&nbsp;WooCommerce"] --> A4["RET&nbsp;&nbsp;newsletter?"]
+  end
+
+  subgraph BR ["SUB-FUNNEL BR · launch jul 2026"]
+    direction TB
+    B1["TOFU&nbsp;&nbsp;doc + evento"] --> B2["MOFU&nbsp;&nbsp;collabs ⚠"] --> B3["BOFU&nbsp;&nbsp;Nuvemshop"] --> B4["RET&nbsp;&nbsp;2027"]
+  end
+
+  classDef weak fill:#f6f4ef,stroke:#0a0a0a,stroke-dasharray:4 3;
+  class A4,B2,B4 weak;
+      </div>
+      <figcaption>Fig. 1 — Funnel Y. Detalle en funnel-architecture.md</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===== 3 CANALES ===== -->
+<section id="canales">
+  <div class="wrap">
+    <h2><span class="h-num">03</span> Mapa de canales — quién es dueño de qué</h2>
+    <p class="lede">Vista de control del ownership por canal. Detalle y notas en channels.md.</p>
+    <div class="tblscroll">
+    <table>
+      <thead><tr><th>Canal</th><th>Mercado</th><th>Etapa</th><th>Owner</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td>IG orgánico global</td><td>ARG+BR</td><td>TOFU</td><td class="who">COMANDO</td><td><span class="status-pill"><span class="sb go"><i></i><i></i><i></i></span> Activo</span></td></tr>
+        <tr><td>IG orgánico BR (local)</td><td>BR</td><td>MOFU</td><td class="who"><strong>Sin asignar</strong></td><td><span class="status-pill"><span class="sb block"><i></i><i></i><i></i></span> Gap crítico</span></td></tr>
+        <tr><td>Dark posts IG BR</td><td>BR</td><td>TOFU paid</td><td class="who">Freequency</td><td><span class="status-pill"><span class="sb warn"><i></i><i></i><i></i></span> Scope abierto</span></td></tr>
+        <tr><td>Meta Ads BR (performance)</td><td>BR</td><td>BOFU paid</td><td class="who">Lucas Godoy</td><td><span class="status-pill"><span class="sb warn"><i></i><i></i><i></i></span> Contrato pend.</span></td></tr>
+        <tr><td>Meta Ads ARG</td><td>ARG</td><td>BOFU paid</td><td class="who">COMANDO / interno</td><td><span class="status-pill"><span class="sb go"><i></i><i></i><i></i></span> Activo</span></td></tr>
+        <tr><td>Ecomm ARG (WooCommerce)</td><td>ARG</td><td>BOFU</td><td class="who">COMANDO + Hache</td><td><span class="status-pill"><span class="sb go"><i></i><i></i><i></i></span> Activo</span></td></tr>
+        <tr><td>Ecomm BR (Nuvemshop)</td><td>BR</td><td>BOFU</td><td class="who">Lucas Godoy</td><td><span class="status-pill"><span class="sb warn"><i></i><i></i><i></i></span> Contrato pend.</span></td></tr>
+        <tr><td>MataLab retail SP</td><td>BR</td><td>MOFU+BOFU físico</td><td class="who">Freequency + TE</td><td><span class="status-pill"><span class="sb warn"><i></i><i></i><i></i></span> Modelo 55% neg.</span></td></tr>
+        <tr><td>PR + seeding BR</td><td>BR</td><td>TOFU earned</td><td class="who">Freequency / Mariotti</td><td><span class="status-pill"><span class="sb warn"><i></i><i></i><i></i></span> Sin contrato</span></td></tr>
+        <tr><td>TikTok</td><td>?</td><td>TOFU</td><td class="who">Sin decidir</td><td><span class="status-pill"><span class="sb block"><i></i><i></i><i></i></span> Sin decisión</span></td></tr>
+        <tr><td>Newsletter / CRM</td><td>ARG+BR</td><td>Retención</td><td class="who"><strong>Nadie</strong></td><td><span class="status-pill"><span class="sb block"><i></i><i></i><i></i></span> Ausente</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="margin-top:24px"><span class="warnflag">Overlap crítico</span> &nbsp;Freequency y Lucas tienen ambos mandato sobre paid en BR. Separación propuesta → <strong>Freequency = TOFU brand</strong> (CPM, reach cultural); <strong>Lucas = BOFU performance</strong> (CPC, ROAS, conversión ecomm). Audiencias y presupuestos separados; nadie toca los KPIs del otro sin coordinación explícita.</p>
+  </div>
+</section>
+
+<!-- ===== 4 CALENDARIO ===== -->
+<section id="calendario">
+  <div class="wrap">
+    <h2><span class="h-num">04</span> Calendario de activación — collabs BR 2026</h2>
+    <p class="lede"><span class="warnflag">Conflicto</span> &nbsp;El calendario del documento GTM no coincide con el del repo — ver §7. Abajo, la versión del documento GTM.</p>
+
+    <figure class="figure">
+      <div class="mermaid">
+timeline
+  title Activación BR · Jul → Dic 2026
+  Jul : Launch + Documental BsAs (evento MataLab) · TOFU
+  Ago : NOTTHESAMO · TOFU + MOFU
+  Sep : Novíssimo Edgar · MOFU
+  Oct : Fashion brand SPFW (TBD) · MOFU → BOFU
+  Nov : Selo Risco · MOFU
+  Dic : Seeding inline · BOFU + retención
+      </div>
+      <figcaption>Fig. 2 — Calendario doc GTM. Detalle en collabs-calendar.md</figcaption>
+    </figure>
+
+    <div class="tblscroll">
+    <table>
+      <thead><tr><th>Mes</th><th>Collab (doc GTM)</th><th>Estado</th><th>Etapa funnel</th></tr></thead>
+      <tbody>
+        <tr><td>Jul</td><td>Launch + Documental BsAs (evento MataLab)</td><td><span class="tag">Confirmado</span></td><td>TOFU</td></tr>
+        <tr><td>Ago</td><td>NOTTHESAMO</td><td><span class="tag">Confirmado</span></td><td>TOFU + MOFU</td></tr>
+        <tr><td>Sep</td><td>Novíssimo Edgar</td><td><span class="tag">Confirmado</span></td><td>MOFU</td></tr>
+        <tr><td>Oct</td><td>Fashion brand SPFW</td><td><span class="tag">Partner TBD</span></td><td>MOFU → BOFU</td></tr>
+        <tr><td>Nov</td><td>Selo Risco</td><td><span class="tag">Confirmado</span></td><td>MOFU</td></tr>
+        <tr><td>Dic</td><td>Seeding inline</td><td><span class="tag">Planeado</span></td><td>BOFU + retención</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5 GAPS ===== -->
+<section id="gaps">
+  <div class="wrap">
+    <h2><span class="h-num">05</span> Gaps y decisiones abiertas</h2>
+    <p class="lede">Al 1 jun 2026.</p>
+
+    <div class="gap-group">
+      <div class="gap-head"><span class="dot"></span> P1 — Bloqueantes del launch de julio</div>
+      <div class="tblscroll">
+      <table>
+        <thead><tr><th>#</th><th>Gap</th><th>Por qué bloquea</th><th>Owner sugerido</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">1</td><td>División de scope paid media Freequency vs Lucas</td><td>Sin esto el paid BR no arranca coordinado; riesgo de canibalización de audiencias y presupuesto</td><td class="who">Boris + Hache</td></tr>
+          <tr><td class="mono">2</td><td>Documental BsAs</td><td>Es el asset central del launch — sin equipo, sin brief, sin fecha de entrega</td><td class="who">Comando</td></tr>
+          <tr><td class="mono">3</td><td>Owner del contenido orgánico BR entre collabs</td><td>Sin esto no hay MOFU BR en los huecos entre activaciones</td><td class="who">Sin asignar</td></tr>
+          <tr><td class="mono">4</td><td>Mariotti (PR + seeding SP)</td><td>Nodo de PR sin acuerdo formal</td><td class="who">Freequency</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="gap-group">
+      <div class="gap-head"><span class="dot half"></span> P2 — Urgentes, no bloqueantes</div>
+      <ol class="bs" start="5" style="counter-reset:bs 4">
+        <li><strong>Partner SPFW octubre</strong> — Normando, Dendezeiro u otro. Deadlines de producción en semanas.</li>
+        <li><strong>TikTok</strong> — abrir o descartar explícitamente. Define perfil de contratación.</li>
+        <li><strong>Contrato Lucas Godoy</strong> — pendiente de firma. Métricas de éxito y benchmarks paid sin formalizar.</li>
+        <li><strong>Modelo MataLab</strong> — 55% take rate en negociación. Hache duda de la rentabilidad.</li>
+      </ol>
+    </div>
+
+    <div class="gap-group">
+      <div class="gap-head"><span class="dot hollow"></span> P3 — Roadmap</div>
+      <ol class="bs" style="counter-reset:bs 8">
+        <li><strong>Newsletter / CRM</strong> — nadie lo tiene en scope. Canal de mayor LTV. ¿2026 o 2027?</li>
+        <li><strong>Legal + Contable BR</strong> — sin contacto asignado (heredado de brazil-launch, 🔴 desde hace semanas).</li>
+        <li><strong>Admin local BR</strong> — rol sin cubrir.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6 BLIND SPOTS ===== -->
+<section id="blindspots">
+  <div class="wrap">
+    <h2><span class="h-num">06</span> Blind spots — lo que no estamos mirando</h2>
+    <p class="lede">No son tareas pendientes. Son cosas que el sistema no está viendo.</p>
+    <ol class="bs">
+      <li><strong>El MOFU local muere entre collabs.</strong> El calendario tiene picos (jul–dic) pero los valles no tienen contenido. Un comprador BR que descubre la marca en un valle no encuentra nada que sostenga su interés hasta la próxima collab. Es el gap #3, pero su efecto es sistémico, no puntual.</li>
+      <li><strong>Retención = cero.</strong> Toda la energía está en adquisición (TOFU/MOFU/BOFU). El canal de mayor LTV —newsletter / CRM— no existe en ningún plan. Cada cliente ganado se pierde después de la primera compra.</li>
+      <li><strong>Dependencia de un solo proveedor para todo el BOFU BR.</strong> Ecommerce <em>y</em> performance ads de BR dependen de Lucas, con contrato sin firmar. Si Lucas no cierra, no hay fondo de embudo en Brasil.</li>
+      <li><strong>El tronco global asume que ARG puede alimentar a dos mercados.</strong> El orgánico ARG es históricamente débil. Si el tronco no produce suficiente, ambos sub-funnels se quedan sin combustible TOFU.</li>
+      <li><strong>TikTok sin decisión = decisión por omisión.</strong> No decidir es decidir que no. Define qué perfil de community manager se contrata (o no).</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== 7 CONFLICTOS ===== -->
+<section id="conflictos">
+  <div class="wrap">
+    <h2><span class="h-num">07</span> <span class="warnflag">⚠</span> Conflictos con el repo — a reconciliar</h2>
+    <p class="lede">Este dashboard se construyó desde el documento GTM (fechado 2 jun 2026). Choca con datos ya en el repo. No se resolvieron silenciosamente — se listan para decisión.</p>
+    <div class="tblscroll">
+    <table>
+      <thead><tr><th>Dato</th><th>Documento GTM</th><th>Repo (existente)</th><th>Dónde</th></tr></thead>
+      <tbody>
+        <tr><td>Fecha de launch BR</td><td><strong>julio 2026</strong></td><td><strong>abril 2026</strong> (ya ejecutado, ecomm activo)</td><td class="mono">brazil-launch/brief.md · STATUS.md</td></tr>
+        <tr><td>Ecomm BR</td><td>Nuvemshop (Lucas, en construcción)</td><td>"E-commerce BR operativo" desde mayo</td><td class="mono">brazil-launch/STATUS.md</td></tr>
+        <tr><td>Calendario collabs</td><td>NOTTHESAMO ago · Edgar sep · SPFW oct · Selo Risco nov</td><td>NOTTHESAMO mar · Edgar may · Selo Risco jul · Normando sep · Barra Crew oct · Dendezeiro nov</td><td class="mono">brazil-launch/brief.md · STRATEGY/</td></tr>
+        <tr><td>Equipo</td><td>+ Guada (export ops), Lucas Godoy, Mariotti</td><td>No figuran</td><td class="mono">CORE/team-structure.md</td></tr>
+        <tr><td>Stack</td><td>+ Nuvemshop, n8n</td><td>No figuran</td><td class="mono">AUTOMATION/tools/</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="margin-top:24px"><strong>Recomendación:</strong> decidir en reunión cuál fuente es la verdad. Si el GTM doc es lo actual, hay que actualizar <span class="mono">brazil-launch</span>, <span class="mono">STRATEGY/</span> y <span class="mono">CORE/team-structure.md</span>. La discrepancia abril↔julio es la más importante: cambia si estamos en post-launch o pre-launch.</p>
+  </div>
+</section>
+
+<!-- ===== 8 STACK IA ===== -->
+<section id="stack">
+  <div class="wrap">
+    <h2><span class="h-num">08</span> Stack de IA y automatización</h2>
+    <p class="lede">Principio rector: automatizar solo después de validar el hábito manual.</p>
+    <div class="tblscroll">
+    <table>
+      <thead><tr><th>Fase</th><th>Estado</th><th>Qué incluye</th></tr></thead>
+      <tbody>
+        <tr><td>Fase 1 — Manual validado</td><td><span class="status-pill"><span class="sb go"><i></i><i></i><i></i></span> Activo</span></td><td>Claude Code/Projects, Notion, Asana, OS1 en GitHub</td></tr>
+        <tr><td>Fase 2 — En curso</td><td><span class="status-pill"><span class="sb warn"><i></i><i></i><i></i></span> Diseñar ahora</span></td><td>Claude API para copy BR en PT, video AI (Kling), scheduling IG, ecomm BR, Meta Ads BR</td></tr>
+        <tr><td>Fase 3 — Post-launch Q4</td><td><span class="status-pill"><span class="sb"><i></i><i></i><i></i></span> Planificado</span></td><td>n8n: Meta Ads + Nuvemshop + IG → digest semanal vía Claude API → tasks en Asana → alertas ROAS/stock</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="margin-top:24px">El <strong>CMO Strategist agent</strong> (<span class="mono">AUTOMATION/agents/cmo-strategist.md</span>) es la pieza de IA que lee este dashboard y produce, por trimestre, la lectura estratégica + las apuestas de marketing.</p>
+  </div>
+</section>
+
+<!-- ===== 9 NEXT ===== -->
+<section id="next">
+  <div class="wrap">
+    <h2><span class="h-num">09</span> Próximos pasos</h2>
+    <ul class="checks">
+      <li>Reunión: resolver §7 conflictos (qué fuente es la verdad — abril vs julio).</li>
+      <li>Asignar owner a los 4 gaps P1.</li>
+      <li>Cerrar la regla de separación paid media (Freequency TOFU / Lucas BOFU) por escrito.</li>
+      <li>Correr el <span class="mono">cmo-strategist</span> por primera vez para fijar las apuestas de Q3 2026.</li>
+      <li>(Opcional Fase 2) Decidir si se construye el dashboard React interactivo.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="tagline">Elegance born from disobedience.</p>
+    <p class="meta">
+      Terrible Enfant — OS1 · GTM São Paulo Dashboard v0.1<br />
+      Generado por Claude Code · Documento vivo — actualizar el semáforo y los gaps cada semana junto al STATUS.md<br />
+      <a href="#top">↑ volver arriba</a>
+    </p>
+  </div>
+</footer>
+
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    securityLevel: "strict",
+    fontFamily: "'IBM Plex Mono', monospace",
+    theme: "base",
+    themeVariables: {
+      background: "#ffffff",
+      primaryColor: "#ffffff",
+      primaryBorderColor: "#0a0a0a",
+      primaryTextColor: "#0a0a0a",
+      lineColor: "#0a0a0a",
+      tertiaryColor: "#f6f4ef",
+      clusterBkg: "#f6f4ef",
+      clusterBorder: "#0a0a0a",
+      fontSize: "13px",
+      cScale0: "#ffffff"
+    },
+    flowchart: { curve: "linear", padding: 14, nodeSpacing: 38, rankSpacing: 46 },
+    themeCSS: `
+      .node rect, .node polygon { rx: 0; ry: 0; stroke-width: 1.2px; }
+      .cluster rect { stroke-dasharray: 3 3; stroke-width: 1px; }
+      .node.weak rect { stroke-dasharray: 4 3; fill:#f6f4ef; }
+      .edgePath path { stroke-width: 1.2px; }
+      .nodeLabel b { font-weight:600; }
+      text { letter-spacing: .01em; }
+    `
+  });
+</script>
+
+</body>
+</html>
