@@ -30,11 +30,14 @@ Al cierre de 2027, Terrible Enfant opera como una marca de calzado y accesorios 
 
 ## 2026 — Objetivos por trimestre
 
-### Q2 2026 (Abril – Junio) · **Lanzamiento y estabilización BRA**
+### Q2 2026 (Abril – Junio) · **Soft-launch y estabilización BRA**
+
+> Lanzamiento por fases: soft-launch / configuración de canales en abril; **full launch público en julio 2026 (post-Mundial)** — ver Q3.
 
 **Prioridades:**
 - [ ] Cerrar Legal + Contable BRA (estudio local SP) — urgente
-- [ ] Activar los 3 canales BRA: e-comm · showroom · Dover Market
+- [ ] Activar los 3 canales BRA: e-comm (Nuvemshop) · showroom · Dover Market
+- [ ] Formalizar contrato Lucas Godoy (e-commerce) — métricas + revisión legal
 - [ ] Ejecutar collab NOTTHESAMO (21 mar — en curso)
 - [ ] Preparar brief EDGAR (collab 21 may)
 - [ ] Primeras 4 reuniones semanales con el nuevo OS funcionando
@@ -47,6 +50,7 @@ Al cierre de 2027, Terrible Enfant opera como una marca de calzado y accesorios 
 ### Q3 2026 (Julio – Septiembre) · **Traction y primera medición real**
 
 **Prioridades:**
+- [ ] **Full launch BRA (julio, post-Mundial)** — lanzamiento público pleno de los 3 canales
 - [ ] Ejecutar collabs EDGAR (may) y SELO RISCO (jul)
 - [ ] Primera revisión de KPIs ARG vs. BRA (qué funciona, qué no)
 - [ ] Estabilizar la cadena logística ARG→BRA (costos, tiempos, proveedores)
@@ -108,3 +112,5 @@ Antes de abrir un tercer mercado, validar:
 
 - [Abr 2026] Primera versión del OS1 configurada. Fanny es el primer punto de adopción semanal.
 - [Abr 2026] 585 pares vendidos a turistas BRA en 2024 = prueba de demanda. No es dato menor para la estrategia de lanzamiento.
+- [Jun 2026] GIGA-Campaña 2026: capa de performance marketing (e-commerce, Meta Ads) separada de la identidad editorial — no contamina el feed principal. Anchor asset: **documental Buenos Aires** (equipo/brief/timeline TBD).
+- [Jun 2026] Identidad: rebranding heráldico (escudo gótico-renacentista) en desarrollo — ver `CORE/brand-narrative.md`.

@@ -2,7 +2,7 @@
 
 **Tipo:** launch
 **Estado:** active
-**Fecha de lanzamiento:** abril 2026
+**Fecha de lanzamiento:** por fases — soft-launch abril 2026 · full launch julio 2026 (post-Mundial)
 **Owner:** Hache + Fanny
 **Mercado:** BRA
 **Resumen:** Instalar Terrible Enfant como marca cultural de calzado de autor en São Paulo, operando tres canales simultáneamente. Validado con 585 pares vendidos a turistas brasileños en 2024.
@@ -11,7 +11,7 @@
 
 ## Objetivo
 
-Instalar TE como marca cultural de calzado de autor en São Paulo. Tres canales simultáneos desde abril 2026.
+Instalar TE como marca cultural de calzado de autor en São Paulo. Tres canales simultáneos. Lanzamiento por fases: soft-launch abril 2026, full launch público julio 2026 (post-Mundial). Orientación **organic-first**.
 
 ## Canales de venta
 
@@ -50,6 +50,9 @@ Ver `channels.md` en esta carpeta.
 - [ ] Brief EDGAR — collab mayo, no iniciado (🟡 urgente)
 - [ ] Contrato alquiler showroom Centro SP
 - [ ] Contrato MataLab (Dover Market · Rosewood)
+- [ ] Contrato Lucas Godoy (e-commerce Nuvemshop) — formalizar métricas + revisión legal de equity/terminación
+- [ ] Documental Buenos Aires (anchor asset) — definir equipo, brief y timeline
+- [ ] Mariotti (PR/seeding SP) — formalizar acuerdo por escrito
 
 ## Criterios de éxito
 

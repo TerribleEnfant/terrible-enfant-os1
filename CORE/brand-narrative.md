@@ -73,6 +73,27 @@ Terrible Enfant habla en paradojas. La voz se mueve del susurro al grito, del en
 
 ---
 
+## Registro de escritura de producto
+
+El copy de producto opera entre la descripción técnica y el manifiesto filosófico.
+
+- **Versión larga:** lectura ontológica/filosófica + specs técnicos de construcción.
+- **Versión corta:** 2–3 líneas, sin inflación de adjetivos.
+- **Terminología técnica:** *cuero vacuno de alto brillo · costura golf · construcción Blake · doble suela cosida · empeine textil · costura moc toe · piel exótica · cuero grabado.*
+
+**Nunca hacer:**
+- Copy genérico de moda ("elegancia atemporal", "hecho con cuidado").
+- Tono cálido o accesible.
+- Explicar el posicionamiento de la marca al lector.
+- Emoji en copy editorial.
+- Aplanar referencias filosóficas a lenguaje llano.
+
+Líneas, modelos y copy desarrollado: `CORE/product-catalog.md`.
+
+> **Identidad en desarrollo — Heráldica / rebranding:** escudo gótico-renacentista en exploración. Tres direcciones: heráldica alquímica, gothic-renaissance (filigrana simétrica, monograma TE, alas), y una tercera sin finalizar.
+
+---
+
 ## Posición cultural
 
 No es una marca de moda. Es un culto de la sensibilidad.

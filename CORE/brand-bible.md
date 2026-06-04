@@ -12,7 +12,7 @@ Terrible Enfant es una marca de calzado y accesorios masculinos de lujo con iden
 
 Una sola marca. Dos entidades comerciales separadas:
 - **Terrible Enfant Argentina** — operación activa
-- **Terrible Enfant Brasil** — en lanzamiento (abril 2026)
+- **Terrible Enfant Brasil** — lanzamiento por fases: soft-launch / configuración de canales abril 2026, full launch julio 2026 (post-Mundial)
 
 La distinción es legal y operativa. La identidad de marca, el copy maestro, los assets y las campañas son globales y no se duplican.
 
@@ -25,6 +25,10 @@ La distinción es legal y operativa. La identidad de marca, el copy maestro, los
 
 ## Canales de venta (ambos mercados)
 
-- E-commerce online
+- E-commerce online (BRA: Nuvemshop)
 - Showroom físico
 - Punto de venta premium (Dover Market / Rosewood en BRA)
+
+## Producto
+
+Líneas de producto (modelos hero, copy y conversión de tallas) en `CORE/product-catalog.md`. Conversión rápida: **US 10 = AR 42 = BR 42**.

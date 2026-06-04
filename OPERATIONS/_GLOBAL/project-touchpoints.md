@@ -18,6 +18,8 @@ Este archivo es el puente entre `PROJECTS/` y `OPERATIONS/`. Registra qué proye
 | collab-edgar | `OPERATIONS/BRA/logistics/` | Envío de muestras / unidades a EDGAR | antes del 15 may | Jorge + Tiago | 🟡 pendiente brief |
 | collab-edgar | `OPERATIONS/BRA/marketing-comms/` | Coordinación Freequency para distribución de contenido | antes del 21 may | Freequency | 🟡 pendiente brief |
 | collab-notthesamo | `OPERATIONS/BRA/logistics/` | Logística unidades collab | — | Jorge + Tiago | 🟡 en ejecución |
+| gtm-sao-paulo | `OPERATIONS/BRA/marketing-comms/` | Owner del contenido orgánico BR entre collabs (MOFU) | antes del launch jul | sin asignar | 🔴 gap crítico |
+| gtm-sao-paulo | `OPERATIONS/BRA/marketing-comms/` | Cerrar regla de separación paid media Freequency (TOFU) vs Lucas (BOFU) | antes del launch jul | Boris + Hache | 🟡 pendiente |
 
 ---
 

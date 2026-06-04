@@ -6,7 +6,7 @@ Este archivo es el punto de entrada para cualquier instancia de Claude Code que 
 
 ## Qué es este repositorio
 
-Este es el **sistema operativo (OS)** de Terrible Enfant — una marca de calzado y accesorios de lujo con base en Buenos Aires (Argentina) y en expansión hacia São Paulo (Brasil, abril 2026).
+Este es el **sistema operativo (OS)** de Terrible Enfant — una marca de calzado y accesorios de lujo con base en Buenos Aires (Argentina) y en expansión hacia São Paulo (Brasil — soft-launch abril 2026, full launch julio 2026 post-Mundial).
 
 Este repositorio NO es un proyecto de código. Es un **sistema de documentación viva** sincronizado con GitHub. Funciona como archivo institucional, herramienta de coordinación operacional y superficie de trabajo para automatizaciones vía Claude Code.
 
@@ -20,8 +20,8 @@ Cuando te abre alguien en este repo, es probable que sea una de estas personas:
 
 | Persona | Rol | Qué te va a pedir |
 |---------|-----|-------------------|
-| **Boris** | Coordinador de IA / AI Tools Manager | Automatizar, compilar, redactar, analizar el repo completo |
-| **Comando** (Mariano López Hermida) | Director Creativo | Campañas, identidad de marca, copy, operaciones |
+| **Boris** | Partner (TE Global) · Creative Director (TE Global) · Arquitectura operativa (BRA) · IA/automatización | Automatizar, compilar, redactar, analizar el repo; dirección creativa y de marca |
+| **Comando** (Mariano López Hermida) | Dirección creativa — brazo externo en retainer (~US$1K/mes) | Campañas, identidad de marca, copy, editorial |
 | **Fanny** | PM Transversal | Estado de áreas, decisiones, prep de reunión |
 | **Hache** | CEO | Resúmenes ejecutivos, estado financiero, decisiones |
 
@@ -46,8 +46,8 @@ Terrible Enfant es una marca de calzado y accesorios masculinos de autor con ide
 - **Tagline:** *Elegance born from disobedience.*
 - **Campaña activa:** Estado de Gracia
 - **Referente cultural:** Enfants Riches Déprimés (ERD)
-- **Mercados:** Argentina (activo) + Brasil (lanzamiento abril 2026)
-- **Canales BRA:** e-commerce · showroom Centro SP · Dover Market / Rosewood
+- **Mercados:** Argentina (activo) + Brasil (soft-launch abril 2026 · full launch julio 2026 post-Mundial)
+- **Canales BRA:** e-commerce (Nuvemshop) · showroom Centro SP · Dover Market / Rosewood
 
 Para contexto completo de marca, leer `CORE/brand-narrative.md` y `CORE/brand-bible.md`.
 
@@ -66,17 +66,19 @@ Argentina
 ├── Legal & Contable   → Nacho
 ├── Producto           → Hache + Comando
 ├── Operations         → Fanny
-├── Logistics          → Jorge
+├── Logistics          → Jorge + Guada (export/intl)
 └── Marketing & Comms  → Comando
 
 Brasil
 ├── Finance & Admin    → Hache + admin local (pendiente)
 ├── Legal & Contable   → estudio local (SIN ASIGNAR — urgente)
 ├── Producto           → Tiago (contacto Freequency)
-├── Operations         → Fanny + Freequency
-├── Logistics          → Jorge + Tiago
+├── Operations         → Fanny + Freequency · e-commerce: Lucas Godoy (Nuvemshop)
+├── Logistics          → Jorge + Guada + Tiago
 └── Marketing & Comms  → Freequency + Comando
 ```
+
+> Jorge es además **inversor** (recibe updates bullish vía email/WhatsApp). Comando (Mariano L.H.) es la **dirección creativa externa en retainer**. Freequency = **Fernanda + Tiago** (São Paulo). Lucas Godoy es **contractor** del e-commerce BRA (Nuvemshop). Beco es posible community manager (TikTok — tentativo).
 
 Para estructura completa, leer `CORE/team-structure.md`.
 
@@ -92,7 +94,7 @@ Cada área existe para ARG y BRA. Los archivos de estado y KPIs viven en `OPERAT
 | Legal & Contable | `legal-contable/` | Nacho | TBD (urgente) |
 | Producto | `producto/` | Comando | Tiago |
 | Operations | `operations/` | Fanny | Fanny + Freequency |
-| Logistics | `logistics/` | Jorge | Jorge + Tiago |
+| Logistics | `logistics/` | Jorge + Guada | Jorge + Guada + Tiago |
 | Marketing & Comms | `marketing-comms/` | Comando | Freequency |
 
 ---
@@ -166,6 +168,7 @@ Boris opera Claude Code en VS Code. Antes de improvisar cualquier proceso, verif
 | "cerrá el proyecto" | `AUTOMATION/workflows/project-close.md` | Carpeta movida a `PROJECTS/completed/` |
 | "nueva collab" | `AUTOMATION/workflows/collab-launch.md` | Brief + estructura de collab |
 | "pulse" / "¿dónde estamos?" / "leé el sistema" | `AUTOMATION/agents/pulse-strategist.md` | `OPERATIONS/_GLOBAL/pulse.md` |
+| "brief de marketing" / "apuestas del trimestre" / "modo CMO" | `AUTOMATION/prompts/cmo-quarterly-brief.md` (agente `cmo-strategist`) | `PROJECTS/active/gtm-sao-paulo/cmo-brief-Q#-YYYY.md` |
 
 Playbook completo con pasos detallados: `AUTOMATION/boris-playbook.md`.
 
@@ -222,6 +225,9 @@ Ver catálogo completo en `AUTOMATION/tools/_tools-index.md`.
 | Google Drive | Assets, contratos, planillas | Hache / Fanny |
 | WhatsApp | Comunicación interna | Todos |
 | Instagram / TikTok | Canales de marca | Comando |
+| Nuvemshop | E-commerce BRA | Lucas Godoy / Hache |
+| Meta Ads | Performance / paid (IG ARG) | Comando |
+| n8n | Automatización futura (fase 2/3 — **no activo**) | Boris |
 
 ---
 
@@ -235,6 +241,7 @@ Cuando Claude redacta contenido de marca — copy, briefs, comunicaciones — de
 - Frases cortas. Fragmentos aceptables. Sin exclamaciones.
 - **Referentes:** ERD, Helmut Lang tardío, Nick Cave, cine de Haneke
 - **Idioma:** seguir la política de idioma del repo según destino de la pieza
+- **Copy de producto:** dos registros — versión larga (lectura ontológica + specs técnicos de construcción) y versión corta (2–3 líneas, sin inflación de adjetivos). Terminología técnica: *cuero vacuno de alto brillo · costura golf · construcción Blake · doble suela cosida · empeine textil · costura moc toe · cuero grabado*. Líneas, copy y conversión de tallas en `CORE/product-catalog.md`.
 
 **Audiencia — segmentos y registro para cada uno:**
 

@@ -30,10 +30,10 @@ Documentos societarios, contratos activos, impuestos y declaraciones. En ARG: Na
 Colección activa, producción y stock, precios y fichas técnicas. En BRA incluye la gestión del product mix (45 modelos clasificados en 4 categorías).
 
 ### Operations
-Showroom físico, e-commerce, procesos y proveedores. En BRA: tres canales simultáneos (showroom Centro SP, Dover Market Rosewood, e-commerce).
+Showroom físico, e-commerce, procesos y proveedores. En BRA: tres canales simultáneos (showroom Centro SP, Dover Market Rosewood, e-commerce en Nuvemshop — contractor Lucas Godoy).
 
 ### Logistics
-Envíos activos, inventario, proveedores logísticos. En BRA incluye la cadena ARG→BRA vía MERCOSUR.
+Envíos activos, inventario, proveedores logísticos. En ARG: Jorge + Guada (export/internacional). En BRA incluye la cadena ARG→BRA vía MERCOSUR.
 
 ### Mktng + Comms
 Calendario de contenido, campañas activas, collabs, assets y entregables. En ARG: Comando. En BRA: Freequency + Comando.

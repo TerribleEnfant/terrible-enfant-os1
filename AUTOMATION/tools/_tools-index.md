@@ -10,6 +10,9 @@ Herramientas activas del ecosistema TE. Para detalle de cada integración, ver e
 | Google Drive | Archivos externos, assets, facturas, contratos | Hache / Fanny | [`google-drive.md`](google-drive.md) |
 | WhatsApp | Comunicación interna del equipo | Todos | [`whatsapp.md`](whatsapp.md) |
 | Instagram / TikTok | Canales de marca activos | Comando | — |
+| Nuvemshop | E-commerce BRA (contractor: Lucas Godoy) | Lucas Godoy / Hache | [`nuvemshop.md`](nuvemshop.md) |
+| Meta Ads | Performance / paid (IG ARG) | Comando | [`meta-ads.md`](meta-ads.md) |
+| n8n | Automatización futura (fase 2/3 — **no activo**) | Boris | [`n8n.md`](n8n.md) |
 
 ---
 
