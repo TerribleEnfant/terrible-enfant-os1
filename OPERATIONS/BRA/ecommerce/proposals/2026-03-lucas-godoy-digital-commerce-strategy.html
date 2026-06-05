@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Commerce Strategy & Execution — Terrible Enfant</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0e0e0e;
+    --white: #ffffff;
+    --gray-100: #f5f5f5;
+    --gray-200: #e8e8e8;
+    --gray-400: #aaaaaa;
+    --gray-600: #666666;
+    --gray-800: #333333;
+    --accent: #1a1a1a;
+  }
+
+  body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--black); font-size: 14px; line-height: 1.6; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--black); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 56px; }
+  nav .brand { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--white); letter-spacing: 2px; text-transform: uppercase; }
+  nav .sub { font-size: 11px; color: var(--gray-400); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* COVER */
+  .cover { height: 100vh; background: var(--black); display: flex; flex-direction: column; justify-content: flex-end; padding: 80px 80px 80px; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 100%; background: linear-gradient(135deg, #1c1c1c 0%, #0e0e0e 100%); }
+  .cover-tag { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gray-400); margin-bottom: 32px; }
+  .cover h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 7vw, 96px); font-weight: 300; color: var(--white); line-height: 1.0; margin-bottom: 40px; position: relative; z-index: 1; }
+  .cover h1 em { font-style: italic; color: var(--gray-400); }
+  .cover-meta { display: flex; gap: 64px; position: relative; z-index: 1; }
+  .cover-meta-item label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray-400); display: block; margin-bottom: 6px; }
+  .cover-meta-item span { font-size: 13px; color: var(--white); font-weight: 300; }
+  .cover-line { position: absolute; bottom: 0; left: 80px; right: 80px; height: 1px; background: #2a2a2a; }
+
+  /* SECTIONS */
+  section { padding: 96px 80px; }
+  section.alt { background: var(--gray-100); }
+  .section-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gray-400); margin-bottom: 16px; }
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin-bottom: 48px; }
+  h2 em { font-style: italic; color: var(--gray-600); }
+  h3 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--black); margin-bottom: 16px; font-weight: 600; }
+  p { color: var(--gray-800); font-weight: 300; max-width: 640px; line-height: 1.8; }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--gray-200); margin: 48px 0; }
+  .divider-dark { height: 1px; background: #2a2a2a; margin: 48px 0; }
+
+  /* PHASE GRID */
+  .phase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
+  .phase-card { background: var(--black); padding: 40px 32px; }
+  .phase-card:nth-child(2) { background: #1a1a1a; }
+  .phase-card:nth-child(3) { background: #252525; }
+  .phase-num { font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 300; color: #2a2a2a; line-height: 1; margin-bottom: 16px; }
+  .phase-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--white); margin-bottom: 12px; }
+  .phase-hours { font-size: 11px; color: var(--gray-400); margin-bottom: 20px; }
+  .phase-desc { font-size: 13px; color: #999; font-weight: 300; line-height: 1.7; }
+
+  /* SCOPE ITEMS */
+  .scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 16px; }
+  .scope-item { border-top: 1px solid var(--gray-200); padding-top: 24px; }
+  .scope-item h3 { margin-bottom: 8px; }
+  .scope-item p { font-size: 13px; max-width: 100%; }
+  .scope-tag { display: inline-block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; background: var(--black); color: var(--white); padding: 3px 10px; margin-bottom: 12px; }
+  .scope-tag.recommended { background: var(--black); }
+  .scope-tag.month4 { background: var(--gray-600); }
+  .scope-note { margin-top: 12px; font-size: 12px; color: var(--gray-600); font-style: italic; border-left: 2px solid var(--gray-200); padding-left: 12px; max-width: 100%; }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+  th { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray-400); font-weight: 500; text-align: left; padding: 10px 16px; border-bottom: 1px solid var(--gray-200); }
+  td { padding: 14px 16px; font-size: 13px; font-weight: 300; border-bottom: 1px solid var(--gray-200); color: var(--gray-800); }
+  tr:last-child td { border-bottom: none; }
+  tr.highlight td { background: var(--black); color: var(--white); font-weight: 500; }
+  tr.recommended td:first-child::before { content: '→ '; color: var(--gray-400); font-size: 10px; }
+  td strong { font-weight: 600; color: var(--black); }
+
+  /* PRICING MODELS */
+  .model-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .model-card { border: 1px solid var(--gray-200); padding: 32px; position: relative; }
+  .model-card.featured { border-color: var(--black); border-width: 2px; }
+  .model-badge { position: absolute; top: -12px; left: 24px; background: var(--black); color: var(--white); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 4px 12px; }
+  .model-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; margin-bottom: 8px; }
+  .model-sub { font-size: 11px; color: var(--gray-600); margin-bottom: 24px; line-height: 1.6; }
+  .model-price { font-size: 13px; font-weight: 300; color: var(--gray-800); margin-bottom: 4px; }
+  .model-price strong { font-size: 22px; font-weight: 600; color: var(--black); display: block; }
+  .model-price span { font-size: 11px; color: var(--gray-400); }
+  .model-divider { height: 1px; background: var(--gray-200); margin: 20px 0; }
+  .model-line { display: flex; justify-content: space-between; font-size: 12px; color: var(--gray-600); margin-bottom: 8px; font-weight: 300; }
+  .model-line strong { color: var(--black); font-weight: 500; }
+  .model-note { font-size: 11px; color: var(--gray-400); font-style: italic; margin-top: 16px; line-height: 1.6; }
+
+  /* TR TABLE */
+  .tr-table { margin-top: 40px; }
+  .tr-table h3 { margin-bottom: 20px; }
+  .tr-row { display: flex; align-items: center; margin-bottom: 2px; }
+  .tr-label { font-size: 12px; color: var(--gray-600); width: 260px; font-weight: 300; }
+  .tr-bar-wrap { flex: 1; height: 36px; background: var(--gray-100); position: relative; margin: 0 16px; }
+  .tr-bar { height: 100%; background: var(--black); display: flex; align-items: center; padding-left: 12px; }
+  .tr-pct { font-size: 13px; color: var(--white); font-weight: 600; }
+  .tr-bar.w15 { width: 100%; }
+  .tr-bar.w14 { width: 93%; background: #333; }
+  .tr-bar.w12 { width: 80%; background: #555; }
+
+  /* EQUITY */
+  .equity-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 40px; }
+  .equity-card { background: var(--gray-100); padding: 32px 24px; text-align: center; }
+  .equity-card:first-child { background: var(--black); }
+  .equity-milestone { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+  .equity-card:first-child .equity-milestone { color: var(--gray-400); }
+  .equity-card:not(:first-child) .equity-milestone { color: var(--gray-600); }
+  .equity-pct { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300; }
+  .equity-card:first-child .equity-pct { color: var(--white); }
+
+  /* SUMMARY */
+  .summary-row { display: flex; justify-content: space-between; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--gray-200); }
+  .summary-row:last-child { border-bottom: none; }
+  .summary-label { font-size: 13px; color: var(--gray-800); font-weight: 300; }
+  .summary-label small { display: block; font-size: 11px; color: var(--gray-400); margin-top: 2px; }
+  .summary-value { font-size: 14px; font-weight: 500; color: var(--black); text-align: right; }
+
+  /* TERMS */
+  .terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
+  .term-item { display: flex; gap: 16px; }
+  .term-num { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--gray-200); font-weight: 300; line-height: 1; flex-shrink: 0; }
+  .term-text h4 { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .term-text p { font-size: 12px; max-width: 100%; }
+
+  /* FOOTER */
+  footer { background: var(--black); padding: 64px 80px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--white); font-weight: 300; letter-spacing: 2px; text-transform: uppercase; }
+  .footer-details { text-align: right; }
+  .footer-details p { font-size: 12px; color: var(--gray-400); font-weight: 300; line-height: 1.8; }
+
+  @media (max-width: 768px) {
+    section { padding: 64px 24px; }
+    .cover { padding: 80px 24px 48px; }
+    .phase-grid, .model-grid, .scope-grid, .equity-grid, .terms-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 24px; }
+    footer { flex-direction: column; gap: 32px; padding: 48px 24px; }
+    .footer-details { text-align: left; }
+    .tr-label { width: 160px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="brand">Terrible Enfant</span>
+  <span class="sub">Digital Commerce Strategy</span>
+</nav>
+
+<!-- COVER -->
+<div class="cover">
+  <p class="cover-tag">Lucas Godoy Consultoria em Negócios Digitais — March 2026</p>
+  <h1>Digital<br>Commerce<br><em>Strategy &<br>Execution</em></h1>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <label>Prepared for</label>
+      <span>Terrible Enfant</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Prepared by</label>
+      <span>Lucas Godoy</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Validity</label>
+      <span>10 days from issue</span>
+    </div>
+  </div>
+  <div class="cover-line"></div>
+</div>
+
+<!-- INTRO -->
+<section>
+  <p class="section-label">Overview</p>
+  <h2>What we're<br><em>building together</em></h2>
+  <p>Terrible Enfant is entering Brazil with strong brand momentum — collabs, strategic retail points, and a clear identity. The next step is making that same energy work in digital: a D2C channel that sells, a media presence that builds the brand, and a tech stack that scales.</p>
+  <br><br>
+  <p>This proposal covers the full journey — strategy, implementation, and ongoing execution — with Lucas acting as the <strong>central orchestrator</strong> across all digital fronts. One contact. One agenda. Full accountability.</p>
+
+  <div class="phase-grid">
+    <div class="phase-card">
+      <div class="phase-num">01</div>
+      <div class="phase-title">Onboarding</div>
+      <div class="phase-hours">8 hours · One-Shot</div>
+      <div class="phase-desc">Kickoff with leadership, mapping of current tools and processes, definition of success criteria and stakeholder alignment.</div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-num">02</div>
+      <div class="phase-title">Diagnosis</div>
+      <div class="phase-hours">24 hours · One-Shot</div>
+      <div class="phase-desc">Digital architecture audit, competitive benchmarking, customer journey mapping, and identification of quick wins.</div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-num">03</div>
+      <div class="phase-title">Execution</div>
+      <div class="phase-hours">Ongoing · Monthly</div>
+      <div class="phase-desc">Tech stack selection, partner onboarding, and continuous orchestration of all execution fronts.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SCOPE -->
+<section class="alt">
+  <p class="section-label">Execution Scope</p>
+  <h2>What gets<br><em>done</em></h2>
+
+  <div class="scope-grid">
+
+    <div class="scope-item">
+      <span class="scope-tag">Implementation · One-Shot</span>
+      <h3>E-Commerce Build</h3>
+      <p>Full Nuvemshop store build including custom UX/UI design, Figma prototype, native integrations (logistics + payments), all page types (Home, PLP, PDP, My Account, Blog), QA, staging, and Go-Live. 30-day post-launch support included.</p>
+      <div class="scope-note">Setup: 40 dedicated hours (one-shot) for initial configuration and platform onboarding before operations begin.</div>
+    </div>
+
+    <div class="scope-item">
+      <span class="scope-tag">Monthly</span>
+      <h3>E-Commerce Operations</h3>
+      <p>Day-to-day platform management: ERP and logistics integrations, catalog management, pricing updates, SEO-optimized product descriptions, banner updates, security setup, tax configuration, and basic CRM automation flows.</p>
+    </div>
+
+    <div class="scope-item">
+      <span class="scope-tag">Monthly</span>
+      <h3>Tech Evolution</h3>
+      <p>Ongoing platform improvements: UX/UI iterations, A/B testing, CRO analysis, new feature development, and performance monitoring.</p>
+      <div class="scope-note">Recommended: 5h/month at R$ 250/h. Scale as needed.</div>
+    </div>
+
+    <div class="scope-item">
+      <span class="scope-tag">Monthly</span>
+      <h3>Paid Media</h3>
+      <p>Full-funnel campaign management across Meta, Google, and relevant channels. Strategic planning, editorial calendar, daily budget control, performance copywriting, and monthly reporting.</p>
+      <div class="scope-note">To properly calibrate campaigns, we need Terrible Enfant's monthly sales targets defined in advance — ideally month-by-month for the first 12 months.</div>
+    </div>
+
+    <div class="scope-item">
+      <span class="scope-tag month4">Optional</span>
+      <h3>SEO & Generative AI Search</h3>
+      <p>Full SEO audit, keyword research, technical optimization, schema markup, AI-powered content strategy (GAI), and monthly performance reporting with organic traffic benchmarks.</p>
+    </div>
+
+    <div class="scope-item">
+      <span class="scope-tag month4">Optional · From Month 4</span>
+      <h3>Inbound Marketing & CRM</h3>
+      <p>CRM setup, audience segmentation, automated workflow creation, lead scoring, and email/WhatsApp marketing dispatches.</p>
+      <div class="scope-note">We recommend starting no earlier than Month 4 — the first three months are dedicated to building the store and collecting an initial customer base. Launching CRM without an audience produces little return.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INVESTMENT: ONE-SHOT -->
+<section>
+  <p class="section-label">Commercial Proposal</p>
+  <h2>Strategy &<br><em>Implementation</em></h2>
+
+  <h3>Onboarding + Diagnosis</h3>
+  <table>
+    <thead><tr><th>Phase</th><th>Hours</th><th>Investment</th></tr></thead>
+    <tbody>
+      <tr><td>Onboarding</td><td>8h</td><td>Included</td></tr>
+      <tr><td>Diagnosis</td><td>24h</td><td>Included</td></tr>
+      <tr class="highlight"><td><strong>Total</strong></td><td><strong>32h</strong></td><td><strong>R$ 28,800</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="divider"></div>
+
+  <h3>E-Commerce Implementation</h3>
+  <table>
+    <thead><tr><th>Option</th><th>Description</th><th>Investment</th></tr></thead>
+    <tbody>
+      <tr class="recommended"><td><strong>Nuvemshop Simple</strong></td><td>Standard layout, no Figma</td><td><strong>R$ 22,400</strong></td></tr>
+      <tr><td><strong>Nuvemshop Custom</strong></td><td>Full custom design with Figma</td><td><strong>R$ 46,200</strong></td></tr>
+      <tr><td><strong>Shopify</strong></td><td>Full custom design with Figma</td><td><strong>R$ 67,200</strong></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px; color:var(--gray-400); margin-top:12px; font-style:italic;">Payment in installments: Simple = entry + 1 / Custom = entry + 2 / Shopify = entry + 3. Platform and app costs not included. Additional hours: R$ 420/h.</p>
+</section>
+
+<!-- PRICING MODELS -->
+<section class="alt">
+  <p class="section-label">Monthly Execution Fee</p>
+  <h2>Three models,<br><em>one commitment</em></h2>
+  <p>A fixed monthly floor covering base execution costs, combined with a take rate on GMV — aligning incentives as the business scales.</p>
+
+  <div class="model-grid" style="grid-template-columns: 1fr;">
+
+    <div class="model-card featured" style="max-width: 480px;">
+      <div class="model-badge">Hybrid Model</div>
+      <div class="model-name">Fixed Retainer + Take Rate on GMV</div>
+      <div class="model-sub">Fixed floor covers base partner costs. Take rate aligns upside incentives as revenue grows.</div>
+      <div class="model-price">
+        <strong>R$ 21,200</strong>
+        <span>/month fixed floor</span>
+      </div>
+      <div class="model-price" style="margin-top:8px;">
+        <strong style="font-size:18px;">+ Take Rate</strong>
+        <span>on confirmed GMV</span>
+      </div>
+      <div class="model-divider"></div>
+      <div class="model-line"><span>Orchestration</span><strong>R$ 10,000</strong></div>
+      <div class="model-line"><span>E-Commerce Ops (20h)</span><strong>R$ 5,600</strong></div>
+      <div class="model-line"><span>Paid Media Mgmt</span><strong>R$ 5,600</strong></div>
+      <div class="model-line"><span>Tech Evolution (5h)</span><strong>R$ 1,750</strong></div>
+      <div class="model-divider"></div>
+      <div class="model-line"><span><strong>Total Fixed</strong></span><strong>R$ 22,950</strong></div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <h3>E-Commerce Operations — Package Options</h3>
+  <table>
+    <thead><tr><th>Package</th><th>Hours</th><th>Monthly Investment</th></tr></thead>
+    <tbody>
+      <tr class="recommended"><td><strong>Recommended</strong></td><td>20h</td><td><strong>R$ 5,600</strong></td></tr>
+      <tr><td>Growth</td><td>30h</td><td><strong>R$ 7,980</strong></td></tr>
+      <tr><td>Full</td><td>40h</td><td><strong>R$ 10,080</strong></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px; color:var(--gray-400); margin-top:12px; font-style:italic;">Setup: 40 dedicated hours billed as one-shot before operations begin.</p>
+
+  <div class="divider"></div>
+
+  <h3>Tech Evolution — Package Options</h3>
+  <table>
+    <thead><tr><th>Package</th><th>Hours</th><th>Monthly Investment</th></tr></thead>
+    <tbody>
+      <tr class="recommended"><td><strong>Recommended</strong></td><td>5h at R$ 250/h</td><td><strong>R$ 1,750</strong></td></tr>
+      <tr><td>Standard</td><td>20h</td><td><strong>R$ 4,400</strong></td></tr>
+      <tr><td>Advanced</td><td>40h</td><td><strong>R$ 8,400</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="divider"></div>
+
+  <h3>Optional Add-Ons</h3>
+  <table>
+    <thead><tr><th>Front</th><th>Monthly Investment</th><th>Start</th></tr></thead>
+    <tbody>
+      <tr><td>SEO & Generative AI Search (20h)</td><td><strong>R$ 6,440</strong></td><td>Month 1</td></tr>
+      <tr><td>Inbound Marketing & CRM (2×/week)</td><td><strong>R$ 7,000</strong></td><td>Month 4</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px; color:var(--gray-400); margin-top:12px; font-style:italic;">Media investment (ad spend) not included — paid directly by Terrible Enfant.</p>
+
+</section>
+
+<!-- EQUITY -->
+<section>
+  <p class="section-label">Long-Term Alignment</p>
+  <h2>Equity<br><em>Structure</em></h2>
+  <p>Given Terrible Enfant's growth stage in Brazil, part of the compensation can be structured as equity — aligning long-term incentives between the brand and Lucas. Terms are open for discussion.</p>
+  <p style="margin-top: 12px;">Proposed: 3% total share over 12 months, quarterly vesting.</p>
+
+  <div class="equity-grid">
+    <div class="equity-card">
+      <div class="equity-milestone">Agreement Signed</div>
+      <div class="equity-pct" style="color:var(--white)">1%</div>
+    </div>
+    <div class="equity-card">
+      <div class="equity-milestone">Strategy Delivered</div>
+      <div class="equity-pct">+1%</div>
+    </div>
+    <div class="equity-card">
+      <div class="equity-milestone">Revenue Target Hit</div>
+      <div class="equity-pct">+0.5%</div>
+    </div>
+    <div class="equity-card">
+      <div class="equity-milestone">12-Month Renewal</div>
+      <div class="equity-pct">+0.5%</div>
+    </div>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section class="alt">
+  <p class="section-label">Summary</p>
+  <h2>Investment<br><em>at a glance</em></h2>
+
+  <div class="summary-row">
+    <div class="summary-label">Onboarding + Diagnosis<small>One-time · 32h</small></div>
+    <div class="summary-value">R$ 28,800</div>
+  </div>
+  <div class="summary-row">
+    <div class="summary-label">E-Commerce Implementation<small>One-time · Nuvemshop</small></div>
+    <div class="summary-value">R$ 22,400 – R$ 46,200</div>
+  </div>
+  <div class="summary-row">
+    <div class="summary-label">Option A — Hybrid<small>Recurring monthly</small></div>
+    <div class="summary-value">R$ 21,200 + take rate</div>
+  </div>
+  <div class="summary-row">
+    <div class="summary-label">Option B — Take Rate w/ Minimum<small>Recurring monthly</small></div>
+    <div class="summary-value">R$ 11,200 + take rate</div>
+  </div>
+  <div class="summary-row">
+    <div class="summary-label">Option C — Pure Take Rate<small>Recurring monthly</small></div>
+    <div class="summary-value">Take rate only</div>
+  </div>
+  <div class="summary-row">
+    <div class="summary-label">Optional Add-Ons<small>SEO, Inbound, Tech Evolution</small></div>
+    <div class="summary-value">R$ 1,750 – R$ 19,600/mo</div>
+  </div>
+</section>
+
+<!-- TERMS -->
+<section>
+  <p class="section-label">Terms & Conditions</p>
+  <h2>How we<br><em>work</em></h2>
+
+  <div class="terms-grid">
+    <div class="term-item">
+      <div class="term-num">01</div>
+      <div class="term-text">
+        <h4>Scope</h4>
+        <p>This proposal covers exclusively the scope described herein. Additional requests will be scoped and priced separately.</p>
+      </div>
+    </div>
+    <div class="term-item">
+      <div class="term-num">02</div>
+      <div class="term-text">
+        <h4>Remote First</h4>
+        <p>Engagement is 100% remote. Travel and accommodation, if required, are agreed separately with the client.</p>
+      </div>
+    </div>
+    <div class="term-item">
+      <div class="term-num">03</div>
+      <div class="term-text">
+        <h4>Partner Selection</h4>
+        <p>All partners are recommended by Lucas and approved by Terrible Enfant. Partner fees are managed and invoiced through Lucas Godoy Consultoria.</p>
+      </div>
+    </div>
+    <div class="term-item">
+      <div class="term-num">04</div>
+      <div class="term-text">
+        <h4>Collaboration</h4>
+        <p>Weekly syncs with internal teams. All deliverables are built collaboratively, customized to Terrible Enfant's reality.</p>
+      </div>
+    </div>
+    <div class="term-item">
+      <div class="term-num">05</div>
+      <div class="term-text">
+        <h4>Cancellation</h4>
+        <p>Recurring services require 60-day written notice to cancel. No penalties apply beyond the notice period.</p>
+      </div>
+    </div>
+    <div class="term-item">
+      <div class="term-num">06</div>
+      <div class="term-text">
+        <h4>Taxes</h4>
+        <p>All values presented include applicable taxes as of the date of this proposal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GMV TAKE RATE -->
+<section class="alt">
+  <p class="section-label">Revenue Share</p>
+  <h2>GMV Take Rate<br><em>Schedule</em></h2>
+  <p>Take rate is calculated on total confirmed GMV, net of cancellations and returns. Payment is due within 10 business days of month close.</p>
+
+  <div class="tr-table" style="margin-top:40px;">
+    <div class="tr-row">
+      <div class="tr-label">Up to R$ 100,000</div>
+      <div class="tr-bar-wrap"><div class="tr-bar w15"><span class="tr-pct">15%</span></div></div>
+    </div>
+    <div class="tr-row">
+      <div class="tr-label">R$ 100,001 – R$ 250,000</div>
+      <div class="tr-bar-wrap"><div class="tr-bar w14"><span class="tr-pct">14%</span></div></div>
+    </div>
+    <div class="tr-row">
+      <div class="tr-label">Above R$ 250,000</div>
+      <div class="tr-bar-wrap"><div class="tr-bar w12"><span class="tr-pct">12%</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Terrible Enfant</div>
+  </div>
+  <div class="footer-details">
+    <p>Lucas Godoy Consultoria em Negócios Digitais<br>CNPJ 44.752.332/0001-06<br>March 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
