@@ -20,3 +20,12 @@ Automatizar **después** de validar: ninguna automatización se introduce antes 
 
 - No configurar ni conectar hasta que la fase 1 esté validada.
 - Ver evolución V1→V3 en `capabilities/agents/` y `context/strategy/market-expansion-roadmap.md`.
+
+---
+
+## Auth (1Password)
+
+> Convención del Canon: los secretos nunca van al repo. 1Password es el vault de record;
+> se inyectan en runtime vía `op`. Documentar acá solo el **nombre del item**, nunca el valor.
+
+- **Vault item:** `TODO: vault ref` — completar con el nombre del item en el vault de TE.

@@ -20,3 +20,12 @@
 
 - Orientación: **organic-first.** Paid reach sin comunidad no construye marca.
 - Detalle estratégico en `context/strategy/brazil-launch-strategy.md`.
+
+---
+
+## Auth (1Password)
+
+> Convención del Canon: los secretos nunca van al repo. 1Password es el vault de record;
+> se inyectan en runtime vía `op`. Documentar acá solo el **nombre del item**, nunca el valor.
+
+- **Vault item:** `TODO: vault ref` — completar con el nombre del item en el vault de TE.

@@ -41,3 +41,12 @@ Ejemplos:
 - Comando: write (edición web)
 - Hache: read (consulta)
 - Freequency / Tiago: (a definir en V2 — necesitan write para sus STATUS.md)
+
+---
+
+## Auth (1Password)
+
+> Convención del Canon: los secretos nunca van al repo. 1Password es el vault de record;
+> se inyectan en runtime vía `op`. Documentar acá solo el **nombre del item**, nunca el valor.
+
+- **Vault item:** `TODO: vault ref` — completar con el nombre del item en el vault de TE.

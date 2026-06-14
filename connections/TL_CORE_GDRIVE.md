@@ -49,3 +49,12 @@ Ejemplo:
 - Brief en Drive: https://drive.google.com/...
 - Assets Estado de Gracia: https://drive.google.com/drive/folders/1ZmInQKJDmljYxsarBYDj5C3shwgiujwR
 ```
+
+---
+
+## Auth (1Password)
+
+> Convención del Canon: los secretos nunca van al repo. 1Password es el vault de record;
+> se inyectan en runtime vía `op`. Documentar acá solo el **nombre del item**, nunca el valor.
+
+- **Vault item:** `TODO: vault ref` — completar con el nombre del item en el vault de TE.

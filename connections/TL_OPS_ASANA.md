@@ -74,3 +74,12 @@ Claude Code consulta Asana en vivo via MCP y devuelve los datos en el contexto d
 ### Upgrade pendiente
 
 La configuración actual usa un Personal Access Token (PAT). El upgrade recomendado es migrar al servidor oficial de Asana V2 (`mcp.asana.com`) con OAuth — más seguro, sin token que rotar. Requiere crear una OAuth app en el portal de desarrolladores de Asana.
+
+---
+
+## Auth (1Password)
+
+> Convención del Canon: los secretos nunca van al repo. 1Password es el vault de record;
+> se inyectan en runtime vía `op`. Documentar acá solo el **nombre del item**, nunca el valor.
+
+- **Vault item:** `TODO: vault ref` — completar con el nombre del item en el vault de TE.
