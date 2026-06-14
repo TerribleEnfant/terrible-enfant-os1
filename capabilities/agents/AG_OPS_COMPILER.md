@@ -1,4 +1,4 @@
-# Agent: weekly-compiler
+# AG_OPS_COMPILER · weekly-compiler
 
 **Trigger:** manual — Boris lo ejecuta cada lunes PM
 **Responsable actual:** Boris
@@ -19,16 +19,16 @@
 
 **Inputs — archivos que lee:**
 
-- `OPERATIONS/ARG/*/STATUS.md` (6 archivos)
-- `OPERATIONS/BRA/*/STATUS.md` (6 archivos)
-- `PROJECTS/active/*/STATUS.md` (variable)
-- `WEEKLY/_template-weekly-report.md`
+- `cadence/operations/ARG/*/STATUS.md` (6 archivos)
+- `cadence/operations/BRA/*/STATUS.md` (6 archivos)
+- `cadence/projects/active/*/STATUS.md` (variable)
+- `cadence/weekly/_template-weekly-report.md`
 
 **Output — qué produce y dónde lo guarda:**
 
-- `WEEKLY/2026/W##-YYYY-MM-DD.md` — reporte semanal consolidado
+- `cadence/weekly/2026/W##-YYYY-MM-DD.md` — reporte semanal consolidado
 
-**Prompt:** [`AUTOMATION/prompts/compile-weekly-status.md`](../prompts/compile-weekly-status.md)
+**Prompt:** [`capabilities/workflows/WF_OPS_COMPILE.md`](../prompts/compile-weekly-status.md)
 
 **Frecuencia:** semanal, lunes PM (antes de las 22:00)
 
@@ -39,7 +39,7 @@
 ## Señales de que funcionó
 
 - Todos los STATUS tienen estado (🟢/🟡/🔴), no placeholder
-- El archivo W##-YYYY-MM-DD.md existe en WEEKLY/2026/
+- El archivo W##-YYYY-MM-DD.md existe en cadence/weekly/2026/
 - La sección "Estado de Proyectos Activos" está incluida
 
 ## Señales de que falló

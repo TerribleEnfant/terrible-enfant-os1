@@ -12,7 +12,7 @@
 
 ## Por qué este proyecto existe
 
-`PROJECTS/active/brazil-launch/` traquea la **ejecución operacional** del lanzamiento (canales de venta, contratos, product mix). Pero faltaba una **capa de dirección de marketing**: cómo se conectan awareness global y conversión local, quién es dueño de cada canal, dónde están los huecos del embudo, y qué se automatiza con IA.
+`cadence/projects/active/brazil-launch/` traquea la **ejecución operacional** del lanzamiento (canales de venta, contratos, product mix). Pero faltaba una **capa de dirección de marketing**: cómo se conectan awareness global y conversión local, quién es dueño de cada canal, dónde están los huecos del embudo, y qué se automatiza con IA.
 
 Este proyecto es esa capa. Es el documento que se abre en una reunión para responder *"¿dónde estamos en el go-to-market de SP y qué nos está frenando?"*.
 
@@ -51,14 +51,14 @@ Tener una sola superficie viva que responda, en cualquier momento:
 
 ## Dependencias operacionales
 
-- `OPERATIONS/BRA/marketing-comms/` — Freequency + Comando ejecutan TOFU/MOFU BR
-- `OPERATIONS/BRA/operations/` — contratos showroom + MataLab
-- `OPERATIONS/BRA/legal-contable/` — estudio local (bloqueador heredado de brazil-launch)
+- `cadence/operations/BRA/marketing-comms/` — Freequency + Comando ejecutan TOFU/MOFU BR
+- `cadence/operations/BRA/operations/` — contratos showroom + MataLab
+- `cadence/operations/BRA/legal-contable/` — estudio local (bloqueador heredado de brazil-launch)
 
 ## Links externos
 
-- Ejecución operacional: `PROJECTS/active/brazil-launch/`
-- Estrategia directional: `STRATEGY/market-expansion-roadmap.md` · `STRATEGY/brazil-launch-strategy.md`
-- Agente de dirección: `AUTOMATION/agents/cmo-strategist.md`
+- Ejecución operacional: `cadence/projects/active/brazil-launch/`
+- Estrategia directional: `context/strategy/market-expansion-roadmap.md` · `context/strategy/brazil-launch-strategy.md`
+- Agente de dirección: `capabilities/agents/AG_MKT_CMO.md`
 - Drive:
 - Asana:

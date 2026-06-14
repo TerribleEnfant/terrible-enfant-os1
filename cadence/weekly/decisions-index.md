@@ -1,6 +1,6 @@
 # Índice de Decisiones — Terrible Enfant
 
-Índice rápido de todas las decisiones registradas. Para el detalle completo, ver `OPERATIONS/_GLOBAL/weekly-decisions-log.md`.
+Índice rápido de todas las decisiones registradas. Para el detalle completo, ver `cadence/decision_log.md`.
 
 ---
 

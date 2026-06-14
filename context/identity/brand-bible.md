@@ -31,4 +31,4 @@ La distinción es legal y operativa. La identidad de marca, el copy maestro, los
 
 ## Producto
 
-Líneas de producto (modelos hero, copy y conversión de tallas) en `CORE/product-catalog.md`. Conversión rápida: **US 10 = AR 42 = BR 42**.
+Líneas de producto (modelos hero, copy y conversión de tallas) en `context/identity/product-catalog.md`. Conversión rápida: **US 10 = AR 42 = BR 42**.

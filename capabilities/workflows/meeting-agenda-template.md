@@ -16,7 +16,7 @@ Fanny la distribuye al equipo antes de las 10:00.
 
 ## Pre-lectura obligatoria
 
-Reporte semanal: `WEEKLY/2026/W[XX]-[fecha].md`  
+Reporte semanal: `cadence/weekly/2026/W[XX]-[fecha].md`  
 *(Leer antes de la reunión. No se presentan updates en la reunión.)*
 
 ---
@@ -54,7 +54,7 @@ Reporte semanal: `WEEKLY/2026/W[XX]-[fecha].md`
 
 ## Post-reunión (Fanny)
 
-1. Publicar decisiones en `OPERATIONS/_GLOBAL/weekly-decisions-log.md`
+1. Publicar decisiones en `cadence/decision_log.md`
 2. Actualizar Asana según decisiones
 3. Confirmar recepción del log por WhatsApp al grupo ejecutivo
 

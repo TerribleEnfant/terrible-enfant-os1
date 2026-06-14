@@ -211,10 +211,10 @@ La elección del número siete responde al peso simbólico que tiene en distinta
 
 ## Dependencias operacionales
 
-- `OPERATIONS/ARG/marketing-comms/` — producción de assets ARG
-- `OPERATIONS/BRA/marketing-comms/` — amplificación BRA vía Freequency
-- `OPERATIONS/ARG/producto/` + `OPERATIONS/BRA/producto/` — mapeo de zapatos acompañantes (requiere stock confirmado en ambos mercados)
-- `PROJECTS/active/estado-de-gracia/` — concepto filosófico base, los pilares I–VII se referencian directamente
+- `cadence/operations/ARG/marketing-comms/` — producción de assets ARG
+- `cadence/operations/BRA/marketing-comms/` — amplificación BRA vía Freequency
+- `cadence/operations/ARG/producto/` + `cadence/operations/BRA/producto/` — mapeo de zapatos acompañantes (requiere stock confirmado en ambos mercados)
+- `cadence/projects/active/estado-de-gracia/` — concepto filosófico base, los pilares I–VII se referencian directamente
 
 ---
 
@@ -229,9 +229,9 @@ La elección del número siete responde al peso simbólico que tiene en distinta
 
 ## Links externos
 
-- Concepto filosófico base: `PROJECTS/active/estado-de-gracia/brief.md`
-- Brand bible: `CORE/brand-bible.md`
-- Brand narrative: `CORE/brand-narrative.md`
+- Concepto filosófico base: `cadence/projects/active/estado-de-gracia/brief.md`
+- Brand bible: `context/identity/brand-bible.md`
+- Brand narrative: `context/identity/brand-narrative.md`
 - Assets Drive: (pendiente — crear carpeta cuando Comando apruebe el pivot)
 - Asana: (pendiente Fanny)
 

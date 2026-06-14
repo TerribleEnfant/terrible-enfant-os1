@@ -49,9 +49,9 @@ n8n agrega → Meta Ads + Nuvemshop + IG
 
 | Capa | Recurso | Qué automatiza |
 |------|---------|----------------|
-| Dirección | `AUTOMATION/agents/cmo-strategist.md` | Lectura estratégica de marketing + apuestas por trimestre |
-| Momentum | `AUTOMATION/agents/pulse-strategist.md` | Síntesis de momentum del sistema completo |
-| Reporting | `AUTOMATION/agents/weekly-compiler.md` | Compila STATUS.md → reporte semanal |
+| Dirección | `capabilities/agents/AG_MKT_CMO.md` | Lectura estratégica de marketing + apuestas por trimestre |
+| Momentum | `capabilities/agents/AG_CORE_PULSE.md` | Síntesis de momentum del sistema completo |
+| Reporting | `capabilities/agents/AG_OPS_COMPILER.md` | Compila STATUS.md → reporte semanal |
 | Copy / contenido | Claude API (Fase 2) | Copy BR en PT, transcreación con voz de marca |
 | Producción visual | Kling / Runway / FLUX (Fase 2) | Video y editorial para campañas |
 | Datos (Fase 3) | n8n + Claude API | Digest de métricas → tasks → alertas |

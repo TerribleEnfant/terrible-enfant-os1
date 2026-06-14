@@ -19,4 +19,4 @@
 ## Notas
 
 - Orientación: **organic-first.** Paid reach sin comunidad no construye marca.
-- Detalle estratégico en `STRATEGY/brazil-launch-strategy.md`.
+- Detalle estratégico en `context/strategy/brazil-launch-strategy.md`.

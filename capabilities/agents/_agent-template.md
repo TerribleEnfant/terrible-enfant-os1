@@ -25,7 +25,7 @@
 
 -
 
-**Prompt:** [link a `AUTOMATION/prompts/`]
+**Prompt:** [link a `capabilities/workflows/`]
 
 **Frecuencia:** (semanal / mensual / on-demand)
 

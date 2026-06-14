@@ -1,4 +1,4 @@
-# Agent: decision-logger
+# AG_OPS_DECISIONS · decision-logger
 
 **Trigger:** manual — Boris o Fanny lo ejecuta cada martes PM (post-reunión)
 **Responsable actual:** Boris / Fanny
@@ -20,15 +20,15 @@
 **Inputs — archivos que lee:**
 
 - Notas crudas de la reunión (pegadas en el prompt como contexto)
-- `OPERATIONS/_GLOBAL/weekly-decisions-log.md` (para append)
-- `WEEKLY/decisions-index.md` (para actualizar el índice)
+- `cadence/decision_log.md` (para append)
+- `cadence/weekly/decisions-index.md` (para actualizar el índice)
 
 **Output — qué produce y dónde lo guarda:**
 
-- Nuevas decisiones formateadas → appendeadas a `OPERATIONS/_GLOBAL/weekly-decisions-log.md`
-- Líneas de índice → appendeadas a `WEEKLY/decisions-index.md`
+- Nuevas decisiones formateadas → appendeadas a `cadence/decision_log.md`
+- Líneas de índice → appendeadas a `cadence/weekly/decisions-index.md`
 
-**Prompt:** [`AUTOMATION/prompts/generate-decision-log.md`](../prompts/generate-decision-log.md)
+**Prompt:** [`capabilities/workflows/WF_OPS_DECISIONS.md`](../prompts/generate-decision-log.md)
 
 **Frecuencia:** semanal, martes PM (después de la reunión)
 

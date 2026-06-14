@@ -113,4 +113,4 @@ Antes de abrir un tercer mercado, validar:
 - [Abr 2026] Primera versión del OS1 configurada. Fanny es el primer punto de adopción semanal.
 - [Abr 2026] 585 pares vendidos a turistas BRA en 2024 = prueba de demanda. No es dato menor para la estrategia de lanzamiento.
 - [Jun 2026] GIGA-Campaña 2026: capa de performance marketing (e-commerce, Meta Ads) separada de la identidad editorial — no contamina el feed principal. Anchor asset: **documental Buenos Aires** (equipo/brief/timeline TBD).
-- [Jun 2026] Identidad: rebranding heráldico (escudo gótico-renacentista) en desarrollo — ver `CORE/brand-narrative.md`.
+- [Jun 2026] Identidad: rebranding heráldico (escudo gótico-renacentista) en desarrollo — ver `context/identity/brand-narrative.md`.

@@ -36,12 +36,12 @@ Ver `channels.md` en esta carpeta.
 
 | Collab | Fecha | Estado | Carpeta |
 |--------|-------|--------|---------|
-| NOTTHESAMO | 21 mar 2026 | En ejecución | `PROJECTS/active/collab-notthesamo/` |
-| EDGAR | 21 may 2026 | Por iniciar — brief urgente | `PROJECTS/active/collab-edgar/` |
-| SELO RISCO | 21 jul 2026 | Pipeline | `PROJECTS/pipeline/collab-selo-risco/` |
-| NORMANDO | 21 sep 2026 | Pipeline | `PROJECTS/pipeline/collab-normando/` |
-| BARRA CREW | 21 oct 2026 | Pipeline | `PROJECTS/pipeline/collab-barra-crew/` |
-| DENDEZEIRO | 21 nov 2026 | Pipeline | `PROJECTS/pipeline/collab-dendezeiro/` |
+| NOTTHESAMO | 21 mar 2026 | En ejecución | `cadence/projects/active/collab-notthesamo/` |
+| EDGAR | 21 may 2026 | Por iniciar — brief urgente | `cadence/projects/active/collab-edgar/` |
+| SELO RISCO | 21 jul 2026 | Pipeline | `cadence/projects/pipeline/collab-selo-risco/` |
+| NORMANDO | 21 sep 2026 | Pipeline | `cadence/projects/pipeline/collab-normando/` |
+| BARRA CREW | 21 oct 2026 | Pipeline | `cadence/projects/pipeline/collab-barra-crew/` |
+| DENDEZEIRO | 21 nov 2026 | Pipeline | `cadence/projects/pipeline/collab-dendezeiro/` |
 
 ## Gaps críticos
 
@@ -60,12 +60,12 @@ Ver `kpis.md` en esta carpeta.
 
 ## Dependencias operacionales
 
-- `OPERATIONS/BRA/legal-contable/` — cierre del estudio contable local (bloqueador)
-- `OPERATIONS/BRA/logistics/` — logística ARG→BRA para primeras unidades
-- `OPERATIONS/BRA/finance-admin/` — apertura cuenta bancaria BRA + estructura fiscal
+- `cadence/operations/BRA/legal-contable/` — cierre del estudio contable local (bloqueador)
+- `cadence/operations/BRA/logistics/` — logística ARG→BRA para primeras unidades
+- `cadence/operations/BRA/finance-admin/` — apertura cuenta bancaria BRA + estructura fiscal
 
 ## Links externos
 
-- Estrategia directional: `STRATEGY/market-expansion-roadmap.md`
+- Estrategia directional: `context/strategy/market-expansion-roadmap.md`
 - Drive:
 - Asana:

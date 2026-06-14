@@ -2,7 +2,7 @@
 
 Sistema Operativo de Terrible Enfant — documentación viva, coordinación operacional y archivo institucional.
 
-**Versión:** V2 · Mayo 2026  
+**Versión:** Mark I · 4C · Junio 2026 (migrado al COMANDO Canon)  
 **Mercados activos:** Argentina · Brasil (lanzamiento)
 
 ---
@@ -11,24 +11,26 @@ Sistema Operativo de Terrible Enfant — documentación viva, coordinación oper
 
 Si eres nuevo en este repo, lee en este orden:
 
-1. [CLAUDE.md](CLAUDE.md) — cómo funciona este sistema (especialmente si usas Claude Code)
-2. [CORE/team-structure.md](CORE/team-structure.md) — quién hace qué
-3. [OPERATIONS/](OPERATIONS/) — encuentra tu área y mercado
+1. [CLAUDE.md](CLAUDE.md) — el Charter (puntero de runtime para Claude Code)
+2. [TE-OS_M1.md](TE-OS_M1.md) — el boot spec: arquitectura, equipo, cadencia, routing
+3. [context/identity/team-structure.md](context/identity/team-structure.md) — quién hace qué
+4. [cadence/operations/](cadence/operations/) — encuentra tu área y mercado
 
 ---
 
-## Estructura rápida
+## Estructura rápida — el modelo 4C
 
-| Carpeta | Contenido | Quién escribe |
-|---------|-----------|---------------|
-| [CORE/](CORE/) | ADN de marca — brand bible, narrativa, voz, equipo | Hache · Comando |
-| [STRATEGY/](STRATEGY/) | Documentos de dirección estratégica (roadmaps, no briefs) | Hache · Comando |
-| [OPERATIONS/](OPERATIONS/) | Estado semanal y KPIs por área y mercado | Cada líder de área |
-| [PROJECTS/](PROJECTS/) | Campañas, collabs y lanzamientos — con ciclo de vida (active/pipeline/completed) | Owner del proyecto |
-| [WEEKLY/](WEEKLY/) | Reportes semanales compilados | Boris (compilado) |
-| [AUTOMATION/](AUTOMATION/) | Agentes, workflows, tools y prompts Claude — dominio de Boris | Boris |
-| [ARCHIVE/](ARCHIVE/) | Ciclos cerrados, reportes de años anteriores | Boris |
-| [REFERENCE/](REFERENCE/) | Documentación original, Notion, legacy | Referencia |
+El OS se organiza en cuatro capas (Context · Connections · Capabilities · Cadence):
+
+| Carpeta | Capa | Contenido | Quién escribe |
+|---------|------|-----------|---------------|
+| [context/](context/) | **Context** (estático) | ADN de marca (`identity/`), estrategia (`strategy/`), conocimiento/legacy (`knowledge/`) | Hache · Comando |
+| [connections/](connections/) | **Connections** (vivo) | Integraciones como `TL_*` (GitHub, Asana, Drive, Nuvemshop, Meta Ads…) | Boris |
+| [capabilities/](capabilities/) | **Capabilities** | Agentes (`AG_*`), workflows (`WF_*`), skills registry | Boris |
+| [cadence/](cadence/) | **Cadence** (vivo) | Pulse, decision_log, logs, runbook + `operations/` (áreas) · `projects/` · `weekly/` | Líderes de área · Boris |
+
+> Tokens funcionales (AREA): **CORE / OPS / PROJ / MKT**. El mercado (ARG/BRA) es una
+> sub-dimensión de carpeta dentro de `cadence/operations/`, no un token. Detalle: `TE-OS_M1.md`.
 
 ---
 
@@ -36,7 +38,7 @@ Si eres nuevo en este repo, lee en este orden:
 
 Cada área tiene un archivo `STATUS.md`. Para actualizarlo desde el navegador:
 
-1. Navega a tu carpeta: `OPERATIONS/ARG/` o `OPERATIONS/BRA/` + tu área
+1. Navega a tu carpeta: `cadence/operations/ARG/` o `cadence/operations/BRA/` + tu área
 2. Abre el archivo `STATUS.md`
 3. Haz click en el ícono de lápiz (Edit this file) en GitHub
 4. Completa los campos
@@ -46,7 +48,7 @@ Listo. No necesitas saber Git.
 
 **Deadline operacional:** Lunes antes de las 18:00.
 
-Si sos owner de un proyecto en `PROJECTS/active/`, actualizá también tu `STATUS.md` en esa carpeta con el mismo deadline.
+Si sos owner de un proyecto en `cadence/projects/active/`, actualizá también tu `STATUS.md` en esa carpeta con el mismo deadline.
 
 ---
 

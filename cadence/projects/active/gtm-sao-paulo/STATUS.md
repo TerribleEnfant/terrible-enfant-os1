@@ -16,7 +16,7 @@
 - Carpeta `gtm-sao-paulo` creada como capa estratégica sobre `brazil-launch`
 - Dashboard / explainer completo (`gtm-dashboard.md`) con funnel Y, canales, gaps P1/P2/P3 y blind spots
 - Subarchivos: funnel, canales, collabs, ai-stack, kpis
-- Agente `cmo-strategist` definido en `AUTOMATION/agents/`
+- Agente `cmo-strategist` definido en `capabilities/agents/`
 
 ## Bloqueadores activos
 

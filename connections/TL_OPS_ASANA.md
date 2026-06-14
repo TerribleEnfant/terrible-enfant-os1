@@ -14,8 +14,8 @@
 ## Qué NO vive en Asana
 
 - Contexto, narrativa y razonamiento detrás de una decisión → este repo
-- KPIs y estado de áreas → `OPERATIONS/[mercado]/[área]/STATUS.md` y `kpis.md`
-- Briefs de proyectos → `PROJECTS/`
+- KPIs y estado de áreas → `cadence/operations/[mercado]/[área]/STATUS.md` y `kpis.md`
+- Briefs de proyectos → `cadence/projects/`
 - Archivos binarios → Google Drive
 
 ## Quién puede crear tareas en Asana

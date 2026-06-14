@@ -1,4 +1,4 @@
-# Agent: Pulse Strategist
+# AG_CORE_PULSE · Pulse Strategist
 
 **Trigger:** on-demand (Boris) / mensual (primer lunes de cada mes)
 **Responsable actual:** Boris
@@ -27,18 +27,18 @@ No es un reporte de status. Es una lectura de momentum.
 
 **Inputs — archivos que lee:**
 
-- `STRATEGY/*.md` — los documentos de dirección vigentes (referentes de norte)
-- `PROJECTS/active/*/STATUS.md` — estado de cada proyecto en ejecución
-- `OPERATIONS/_GLOBAL/weekly-decisions-log.md` — últimas 4 semanas de decisiones
-- `WEEKLY/2026/` — los últimos 2 reportes semanales compilados
+- `context/strategy/*.md` — los documentos de dirección vigentes (referentes de norte)
+- `cadence/projects/active/*/STATUS.md` — estado de cada proyecto en ejecución
+- `cadence/decision_log.md` — últimas 4 semanas de decisiones
+- `cadence/weekly/2026/` — los últimos 2 reportes semanales compilados
 - (V2) Asana MCP: tareas abiertas en el proyecto principal
 
 **Output — qué produce y dónde lo guarda:**
 
-- Actualiza `OPERATIONS/_GLOBAL/pulse.md` con la lectura estratégica del momento
+- Actualiza `cadence/pulse.md` con la lectura estratégica del momento
 - No genera archivos adicionales — pulse.md es acumulativo (secciones con fecha)
 
-**Prompt:** `AUTOMATION/prompts/pulse-strategist.md` ← (a crear)
+**Prompt:** `capabilities/workflows/pulse-strategist.md` ← (a crear)
 
 **Frecuencia:** mensual (o cuando Boris siente que el equipo perdió el norte)
 
@@ -53,7 +53,7 @@ Secciones que el agente actualiza cada vez que corre:
 1. **Norte activo** — los 2-3 objetivos estratégicos que mandan ahora mismo
 2. **Momentum** — dónde hay energía real (proyectos ganando velocidad)
 3. **Fricción** — qué está frenando el movimiento (bloqueadores estratégicos, no operacionales)
-4. **Brecha estrategia ↔ ejecución** — qué está en STRATEGY/ pero sin tracción en PROJECTS/
+4. **Brecha estrategia ↔ ejecución** — qué está en context/strategy/ pero sin tracción en cadence/projects/
 5. **Señal de la semana** — una observación concisa sobre el estado general del sistema
 
 ---

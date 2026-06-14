@@ -1,6 +1,6 @@
 # Pulse — Lectura Estratégica
 
-**Generado por:** pulse-strategist agent (ver `AUTOMATION/agents/pulse-strategist.md`)
+**Generado por:** pulse-strategist agent (ver `capabilities/agents/AG_CORE_PULSE.md`)
 **Frecuencia:** mensual · primer lunes de cada mes
 **Audiencia:** Hache, Comando, Boris
 
@@ -28,7 +28,7 @@ Cada entrada tiene fecha. Las más recientes arriba. No hay versiones — es app
 [Bloqueadores estratégicos — no operacionales]
 
 ### Brecha estrategia ↔ ejecución
-[Qué está en STRATEGY/ pero sin tracción real en PROJECTS/]
+[Qué está en context/strategy/ pero sin tracción real en cadence/projects/]
 
 ### Señal de la semana
 [Una observación concisa sobre el estado general del sistema]

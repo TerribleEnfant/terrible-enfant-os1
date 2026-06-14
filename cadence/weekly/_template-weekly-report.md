@@ -189,5 +189,5 @@
 
 ---
 
-*Fuente: `OPERATIONS/ARG/` + `OPERATIONS/BRA/` — todos los archivos STATUS.md*  
-*Archivar este reporte en: `WEEKLY/2026/W[XX]-[fecha-lunes].md`*
+*Fuente: `cadence/operations/ARG/` + `cadence/operations/BRA/` — todos los archivos STATUS.md*  
+*Archivar este reporte en: `cadence/weekly/2026/W[XX]-[fecha-lunes].md`*

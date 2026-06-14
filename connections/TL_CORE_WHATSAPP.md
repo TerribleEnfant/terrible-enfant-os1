@@ -21,8 +21,8 @@
 
 ## Qué NO va por WhatsApp
 
-- Decisiones formales → deben quedar en `OPERATIONS/_GLOBAL/weekly-decisions-log.md`
-- Contexto de proyectos → `PROJECTS/`
-- Estado de áreas → `OPERATIONS/`
+- Decisiones formales → deben quedar en `cadence/decision_log.md`
+- Contexto de proyectos → `cadence/projects/`
+- Estado de áreas → `cadence/operations/`
 
 **Regla:** si algo se decide por WhatsApp, Fanny o Boris lo documentan en el decisions log para que quede en el OS.

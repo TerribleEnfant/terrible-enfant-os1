@@ -1,4 +1,4 @@
-# Agent: agenda-drafter
+# AG_OPS_AGENDA · agenda-drafter
 
 **Trigger:** manual — Boris lo ejecuta cada martes AM (antes de la reunión)
 **Responsable actual:** Boris
@@ -11,7 +11,7 @@
 |---------|--------|--------|
 | V1 | Boris corre `draft-meeting-agenda.md` desde Claude Code después de compilar el reporte | activo |
 | V2 | Boris o Fanny corren el prompt; la agenda se envía al grupo de WhatsApp antes de las 10:00 | pendiente (Q3 2026) |
-| V3 | GitHub Action genera la agenda automáticamente al detectar el nuevo archivo en WEEKLY/2026/ | pendiente (Q4 2026) |
+| V3 | GitHub Action genera la agenda automáticamente al detectar el nuevo archivo en cadence/weekly/2026/ | pendiente (Q4 2026) |
 
 ---
 
@@ -19,15 +19,15 @@
 
 **Inputs — archivos que lee:**
 
-- `WEEKLY/2026/W##-YYYY-MM-DD.md` — reporte de la semana actual
-- `OPERATIONS/_GLOBAL/meeting-agenda-template.md`
+- `cadence/weekly/2026/W##-YYYY-MM-DD.md` — reporte de la semana actual
+- `capabilities/workflows/meeting-agenda-template.md`
 
 **Output — qué produce y dónde lo guarda:**
 
 - Agenda del martes (texto) enviada al grupo ejecutivo de WhatsApp
-- (opcional) guardada como `OPERATIONS/_GLOBAL/agenda-W##.md` para referencia
+- (opcional) guardada como `cadence/agenda-W##.md` para referencia
 
-**Prompt:** [`AUTOMATION/prompts/draft-meeting-agenda.md`](../prompts/draft-meeting-agenda.md)
+**Prompt:** [`capabilities/workflows/WF_OPS_AGENDA.md`](../prompts/draft-meeting-agenda.md)
 
 **Frecuencia:** semanal, martes AM (antes de las 10:00)
 

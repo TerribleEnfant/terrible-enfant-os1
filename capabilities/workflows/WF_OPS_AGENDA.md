@@ -1,4 +1,4 @@
-# Prompt: Redactar Agenda de Reunión
+# WF_OPS_AGENDA · Redactar Agenda de Reunión
 
 **Uso:** Pegar esto en Claude Code (VS Code) el martes AM, antes de las 10:00.  
 **Completar los campos entre corchetes antes de enviar.**
@@ -7,10 +7,10 @@
 
 ```
 Lee el reporte semanal de esta semana en:
-WEEKLY/2026/[NOMBRE DEL ARCHIVO DE ESTA SEMANA]
+cadence/weekly/2026/[NOMBRE DEL ARCHIVO DE ESTA SEMANA]
 
 También lee la plantilla de agenda en:
-OPERATIONS/_GLOBAL/meeting-agenda-template.md
+capabilities/workflows/meeting-agenda-template.md
 
 Identifica todos los puntos marcados como:
 - "Decisión requerida" en las tablas de semáforo

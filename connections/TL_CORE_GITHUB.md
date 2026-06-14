@@ -10,7 +10,7 @@
 No hace falta saber Git. Para editar un archivo directamente en GitHub web:
 
 1. Ir a [github.com](https://github.com) y abrir el repo
-2. Navegar hasta el archivo que querés editar (ej: `OPERATIONS/ARG/marketing-comms/STATUS.md`)
+2. Navegar hasta el archivo que querés editar (ej: `cadence/operations/ARG/marketing-comms/STATUS.md`)
 3. Hacer clic en el ícono del lápiz (✏️) arriba a la derecha
 4. Editar el contenido
 5. Al terminar: bajar a "Commit changes" → escribir una línea descriptiva → "Commit directly to main"

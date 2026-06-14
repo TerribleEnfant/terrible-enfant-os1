@@ -60,8 +60,8 @@ Terrible Enfant no entiende la identidad como un repertorio de rasgos, sino como
 
 ## Dependencias operacionales
 
-- `OPERATIONS/ARG/marketing-comms/` — producción de assets ARG
-- `OPERATIONS/BRA/marketing-comms/` — amplificación en BRA vía Freequency
+- `cadence/operations/ARG/marketing-comms/` — producción de assets ARG
+- `cadence/operations/BRA/marketing-comms/` — amplificación en BRA vía Freequency
 
 ## Links externos
 

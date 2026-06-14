@@ -19,4 +19,4 @@ Automatizar **después** de validar: ninguna automatización se introduce antes 
 ## Notas
 
 - No configurar ni conectar hasta que la fase 1 esté validada.
-- Ver evolución V1→V3 en `AUTOMATION/agents/` y `STRATEGY/market-expansion-roadmap.md`.
+- Ver evolución V1→V3 en `capabilities/agents/` y `context/strategy/market-expansion-roadmap.md`.

@@ -1,4 +1,4 @@
-# Workflow: Iniciar un nuevo proyecto
+# WF_PROJ_SETUP · Iniciar un nuevo proyecto
 
 **Trigger:** se aprueba una nueva iniciativa (campaña, collab, lanzamiento)
 **Dueño del proceso:** Boris (setup técnico) + owner del proyecto (contenido)
@@ -25,15 +25,15 @@
 
 Si es `pipeline`:
 ```
-PROJECTS/pipeline/[tipo]-[nombre]/
+cadence/projects/pipeline/[tipo]-[nombre]/
 └── brief.md    ← llenar datos básicos: tipo, estado, fecha, owner, resumen
 ```
 
 Si es `active`:
 ```
-PROJECTS/active/[tipo]-[nombre]/
-├── brief.md      ← copiar de PROJECTS/_templates/[tipo]-template/
-├── STATUS.md     ← copiar de PROJECTS/_templates/[tipo]-template/
+cadence/projects/active/[tipo]-[nombre]/
+├── brief.md      ← copiar de cadence/projects/_templates/[tipo]-template/
+├── STATUS.md     ← copiar de cadence/projects/_templates/[tipo]-template/
 └── [archivos adicionales según tipo]
 ```
 
@@ -49,14 +49,14 @@ Nomenclatura de carpetas: `collab-[nombre-en-minúsculas-con-guiones]`
 - Objetivo
 - Entregables clave
 - Criterios de éxito
-- Dependencias operacionales (qué áreas de OPERATIONS/ necesita)
+- Dependencias operacionales (qué áreas de cadence/operations/ necesita)
 
 ---
 
 ### 4. Registrar dependencias operacionales
 
 **Quién:** Boris + Fanny
-**Cómo:** agregar una línea en `OPERATIONS/_GLOBAL/project-touchpoints.md` con el proyecto y qué área operacional necesita y para cuándo.
+**Cómo:** agregar una línea en `cadence/project-touchpoints.md` con el proyecto y qué área operacional necesita y para cuándo.
 
 ---
 
@@ -64,7 +64,7 @@ Nomenclatura de carpetas: `collab-[nombre-en-minúsculas-con-guiones]`
 
 **Quién:** Boris
 **Cómo:** WhatsApp al grupo ejecutivo o DM a Fanny
-**Mensaje tipo:** "Creé la carpeta para [nombre del proyecto] en PROJECTS/active/. Owner: [nombre]. Fecha: [fecha]. ¿Creás las tareas en Asana?"
+**Mensaje tipo:** "Creé la carpeta para [nombre del proyecto] en cadence/projects/active/. Owner: [nombre]. Fecha: [fecha]. ¿Creás las tareas en Asana?"
 
 **Output:** Fanny crea las tareas correspondientes en Asana.
 
@@ -72,7 +72,7 @@ Nomenclatura de carpetas: `collab-[nombre-en-minúsculas-con-guiones]`
 
 ### 6. (Si el proyecto pasó de pipeline a active)
 
-Mover la carpeta de `PROJECTS/pipeline/` a `PROJECTS/active/`, agregar los archivos faltantes (STATUS.md, deliverables.md, etc.) desde los templates.
+Mover la carpeta de `cadence/projects/pipeline/` a `cadence/projects/active/`, agregar los archivos faltantes (STATUS.md, deliverables.md, etc.) desde los templates.
 
 ---
 

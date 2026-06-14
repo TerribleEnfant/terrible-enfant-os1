@@ -1,4 +1,4 @@
-# Workflow: Cerrar un proyecto
+# WF_PROJ_CLOSE · Cerrar un proyecto
 
 **Trigger:** proyecto completado (drop ejecutado, lanzamiento estabilizado, campaña cerrada)
 **Dueño del proceso:** Boris
@@ -43,7 +43,7 @@
 
 **Quién:** Boris
 ```
-git mv PROJECTS/active/[nombre]/ PROJECTS/completed/[nombre]/
+git mv cadence/projects/active/[nombre]/ cadence/projects/completed/[nombre]/
 ```
 La carpeta y todo su contenido quedan intactos como registro.
 
@@ -59,7 +59,7 @@ La carpeta y todo su contenido quedan intactos como registro.
 ### 6. Notificar al equipo
 
 **Quién:** Boris
-- Mensaje breve al grupo ejecutivo: "[nombre] cerrado. Retrospectiva en PROJECTS/completed/[nombre]/brief.md"
+- Mensaje breve al grupo ejecutivo: "[nombre] cerrado. Retrospectiva en cadence/projects/completed/[nombre]/brief.md"
 
 ---
 

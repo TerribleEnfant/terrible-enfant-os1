@@ -88,7 +88,7 @@ El copy de producto opera entre la descripción técnica y el manifiesto filosó
 - Emoji en copy editorial.
 - Aplanar referencias filosóficas a lenguaje llano.
 
-Líneas, modelos y copy desarrollado: `CORE/product-catalog.md`.
+Líneas, modelos y copy desarrollado: `context/identity/product-catalog.md`.
 
 > **Identidad en desarrollo — Heráldica / rebranding:** escudo gótico-renacentista en exploración. Tres direcciones: heráldica alquímica, gothic-renaissance (filigrana simétrica, monograma TE, alas), y una tercera sin finalizar.
 

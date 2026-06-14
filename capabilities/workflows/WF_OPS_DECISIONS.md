@@ -1,4 +1,4 @@
-# Prompt: Generar Log de Decisiones
+# WF_OPS_DECISIONS · Generar Log de Decisiones
 
 **Uso:** Pegar esto en Claude Code (VS Code) el martes PM, después de la reunión.  
 **Completar los campos entre corchetes antes de enviar.**
@@ -46,7 +46,7 @@ Formato de cada fila: | [fecha] | [área] | [mercado] | [decisión en 10 palabra
 
 **Después de ejecutar el prompt:**
 1. Revisar cada decisión — verificar que son precisas y completas
-2. Appendear al final de `OPERATIONS/_GLOBAL/weekly-decisions-log.md`
-3. Agregar las filas del índice al final de `WEEKLY/decisions-index.md`
+2. Appendear al final de `cadence/decision_log.md`
+3. Agregar las filas del índice al final de `cadence/weekly/decisions-index.md`
 4. Commit: `[DECISION] Log decisions [fecha]`
 5. Notificar a Fanny por WhatsApp que el log está actualizado

@@ -1,4 +1,4 @@
-# Workflow: Cadencia Semanal
+# WF_OPS_WEEKLY · Cadencia Semanal
 
 **Trigger:** inicio de semana (lunes)
 **Dueño del proceso:** Boris (coordinación) + Fanny (decisiones post-reunión)
@@ -16,9 +16,9 @@
 **Cuándo:** lunes antes de las 18:00
 **Cómo:** editar directamente en GitHub web o desde el repo local
 **Archivos a actualizar:**
-- `OPERATIONS/ARG/[área]/STATUS.md` → responsable ARG
-- `OPERATIONS/BRA/[área]/STATUS.md` → responsable BRA
-- `PROJECTS/active/[proyecto]/STATUS.md` → owner del proyecto
+- `cadence/operations/ARG/[área]/STATUS.md` → responsable ARG
+- `cadence/operations/BRA/[área]/STATUS.md` → responsable BRA
+- `cadence/projects/active/[proyecto]/STATUS.md` → owner del proyecto
 
 **Output:** 12 STATUS.md operacionales + N STATUS.md de proyectos activos actualizados
 
@@ -30,12 +30,12 @@
 **Cuándo:** lunes PM (después de las 18:00)
 **Cómo:**
 1. Abrir Claude Code en VS Code
-2. Ejecutar agent `weekly-compiler` con prompt en `AUTOMATION/prompts/compile-weekly-status.md`
-3. Ejecutar agent `project-status-roller` con prompt en `AUTOMATION/prompts/compile-project-status.md`
+2. Ejecutar agent `weekly-compiler` con prompt en `capabilities/workflows/WF_OPS_COMPILE.md`
+3. Ejecutar agent `project-status-roller` con prompt en `capabilities/workflows/WF_PROJ_COMPILE.md`
 4. Revisar el borrador generado: verificar que no haya campos vacíos
-5. Guardar como `WEEKLY/2026/W##-YYYY-MM-DD.md`
+5. Guardar como `cadence/weekly/2026/W##-YYYY-MM-DD.md`
 
-**Output:** reporte semanal compilado en WEEKLY/2026/
+**Output:** reporte semanal compilado en cadence/weekly/2026/
 
 ---
 
@@ -44,7 +44,7 @@
 **Quién:** Boris
 **Cuándo:** martes AM antes de las 10:00
 **Cómo:**
-1. Ejecutar agent `agenda-drafter` con prompt en `AUTOMATION/prompts/draft-meeting-agenda.md`
+1. Ejecutar agent `agenda-drafter` con prompt en `capabilities/workflows/WF_OPS_AGENDA.md`
 2. Revisar que la agenda respete el límite de 45 minutos
 3. Enviar al grupo ejecutivo de WhatsApp
 
@@ -74,9 +74,9 @@
 **Cuándo:** martes PM (dentro de las 2 horas post-reunión)
 **Cómo:**
 1. Fanny pasa las notas de reunión a Boris
-2. Boris ejecuta agent `decision-logger` con prompt en `AUTOMATION/prompts/generate-decision-log.md`
-3. Las decisiones se appendean a `OPERATIONS/_GLOBAL/weekly-decisions-log.md`
-4. El índice en `WEEKLY/decisions-index.md` se actualiza
+2. Boris ejecuta agent `decision-logger` con prompt en `capabilities/workflows/WF_OPS_DECISIONS.md`
+3. Las decisiones se appendean a `cadence/decision_log.md`
+4. El índice en `cadence/weekly/decisions-index.md` se actualiza
 5. Fanny crea las tareas correspondientes en Asana
 
 **Output:** decisiones documentadas + tareas en Asana creadas

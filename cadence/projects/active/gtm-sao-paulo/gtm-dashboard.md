@@ -185,7 +185,7 @@ Detalle en [ai-stack.md](ai-stack.md). Principio rector: **automatizar solo desp
 | Fase 2 — En curso | 🟡 Diseñar ahora | Claude API para copy BR en PT, video AI (Kling), scheduling IG, ecomm BR, Meta Ads BR |
 | Fase 3 — Post-launch Q4 | ⚪ Planificado | n8n: Meta Ads + Nuvemshop + IG → digest semanal vía Claude API → tasks en Asana → alertas ROAS/stock |
 
-El **CMO Strategist agent** (`AUTOMATION/agents/cmo-strategist.md`) es la pieza de IA que lee este dashboard y produce, por trimestre, la lectura estratégica + las apuestas de marketing.
+El **CMO Strategist agent** (`capabilities/agents/AG_MKT_CMO.md`) es la pieza de IA que lee este dashboard y produce, por trimestre, la lectura estratégica + las apuestas de marketing.
 
 ### Stack recomendado — borrador (baseline, sin IDs ni credenciales)
 

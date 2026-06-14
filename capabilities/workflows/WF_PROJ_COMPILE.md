@@ -1,4 +1,4 @@
-# Prompt: Compilar Estado de Proyectos Activos
+# WF_PROJ_COMPILE · Compilar Estado de Proyectos Activos
 
 **Uso:** Pegar esto en Claude Code (VS Code) junto con la compilación semanal (lunes PM).
 **Completar los campos entre corchetes antes de enviar.**
@@ -6,8 +6,8 @@
 ---
 
 ```
-Lee todos los archivos STATUS.md en PROJECTS/active/ — uno por proyecto activo.
-Lee también los brief.md de todos los proyectos en PROJECTS/pipeline/ para extraer las fechas de activación próximas.
+Lee todos los archivos STATUS.md en cadence/projects/active/ — uno por proyecto activo.
+Lee también los brief.md de todos los proyectos en cadence/projects/pipeline/ para extraer las fechas de activación próximas.
 
 Para cada proyecto activo, extrae:
 1. Nombre del proyecto

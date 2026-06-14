@@ -15,9 +15,9 @@
 
 ## Qué NO vive en Drive
 
-- Decisiones operacionales → `OPERATIONS/_GLOBAL/weekly-decisions-log.md`
-- Briefs y estrategia → `PROJECTS/` y `STRATEGY/`
-- Estado de áreas y KPIs → `OPERATIONS/`
+- Decisiones operacionales → `cadence/decision_log.md`
+- Briefs y estrategia → `cadence/projects/` y `context/strategy/`
+- Estado de áreas y KPIs → `cadence/operations/`
 
 ## Nomenclatura de carpetas (referencia)
 

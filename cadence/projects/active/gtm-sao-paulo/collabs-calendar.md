@@ -17,16 +17,16 @@
 | Nov | Selo Risco | Confirmado | MOFU |
 | Dic | Seeding inline | Planeado | BOFU + retención |
 
-## Versión repo (`brazil-launch/brief.md` + `STRATEGY/`)
+## Versión repo (`brazil-launch/brief.md` + `context/strategy/`)
 
 | Collab | Fecha | Estado | Carpeta del proyecto |
 |--------|-------|--------|----------------------|
-| NOTTHESAMO | 21 mar 2026 | En ejecución | `PROJECTS/active/collab-notthesamo/` |
-| EDGAR | 21 may 2026 | Por iniciar — brief urgente | `PROJECTS/active/collab-edgar/` |
-| SELO RISCO | 21 jul 2026 | Pipeline | `PROJECTS/pipeline/collab-selo-risco/` |
-| NORMANDO | 21 sep 2026 | Pipeline | `PROJECTS/pipeline/collab-normando/` |
-| BARRA CREW | 21 oct 2026 | Pipeline | `PROJECTS/pipeline/collab-barra-crew/` |
-| DENDEZEIRO | 21 nov 2026 | Pipeline | `PROJECTS/pipeline/collab-dendezeiro/` |
+| NOTTHESAMO | 21 mar 2026 | En ejecución | `cadence/projects/active/collab-notthesamo/` |
+| EDGAR | 21 may 2026 | Por iniciar — brief urgente | `cadence/projects/active/collab-edgar/` |
+| SELO RISCO | 21 jul 2026 | Pipeline | `cadence/projects/pipeline/collab-selo-risco/` |
+| NORMANDO | 21 sep 2026 | Pipeline | `cadence/projects/pipeline/collab-normando/` |
+| BARRA CREW | 21 oct 2026 | Pipeline | `cadence/projects/pipeline/collab-barra-crew/` |
+| DENDEZEIRO | 21 nov 2026 | Pipeline | `cadence/projects/pipeline/collab-dendezeiro/` |
 
 ---
 
@@ -38,4 +38,4 @@
 - **Normando / Barra Crew / Dendezeiro:** en el repo como pipeline; el GTM doc los reemplaza por "Fashion brand SPFW TBD" en octubre y no menciona los otros.
 - **Partner SPFW octubre:** el GTM doc lo deja TBD (Normando, Dendezeiro u otro). Deadlines de producción en semanas → P2.
 
-**Acción:** alinear este calendario con las carpetas reales en `PROJECTS/active/` y `PROJECTS/pipeline/` una vez decidida la fuente de verdad.
+**Acción:** alinear este calendario con las carpetas reales en `cadence/projects/active/` y `cadence/projects/pipeline/` una vez decidida la fuente de verdad.

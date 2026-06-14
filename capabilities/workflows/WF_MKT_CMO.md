@@ -1,8 +1,8 @@
-# Prompt: CMO Quarterly Brief
+# WF_MKT_CMO · CMO Quarterly Brief
 
-**Agente:** `AUTOMATION/agents/cmo-strategist.md`
+**Agente:** `capabilities/agents/AG_MKT_CMO.md`
 **Cuándo usarlo:** primera semana de cada trimestre, o cuando hay que recalibrar la inversión de marketing.
-**Output:** `PROJECTS/active/gtm-sao-paulo/cmo-brief-Q#-YYYY.md`
+**Output:** `cadence/projects/active/gtm-sao-paulo/cmo-brief-Q#-YYYY.md`
 
 ---
 
@@ -10,7 +10,7 @@
 
 1. Abrí Claude Code en el repo.
 2. Pegá el prompt de abajo, reemplazando `[TRIMESTRE]` y `[AÑO]`.
-3. Revisá el output. Guardalo como `cmo-brief-Q#-YYYY.md` en `PROJECTS/active/gtm-sao-paulo/`.
+3. Revisá el output. Guardalo como `cmo-brief-Q#-YYYY.md` en `cadence/projects/active/gtm-sao-paulo/`.
 4. No sobreescribas briefs anteriores — cada trimestre es un archivo nuevo.
 
 ---
@@ -28,15 +28,15 @@ humanas.
 Estamos en [TRIMESTRE] [AÑO].
 
 Leé y sintetizá:
-- PROJECTS/active/gtm-sao-paulo/gtm-dashboard.md (norte principal)
-- PROJECTS/active/gtm-sao-paulo/funnel-architecture.md
-- PROJECTS/active/gtm-sao-paulo/channels.md
-- PROJECTS/active/gtm-sao-paulo/kpis.md
-- PROJECTS/active/gtm-sao-paulo/ai-stack.md
-- STRATEGY/market-expansion-roadmap.md (prioridades del trimestre)
-- OPERATIONS/ARG/marketing-comms/ y OPERATIONS/BRA/marketing-comms/ (STATUS + kpis)
-- OPERATIONS/_GLOBAL/weekly-decisions-log.md (últimas decisiones)
-- CORE/brand-narrative.md (voz de marca — restricción dura)
+- cadence/projects/active/gtm-sao-paulo/gtm-dashboard.md (norte principal)
+- cadence/projects/active/gtm-sao-paulo/funnel-architecture.md
+- cadence/projects/active/gtm-sao-paulo/channels.md
+- cadence/projects/active/gtm-sao-paulo/kpis.md
+- cadence/projects/active/gtm-sao-paulo/ai-stack.md
+- context/strategy/market-expansion-roadmap.md (prioridades del trimestre)
+- cadence/operations/ARG/marketing-comms/ y cadence/operations/BRA/marketing-comms/ (STATUS + kpis)
+- cadence/decision_log.md (últimas decisiones)
+- context/identity/brand-narrative.md (voz de marca — restricción dura)
 
 Producí un brief trimestral en español con EXACTAMENTE estas secciones:
 

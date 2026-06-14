@@ -33,8 +33,8 @@ Ver `deliverables.md` en esta carpeta (crear cuando brief esté definido).
 
 ## Dependencias operacionales
 
-- `OPERATIONS/BRA/logistics/` — envío de unidades para la collab
-- `OPERATIONS/BRA/marketing-comms/` — coordinación con Freequency
+- `cadence/operations/BRA/logistics/` — envío de unidades para la collab
+- `cadence/operations/BRA/marketing-comms/` — coordinación con Freequency
 
 ## Links externos
 

@@ -36,6 +36,6 @@ Ver `kpis.md` en esta carpeta.
 
 ## Links externos
 
-- Estrategia completa en STRATEGY/:
+- Estrategia completa en context/strategy/:
 - Asana:
 - Drive:

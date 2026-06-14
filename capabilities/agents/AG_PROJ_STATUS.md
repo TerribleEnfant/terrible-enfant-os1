@@ -1,4 +1,4 @@
-# Agent: project-status-roller
+# AG_PROJ_STATUS · project-status-roller
 
 **Trigger:** manual — Boris lo corre como parte de la compilación semanal
 **Responsable actual:** Boris
@@ -19,15 +19,15 @@
 
 **Inputs — archivos que lee:**
 
-- `PROJECTS/active/*/STATUS.md` (todos los STATUS de proyectos activos)
-- `PROJECTS/pipeline/*/brief.md` (para visibilidad de próximas fechas)
+- `cadence/projects/active/*/STATUS.md` (todos los STATUS de proyectos activos)
+- `cadence/projects/pipeline/*/brief.md` (para visibilidad de próximas fechas)
 
 **Output — qué produce y dónde lo guarda:**
 
 - Sección "Estado de Proyectos Activos" para incluir en el reporte semanal
 - (eventualmente integrado directamente en el weekly-compiler)
 
-**Prompt:** [`AUTOMATION/prompts/compile-project-status.md`](../prompts/compile-project-status.md)
+**Prompt:** [`capabilities/workflows/WF_PROJ_COMPILE.md`](../prompts/compile-project-status.md)
 
 **Frecuencia:** semanal, lunes PM (junto con weekly-compiler)
 

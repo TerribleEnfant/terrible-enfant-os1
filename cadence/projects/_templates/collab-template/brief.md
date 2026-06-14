@@ -30,7 +30,7 @@ Ver `deliverables.md` en esta carpeta.
 
 ## Dependencias operacionales
 
-(Qué áreas en OPERATIONS/ necesita — ej: "logistics/BRA para envío de muestras")
+(Qué áreas en cadence/operations/ necesita — ej: "logistics/BRA para envío de muestras")
 
 ## Links externos
 

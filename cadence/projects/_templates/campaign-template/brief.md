@@ -27,7 +27,7 @@
 
 ## Dependencias operacionales
 
-(Qué áreas en OPERATIONS/ necesita — ej: "logistics/ARG para confirmar stock antes de X")
+(Qué áreas en cadence/operations/ necesita — ej: "logistics/ARG para confirmar stock antes de X")
 
 ## Links externos
 

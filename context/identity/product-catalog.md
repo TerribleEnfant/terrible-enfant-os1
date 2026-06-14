@@ -3,10 +3,10 @@
 Línea de modelos con nombre propio y su registro de copy. Esta es la **línea hero**
 de autor (ARG, global). Es distinta del **product mix BRA** — 45 modelos de la lista
 de Freequency clasificados en 4 categorías internas, que administra Fanny (ver
-`STRATEGY/brazil-launch-strategy.md`).
+`context/strategy/brazil-launch-strategy.md`).
 
 > Las versiones de copy desarrolladas y el contexto narrativo extendido viven en
-> `REFERENCE/legacy-context.md` (archivo). Este archivo es la referencia viva.
+> `context/knowledge/legacy-context.md` (archivo). Este archivo es la referencia viva.
 
 ---
 
@@ -36,7 +36,7 @@ grano natural · suela de cuero.*
 
 **Registro:** entre descripción de producto y manifiesto filosófico. Versión larga =
 lectura ontológica + specs técnicos. Versión corta = 2–3 líneas, sin inflación de
-adjetivos. Ver reglas de voz en `CLAUDE.md` y `CORE/brand-narrative.md`.
+adjetivos. Ver reglas de voz en `CLAUDE.md` y `context/identity/brand-narrative.md`.
 
 ---
 

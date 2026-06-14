@@ -1,4 +1,4 @@
-# Agent: CMO Strategist
+# AG_MKT_CMO · CMO Strategist
 
 **Trigger:** on-demand (Boris) / trimestral (primera semana de cada trimestre)
 **Responsable actual:** Boris
@@ -14,7 +14,7 @@ Es el **director de marketing virtual** de Terrible Enfant. Combina dos cosas qu
 
 No es un compilador de status (eso lo hace `weekly-compiler`) ni una lectura de momentum del sistema completo (eso lo hace [`pulse-strategist`](pulse-strategist.md)). El CMO Strategist mira **una sola pregunta por trimestre: ¿dónde invertimos esfuerzo de marketing y cómo lo ejecutamos con el mínimo de manos humanas?**
 
-Piensa por mercado (ARG maduro / BR nuevo) y por etapa de funnel (TOFU / MOFU / BOFU / Retención). Su norte es la arquitectura Funnel Y documentada en `PROJECTS/active/gtm-sao-paulo/`.
+Piensa por mercado (ARG maduro / BR nuevo) y por etapa de funnel (TOFU / MOFU / BOFU / Retención). Su norte es la arquitectura Funnel Y documentada en `cadence/projects/active/gtm-sao-paulo/`.
 
 ---
 
@@ -32,22 +32,22 @@ Piensa por mercado (ARG maduro / BR nuevo) y por etapa de funnel (TOFU / MOFU / 
 
 **Inputs — archivos que lee:**
 
-- `PROJECTS/active/gtm-sao-paulo/gtm-dashboard.md` — estado del go-to-market (norte principal)
-- `PROJECTS/active/gtm-sao-paulo/funnel-architecture.md` — la arquitectura Funnel Y
-- `PROJECTS/active/gtm-sao-paulo/channels.md` — owners y estado de cada canal
-- `PROJECTS/active/gtm-sao-paulo/kpis.md` — KPIs por etapa de funnel
-- `PROJECTS/active/gtm-sao-paulo/ai-stack.md` — qué se puede automatizar y en qué fase
-- `STRATEGY/market-expansion-roadmap.md` — prioridades del trimestre vigente
-- `OPERATIONS/ARG/marketing-comms/` + `OPERATIONS/BRA/marketing-comms/` — STATUS.md + kpis.md
-- `OPERATIONS/_GLOBAL/weekly-decisions-log.md` — últimas decisiones relevantes a marketing
-- `CORE/brand-narrative.md` — voz y posicionamiento (para que las apuestas respeten la marca)
+- `cadence/projects/active/gtm-sao-paulo/gtm-dashboard.md` — estado del go-to-market (norte principal)
+- `cadence/projects/active/gtm-sao-paulo/funnel-architecture.md` — la arquitectura Funnel Y
+- `cadence/projects/active/gtm-sao-paulo/channels.md` — owners y estado de cada canal
+- `cadence/projects/active/gtm-sao-paulo/kpis.md` — KPIs por etapa de funnel
+- `cadence/projects/active/gtm-sao-paulo/ai-stack.md` — qué se puede automatizar y en qué fase
+- `context/strategy/market-expansion-roadmap.md` — prioridades del trimestre vigente
+- `cadence/operations/ARG/marketing-comms/` + `cadence/operations/BRA/marketing-comms/` — STATUS.md + kpis.md
+- `cadence/decision_log.md` — últimas decisiones relevantes a marketing
+- `context/identity/brand-narrative.md` — voz y posicionamiento (para que las apuestas respeten la marca)
 - (V2) Asana MCP + métricas reales de Meta Ads / Nuvemshop / WooCommerce
 
 **Output — qué produce y dónde lo guarda:**
 
-- `PROJECTS/active/gtm-sao-paulo/cmo-brief-Q#-YYYY.md` — un brief trimestral por archivo (no se sobrescribe; cada trimestre suma uno)
+- `cadence/projects/active/gtm-sao-paulo/cmo-brief-Q#-YYYY.md` — un brief trimestral por archivo (no se sobrescribe; cada trimestre suma uno)
 
-**Prompt:** [`AUTOMATION/prompts/cmo-quarterly-brief.md`](../prompts/cmo-quarterly-brief.md)
+**Prompt:** [`capabilities/workflows/WF_MKT_CMO.md`](../prompts/cmo-quarterly-brief.md)
 
 **Frecuencia:** trimestral (primera semana de cada trimestre), o cuando Boris/Hache necesitan recalibrar la inversión de marketing
 
@@ -72,7 +72,7 @@ Secciones fijas de `cmo-brief-Q#-YYYY.md`:
 
 - **Embudo antes que táctica.** Ninguna apuesta sin decir qué etapa de funnel mueve y en qué mercado.
 - **Automatizar solo el hábito validado.** No propone n8n para algo que aún no se hace bien a mano.
-- **La voz de marca es restricción dura.** Toda apuesta de contenido respeta `CORE/brand-narrative.md` — nada aspiracional-genérico.
+- **La voz de marca es restricción dura.** Toda apuesta de contenido respeta `context/identity/brand-narrative.md` — nada aspiracional-genérico.
 - **Máximo 3 apuestas.** Un trimestre no aguanta más. Foco sobre cobertura.
 - **Nombra al owner.** Una apuesta sin dueño no es una apuesta.
 

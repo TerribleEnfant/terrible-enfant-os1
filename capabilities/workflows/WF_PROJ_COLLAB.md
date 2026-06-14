@@ -1,4 +1,4 @@
-# Workflow: Lanzar una collab BRA
+# WF_PROJ_COLLAB · Lanzar una collab BRA
 
 **Trigger:** collab pasa de `pipeline` a `active` (generalmente ~6 semanas antes del drop)
 **Dueño del proceso:** Comando
@@ -12,9 +12,9 @@
 ### Fase 1 — Activación (6 semanas antes del drop)
 
 **Quién:** Boris
-- Mover carpeta de `PROJECTS/pipeline/collab-[nombre]/` a `PROJECTS/active/collab-[nombre]/`
-- Crear `STATUS.md` y `deliverables.md` desde `PROJECTS/_templates/collab-template/`
-- Registrar en `OPERATIONS/_GLOBAL/project-touchpoints.md`
+- Mover carpeta de `cadence/projects/pipeline/collab-[nombre]/` a `cadence/projects/active/collab-[nombre]/`
+- Crear `STATUS.md` y `deliverables.md` desde `cadence/projects/_templates/collab-template/`
+- Registrar en `cadence/project-touchpoints.md`
 - Notificar a Fanny → crea tareas en Asana
 
 **Quién:** Comando
