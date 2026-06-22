@@ -1,9 +1,9 @@
 ---
 file: TE-OS_M1.md
-title: Terrible Enfant Operating System — Mark I (4C harness)
+title: Terrible Enfant Operating System — Mark II (4C harness)
 status: active
 owner: Boris
-updated: 2026-06-14
+updated: 2026-06-20
 ---
 
 # TE-OS_M1
@@ -24,7 +24,14 @@ Se alcanza vía el **Charter** (`CLAUDE.md`, auto-cargado por Claude Code), que 
 Charter = el runtime sobre el que corrés; este spec = la lógica que corrés. (Ver §4.)
 
 Vivo pero no casual. Versionado por **Mark** (M1 → M2 → …); cualquier cosa más allá de un typo
-gana un nuevo Mark + fila de changelog. Mark actual: **M1**.
+gana un nuevo Mark + fila de changelog. Mark actual: **M2**.
+
+> El nombre de archivo (`TE-OS_M1.md`) se mantiene estable como puntero de boot auto-cargado; el
+> Mark vigente lo registra el changelog (§16), no el filename. Refs históricas a "M1" en
+> `context/knowledge/` se preservan intactas (historia cruda).
+
+> **Procedencia.** TE-OS es un sistema de **COMANDO / Terrible Enfant**, independiente de
+> "BOTH ventures". Patrones reutilizados de otros repos entran como referencia, no como acople.
 
 Construido sobre el **COMANDO Canon** (`COMANDO-AI/C-OS`). Migrado desde la estructura previa
 (CORE / STRATEGY / REFERENCE / OPERATIONS / PROJECTS / AUTOMATION) el 2026-06-14.
@@ -211,6 +218,7 @@ Antes de improvisar un proceso, verificar si ya existe un WAT card.
 | "nuevo proyecto" | `capabilities/workflows/WF_PROJ_SETUP.md` | carpeta en `cadence/projects/active/` |
 | "cerrá el proyecto" | `capabilities/workflows/WF_PROJ_CLOSE.md` | carpeta movida a `cadence/projects/completed/` |
 | "nueva collab" | `capabilities/workflows/WF_PROJ_COLLAB.md` | brief + estructura de collab |
+| "miná esta reunión" / transcript nuevo | `capabilities/workflows/WF_OPS_MINE.md` (agente `AG_OPS_MINER`) | recap + items en `cadence/meetings/` · tareas en Asana · email a participantes |
 
 Runbook del operador (Boris): `cadence/runbook.md`.
 
@@ -229,7 +237,14 @@ no inventariado. Default: **ante la duda, preguntar.**
   cambios a `context/identity/`.
 - **Hache** — aprueba compromisos financieros/comerciales, producto y decisiones de CEO.
 
-Solo **Fanny** crea y gestiona tareas en Asana — no crear tareas en Asana.
+Solo **Fanny** crea y gestiona tareas en Asana — no crear tareas en Asana. **Excepción acotada
+(M2, aprobada por Boris + Fanny):** el auto-miner de reuniones (`WF_OPS_MINE` / `AG_OPS_MINER`)
+crea tareas directamente en el board live desde action items minados — solo high/med-confidence
+y completos (owner + entregable + deadline/trigger), dedup por nombre. Es el **único** proceso
+automatizado autorizado a escribir en Asana; Fanny mantiene la curaduría del board.
+
+El mismo miner puede **enviar el recap por email a los participantes internos** de la llamada
+(intersección con allowlist) sin gate adicional. Recaps a externos siguen requiriendo **Comando**.
 
 ---
 
@@ -259,6 +274,11 @@ TERRIBLE ENFANT | OS1/
   responsable. Solo Fanny gestiona el Task Board.
 - **Este repo** provee narrativa, contexto y decisiones que Asana no puede guardar. No duplica
   Asana — lo complementa.
+- **Auto-miner de reuniones.** `WF_OPS_MINE` mina transcripts (`transcripts/**.md`) → escribe el
+  machine store en `cadence/meetings/` (recap + decisiones/risks por ítem, cada uno con
+  `source_quote` + `confidence`) → crea tareas en Asana (ver excepción §11) → emailea el recap a
+  participantes internos. **Nunca toca `cadence/decision_log.md`** (humano, append-only): la
+  curación de decisiones minadas al log la hace una persona. Detalle: `connections/TL_OPS_MINER.md`.
 
 ---
 
@@ -284,6 +304,7 @@ incremento de Mark si es estructural). Una fuente de verdad. Sin bloat.
 | Mark | Fecha | Nota |
 |---|---|---|
 | M1 | 2026-06-14 | Boot spec creado en la **migración al COMANDO Canon (4C)**. TE-OS reestructurado de CORE/STRATEGY/REFERENCE/OPERATIONS/PROJECTS/AUTOMATION a las cuatro capas Context/Connections/Capabilities/Cadence. WAT renombrado area-based (AG_/WF_/TL_ · CORE/OPS/PROJ/MKT). Charter/OS-layer split: `CLAUDE.md` adelgazado a puntero, este spec absorbe la arquitectura. Historia preservada vía `git mv`; logs crudos intactos. Gap map + design archivados en `context/knowledge/`. |
+| M2 | 2026-06-20 | **Auto-miner de reuniones** (pure GitHub Actions). Nuevo WAT: `AG_OPS_MINER` + `WF_OPS_MINE` + `TL_OPS_MINER` + `TL_CORE_EMAIL`; rutina `RT-007`; machine store `cadence/meetings/`; trigger `transcripts/**.md`. **Amendment de gobierno (aprobada por Boris + Fanny):** el miner es el único proceso automatizado autorizado a crear tareas en Asana (live board, solo items high/med-confidence + completos, dedup por nombre) y a enviar recaps por email a participantes **internos**. Nunca escribe en `decision_log.md`. Nota de procedencia (COMANDO/TE, no "BOTH ventures") agregada al Charter y a §0. Fases: V1 manual (commit/`workflow_dispatch`); V2 webhook Read AI + audio. |
 
 ---
 

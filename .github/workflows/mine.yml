@@ -1,0 +1,108 @@
+name: mine-meeting
+
+# Trigger: commit a transcript under transcripts/**.md (the file is both trigger and archive),
+# or run manually (workflow_dispatch) for force-mine / backfill.
+on:
+  push:
+    paths:
+      - "transcripts/**.md"
+  workflow_dispatch:
+    inputs:
+      path:
+        description: "Path to the transcript (e.g. transcripts/2026-06-20-comando.md)"
+        required: true
+        type: string
+      force:
+        description: "Skip the quality gate (logged loudly)"
+        required: false
+        default: false
+        type: boolean
+      skip_asana:
+        description: "Do not push tasks to Asana"
+        required: false
+        default: false
+        type: boolean
+      skip_email:
+        description: "Do not send the recap email"
+        required: false
+        default: false
+        type: boolean
+
+# Binary outcome: any failed step => red X. No silent partials.
+permissions:
+  contents: write
+
+concurrency:
+  group: mine-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  mine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: pip install -r scripts/requirements.txt
+
+      - name: Resolve transcript path
+        id: resolve
+        env:
+          DISPATCH_PATH: ${{ github.event.inputs.path }}
+        run: |
+          set -euo pipefail
+          if [ -n "${DISPATCH_PATH:-}" ]; then
+            echo "path=$DISPATCH_PATH" >> "$GITHUB_OUTPUT"
+          else
+            # on:push — mine the transcripts added/changed in this push
+            CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} \
+              | grep -E '^transcripts/.*\.md$' | head -n1 || true)
+            if [ -z "$CHANGED" ]; then
+              echo "No transcript changed in this push; nothing to mine." >> "$GITHUB_STEP_SUMMARY"
+              echo "path=" >> "$GITHUB_OUTPUT"
+            else
+              echo "path=$CHANGED" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+
+      - name: Mine
+        id: mine
+        if: steps.resolve.outputs.path != ''
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          set -euo pipefail
+          python scripts/mine.py "${{ steps.resolve.outputs.path }}" \
+            ${{ github.event.inputs.force == 'true' && '--force' || '' }}
+
+      - name: Commit machine store
+        if: steps.resolve.outputs.path != ''
+        run: |
+          set -euo pipefail
+          git config user.name  "te-auto-miner[bot]"
+          git config user.email "te-auto-miner@users.noreply.github.com"
+          git add cadence/meetings/
+          if git diff --staged --quiet; then
+            echo "No machine-store changes to commit." >> "$GITHUB_STEP_SUMMARY"
+          else
+            git commit -m "[ops] mine: ${{ steps.mine.outputs.base }}"
+            git push
+          fi
+
+      - name: Push to Asana
+        if: steps.resolve.outputs.path != ''
+        env:
+          TE_ASANA_TOKEN: ${{ secrets.TE_ASANA_TOKEN }}
+          SKIP_ASANA: ${{ github.event.inputs.skip_asana == 'true' && '1' || '' }}
+        run: python scripts/asana_push.py "cadence/meetings/${{ steps.mine.outputs.base }}.json"
+
+      - name: Email recap
+        if: steps.resolve.outputs.path != ''
+        env:
+          TE_RESEND_API_KEY: ${{ secrets.TE_RESEND_API_KEY }}
+          SKIP_EMAIL: ${{ github.event.inputs.skip_email == 'true' && '1' || '' }}
+        run: python scripts/send_recap.py "cadence/meetings/${{ steps.mine.outputs.base }}.json"

@@ -20,9 +20,16 @@
 
 ## Quién puede crear tareas en Asana
 
-**Solo Fanny.** Ningún otro miembro del equipo crea tareas. Claude Code tampoco.
+**Solo Fanny** (humanos). Ningún otro miembro del equipo crea tareas. Claude Code en sesión tampoco.
 
 Flujo estándar: reunión → decisión → Boris hace commit del log → Fanny crea tarea en Asana.
+
+**Excepción automatizada (amendment M2, aprobada por Boris + Fanny):** el **auto-miner de
+reuniones** (`WF_OPS_MINE` / `AG_OPS_MINER`, ver `connections/TL_OPS_MINER.md`) crea tareas
+directamente en el board live desde action items minados — **solo** los completos
+(owner + deliverable + deadline) y con confidence ≥ medium, **dedup por nombre**. Es el único
+proceso automatizado autorizado a escribir en Asana. Fanny mantiene la curaduría del board
+(triage, reasignación, cierre).
 
 ## Quién actualiza el estado de tareas
 
@@ -52,7 +59,9 @@ El responsable de la tarea (owner) actualiza el estado. Fanny hace seguimiento.
 
 **Estado:** activo · configurado en `~/.claude/settings.json` (global)
 **Paquete:** `@roychri/mcp-server-asana` (community, PAT-based)
-**Modo:** read-only — Claude Code no crea ni modifica tareas
+**Modo:** read-only — Claude Code **en sesión** no crea ni modifica tareas (solo consulta). La
+escritura automatizada vive aparte, en la Action del miner (`TE_ASANA_TOKEN` con scope de
+escritura, no en el MCP) — ver `connections/TL_OPS_MINER.md`.
 
 ### IDs del workspace TE
 
