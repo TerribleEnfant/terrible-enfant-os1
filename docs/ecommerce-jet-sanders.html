@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Stack JET + Sanders — Análisis E-commerce BRA · Terrible Enfant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400..600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0a0a0a;
+    --ink-2:#3a3a3a;
+    --ink-3:#6e6e6e;
+    --paper:#f6f4ef;
+    --paper-2:#ffffff;
+    --line:#d8d4cb;
+    --line-2:#e7e3da;
+    --black:#000;
+    --maxw:980px;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--serif);font-optical-sizing:auto;
+    font-weight:400;line-height:1.55;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--ink);color:var(--paper)}
+
+  /* ---------- layout ---------- */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  section{padding:62px 0;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:0}
+
+  /* ---------- mono / labels ---------- */
+  .mono{font-family:var(--mono);font-weight:400}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
+  .num{font-family:var(--mono);font-size:12px;color:var(--ink-3);letter-spacing:.1em}
+  .topic{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);display:inline-block;padding:2px 9px;margin:34px 0 12px}
+  .topic.inline{margin:0 3px;padding:1px 7px;font-size:10px;vertical-align:middle}
+  .q{color:var(--ink-3);font-style:italic}
+
+  /* ---------- hero ---------- */
+  header.hero{background:var(--black);color:var(--paper);padding:0;border:0}
+  .hero-inner{max-width:var(--maxw);margin:0 auto;padding:96px 28px 72px}
+  .hero .kicker{color:#9a958a}
+  .hero h1{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(44px,9vw,104px);line-height:.94;letter-spacing:-.02em;
+    margin:.32em 0 .12em;
+  }
+  .hero h1 em{font-style:italic;font-weight:400}
+  .hero .tagline{font-style:italic;font-weight:300;font-size:clamp(17px,2.4vw,23px);color:#cfcabd;margin:0 0 40px;max-width:34ch}
+  .hero-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:22px;border-top:1px solid #2a2a2a;padding-top:26px}
+  .hero-meta dt{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#7d7a72;margin-bottom:6px}
+  .hero-meta dd{margin:0;font-family:var(--mono);font-size:13px;color:#efece4}
+
+  /* ---------- sticky nav ---------- */
+  nav.toc{position:sticky;top:0;z-index:20;background:rgba(246,244,239,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav.toc .wrap{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;padding:0 28px}
+  nav.toc .wrap::-webkit-scrollbar{display:none}
+  nav.toc a{
+    font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-3);
+    text-decoration:none;white-space:nowrap;padding:14px 14px;border-bottom:2px solid transparent;
+    transition:color .15s,border-color .15s;
+  }
+  nav.toc a:hover{color:var(--ink);border-color:var(--ink)}
+
+  /* ---------- headings ---------- */
+  h2{font-weight:340;font-size:clamp(28px,4.6vw,42px);line-height:1.04;letter-spacing:-.015em;margin:0 0 8px;display:flex;align-items:baseline;gap:16px}
+  h2 .h-num{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--ink);letter-spacing:0;flex:none;transform:translateY(-.35em)}
+  .lede{font-size:18px;color:var(--ink-2);max-width:64ch;margin:0 0 34px}
+  h3{font-weight:500;font-size:15px;font-family:var(--mono);letter-spacing:.02em;text-transform:none;margin:38px 0 14px;color:var(--ink)}
+
+  p{max-width:68ch}
+  strong{font-weight:600}
+  a.inlink{color:var(--ink);text-underline-offset:3px;text-decoration-thickness:1px}
+
+  /* ---------- TL;DR callout ---------- */
+  .tldr{font-size:19px;line-height:1.6;border-left:2px solid var(--ink);padding:4px 0 4px 26px;margin:0 0 26px;max-width:70ch}
+  .tldr.last{margin-bottom:0}
+
+  /* ---------- status bar / semáforo ---------- */
+  .sb{display:inline-flex;gap:3px;vertical-align:middle}
+  .sb i{width:13px;height:7px;background:var(--line);display:inline-block}
+  .sb.go i,.sb.warn i:nth-child(-n+2),.sb.block i:first-child{background:var(--ink)}
+  .status-pill{font-family:var(--mono);font-size:11px;letter-spacing:.04em;display:inline-flex;align-items:center;gap:9px;white-space:nowrap}
+  .legend{display:flex;flex-wrap:wrap;gap:26px;margin:0 0 30px;padding:16px 18px;border:1px solid var(--line);background:var(--paper-2)}
+  .legend .status-pill{color:var(--ink-2)}
+
+  /* ---------- tables ---------- */
+  .tblscroll{overflow-x:auto;margin:0 0 8px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  thead th{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:0 16px 10px 0;border-bottom:1px solid var(--ink);vertical-align:bottom}
+  tbody td{padding:13px 16px 13px 0;border-bottom:1px solid var(--line-2);vertical-align:top;line-height:1.4}
+  tbody tr:hover{background:rgba(0,0,0,.022)}
+  tbody td.tot{font-family:var(--mono);font-weight:600;border-top:1px solid var(--ink)}
+  td .who{font-family:var(--mono);font-size:12.5px}
+  .mononum{font-family:var(--mono);font-size:13.5px;white-space:nowrap}
+  .tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);padding:2px 7px;color:var(--ink-2);white-space:nowrap}
+
+  /* ---------- diagram frames ---------- */
+  .figure{background:var(--paper-2);border:1px solid var(--line);padding:30px 18px;margin:6px 0 14px;overflow-x:auto}
+  .figure .mermaid{display:flex;justify-content:center}
+  figcaption{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.04em;margin-top:10px}
+
+  /* ---------- scenario contrast cards ---------- */
+  .scen{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:8px 0 14px}
+  .scen .card{border:1px solid var(--line);background:var(--paper-2);padding:22px 22px 24px}
+  .scen .card .cap{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);display:flex;align-items:center;gap:10px;margin:0 0 14px}
+  .scen .card h4{font-family:var(--serif);font-weight:340;font-size:23px;letter-spacing:-.01em;margin:0 0 4px}
+  .scen .card .yr{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--line-2);font-size:14px}
+  .scen .card .yr:last-child{border-bottom:0}
+  .scen .card .yr b{font-family:var(--mono);font-weight:500;font-size:14px}
+  .neg{font-family:var(--mono)}
+  .scen .card .verdict{font-family:var(--mono);font-size:12px;letter-spacing:.02em;margin-top:14px;padding-top:13px;border-top:1px solid var(--ink);color:var(--ink-2)}
+
+  /* ---------- two-path platform blocks ---------- */
+  .paths{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:6px 0 8px}
+  .path{border:1px solid var(--line);background:var(--paper-2);padding:22px 22px 8px}
+  .path-head{font-family:var(--mono);font-size:12px;letter-spacing:.06em;display:flex;align-items:center;gap:12px;margin:0 0 12px;padding-bottom:9px;border-bottom:1px solid var(--ink)}
+  .path-head .dot{width:9px;height:9px;border-radius:50%;background:var(--ink);flex:none}
+  .path-head .dot.hollow{background:transparent;border:1.5px solid var(--ink)}
+  .path ul{list-style:none;padding:0;margin:0 0 16px}
+  .path li{padding:9px 0 9px 22px;border-bottom:1px solid var(--line-2);position:relative;font-size:14.5px;color:var(--ink-2);max-width:none}
+  .path li:last-child{border-bottom:0}
+  .path li.pro::before{content:"+";position:absolute;left:0;color:var(--ink);font-family:var(--mono);font-weight:600}
+  .path li.con::before{content:"–";position:absolute;left:2px;color:var(--ink-3);font-family:var(--mono);font-weight:600}
+
+  /* ---------- numbered list (banderas) ---------- */
+  ol.bs{list-style:none;counter-reset:bs;padding:0;margin:0}
+  ol.bs li{counter-increment:bs;position:relative;padding:0 0 22px 56px;max-width:74ch}
+  ol.bs li::before{content:counter(bs,decimal-leading-zero);position:absolute;left:0;top:2px;font-family:var(--mono);font-size:12px;color:var(--ink-3);border:1px solid var(--line);width:34px;height:34px;display:flex;align-items:center;justify-content:center}
+
+  /* ---------- callout box ---------- */
+  .note{border:1px solid var(--line);background:var(--paper-2);padding:16px 20px;margin:18px 0;font-size:15px;color:var(--ink-2);max-width:74ch}
+  .note .warnflag{margin-right:8px}
+  .warnflag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;border:1px solid var(--ink);padding:2px 7px;text-transform:uppercase;white-space:nowrap}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--black);color:#cfcabd;border:0}
+  footer .wrap{padding:54px 28px}
+  footer .tagline{font-family:var(--serif);font-style:italic;font-weight:300;font-size:26px;color:var(--paper);margin:0 0 22px}
+  footer .meta{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:#7d7a72;line-height:1.9}
+  footer a{color:#cfcabd}
+
+  @media(max-width:680px){
+    section{padding:46px 0}
+    .hero-inner{padding:72px 28px 54px}
+    .scen,.paths{grid-template-columns:1fr}
+    ol.bs li{padding-left:46px}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="kicker">E-commerce BRA · Análisis de propuesta · 22 jun 2026</div>
+    <h1>Stack<br /><em>JET + Sanders</em></h1>
+    <p class="tagline">Tres archivos, una decisión: sobre qué plataforma construir el canal D2C de Brasil — desde cero.</p>
+    <dl class="hero-meta">
+      <div><dt>Documento</dt><dd>jet-sanders-stack</dd></div>
+      <div><dt>Recibido</dt><dd>19 jun 2026</dd></div>
+      <div><dt>Owner</dt><dd>Boris · Hache · Nacho</dd></div>
+      <div><dt>Estado</dt><dd>Digest para decisión</dd></div>
+    </dl>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#tldr">00 Lectura</a>
+    <a href="#piezas">01 Las piezas</a>
+    <a href="#comparacion">02 Comparación</a>
+    <a href="#dre">03 El DRE</a>
+    <a href="#plataforma">04 Plataforma</a>
+    <a href="#banderas">05 Banderas rojas</a>
+    <a href="#pasos">06 Próximos pasos</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ===== 00 LECTURA ===== -->
+<section id="tldr">
+  <div class="wrap">
+    <h2><span class="h-num">00</span> Lectura ejecutiva — los 30 segundos</h2>
+
+    <p class="tldr"><strong>No es un replatform — es greenfield.</strong> TE no tiene tienda en vivo en Brasil. La "plataforma Nuvemshop" que figura en los docs era la <em>propuesta</em> de Lucas Godoy, nunca implementada. Así que no hay tienda que migrar ni inversión hundida: la decisión es limpia, sobre qué plataforma y con qué proveedor(es) construir el canal desde cero.</p>
+
+    <p class="tldr">El paquete propone <strong>construir el canal D2C sobre la plataforma de JET</strong>, con <strong>Sanders</strong> cubriendo medios, respaldado por un DRE que dice breakeven al ~mes 10 y 7% de margen del año 2 en adelante. En plata, el stack JET+Sanders es <strong>≈3× más barato</strong> que la vía Lucas Godoy ya archivada, sin diluir equity. Tres condiciones mandan sobre ese número:</p>
+
+    <div class="topic">#plataforma</div>
+    <p class="tldr">Elegir JET no abandona ninguna inversión (greenfield), pero JET es plataforma <strong>propietaria y cerrada</strong>: lo que queda en pie es la <strong>portabilidad futura</strong> — salir más adelante sí sería una migración. Pérdida de opcionalidad, no costo hundido hoy.</p>
+
+    <div class="topic">#margen</div>
+    <p class="tldr">El caso financiero vive o muere por un solo número: el <strong>margen bruto (CMV)</strong>. A 50% el canal apenas cierra; a 70% <strong>pierde los tres años</strong>. Validar el margen bruto real de TE en Brasil es el paso #1 — es agnóstico a la plataforma.</p>
+
+    <div class="topic">#diligencia</div>
+    <p class="tldr">Ni JET ni Sanders pasaron diligencia (no estaban en el shortlist del research de junio), y el DRE es <strong>sell-side</strong> — el escenario base se llama, optimista, "Terrible".</p>
+
+    <p class="tldr last"><strong>Recomendación de proceso</strong> <span class="sb warn" style="margin:0 8px"><i></i><i></i><i></i></span> no firmar nada. Antes: Hache valida el margen y corre el DRE propio · Boris elige la plataforma de construcción · Nacho revisa lock-in y datos · JET y Sanders entran a la misma diligencia que el shortlist.</p>
+  </div>
+</section>
+
+<!-- ===== 01 LAS PIEZAS ===== -->
+<section id="piezas">
+  <div class="wrap">
+    <h2><span class="h-num">01</span> Las tres piezas</h2>
+    <p class="lede">No es una propuesta: es un stack. Una plataforma (JET), una agencia de performance (Sanders) y un modelo financiero (DRE) que ya trae los costos de ambos embebidos.</p>
+
+    <h3>JET — plataforma + implementación</h3>
+    <p>JET Tecnologia em Comércio Eletrônico LTDA (São Paulo, Av. Paulista). Plataforma de e-commerce <strong>propietaria</strong> (SaaS), marketplaces vía Anymarket, módulo omnichannel propio (JET Omni) y hub de APIs (JET Hub).</p>
+
+    <div class="tblscroll">
+    <table>
+      <thead><tr><th>Setup (one-shot)</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td>Onboarding</td><td class="mononum">R$ 8.000</td></tr>
+        <tr><td>Layout Personalizado</td><td class="mononum">R$ 8.000</td></tr>
+        <tr><td>Treinamento Exclusivo</td><td class="mononum">R$ 4.000</td></tr>
+        <tr><td>Implementação JET Omni</td><td class="mononum">R$ 5.000</td></tr>
+        <tr><td>Implementação JET Hub</td><td class="mononum">R$ 3.000</td></tr>
+        <tr><td class="tot">Total</td><td class="tot mononum">R$ 28.000</td></tr>
+        <tr><td class="tot">Total con descuento</td><td class="tot mononum">R$ 22.400</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Parcelable en 6× sin interés. Prazo de implantación: <strong>90 días post-aprobación del layout</strong> (no desde la firma).</p>
+
+    <div class="tblscroll">
+    <table>
+      <thead><tr><th>Mensualidad</th><th>Fijo</th><th>Variable</th><th>Incluye</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Tecnología</strong></td><td class="mononum">R$ 2.000</td><td class="mononum">1,5% + 1,0% Hub<br />(≈ 2,5% s/ GMV)</td><td>Hosting SLA 99,9%, soporte 24/7, APIs, MultiCDN, 3 meses gratis de servicios profesionales</td></tr>
+        <tr><td><strong>Estratégico</strong></td><td class="mononum">R$ 6.000</td><td class="mononum">(mismo esquema)</td><td>Lo anterior + reuniones semanales + acompañamiento estratégico (metas, conversión, ticket medio, cohortes)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><strong>No incluye</strong> (costo extra / responsabilidad del cliente): cadastro de productos, producción de fotos/textos/videos, integraciones con sistemas de terceros (ej. ERP).</p>
+
+    <div class="note"><span class="warnflag">Nota greenfield</span> El "Pacote migração" de JET (importar productos, imágenes, redirects 301, base de clientes) presupone migrar desde una tienda existente. TE BRA no tiene una. Confirmar qué compra realmente ese alcance para una tienda nueva — ¿carga de catálogo desde planilla / desde ARG? — y si parte del setup es prescindible.</div>
+
+    <h3>Sanders — performance / paid media</h3>
+    <p>Agencia de marketing de performance (Google Ads, Meta/Instagram Ads, SEO, e-mail/CRM, B.I &amp; Google Analytics), 80+ clientes. Complementa a JET — cubre la capa de medios que JET explícitamente no toca.</p>
+    <div class="tblscroll">
+    <table>
+      <thead><tr><th>Verba (inversión en medios)</th><th>Fee de gestión</th></tr></thead>
+      <tbody>
+        <tr><td>Hasta R$ 50.000</td><td class="mononum"><strong>R$ 4.500/mes</strong></td></tr>
+        <tr><td>Hasta R$ 100.000</td><td class="mononum">R$ 8.000/mes</td></tr>
+        <tr><td>Más de R$ 100.000</td><td class="mononum">R$ 12.000 fijo</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Total propuesto: <strong>R$ 4.500/mes</strong> (tier de entrada). Contrato <strong>12 meses, sin multa rescisória</strong>. Validez de la propuesta: 30 días. <span class="q">Detalle menor de prolijidad: su documento se dirige a "Terrible Ele<strong>f</strong>ant".</span></p>
+  </div>
+</section>
+
+<!-- ===== 02 COMPARACIÓN ===== -->
+<section id="comparacion">
+  <div class="wrap">
+    <h2><span class="h-num">02</span> Comparación — JET+Sanders vs. Lucas Godoy</h2>
+    <p class="lede">Ambas son propuestas para construir desde cero: ninguna se implementó. Cifras de Lucas Godoy tomadas del cronograma (Service Agreement v17).</p>
+    <div class="tblscroll">
+    <table>
+      <thead><tr><th>Dimensión</th><th>Stack JET + Sanders</th><th>Lucas Godoy</th></tr></thead>
+      <tbody>
+        <tr><td>Plataforma de construcción</td><td>JET propia (SaaS cerrada)</td><td>Nuvemshop (la prevista originalmente)</td></tr>
+        <tr><td>Setup (one-shot)</td><td class="mononum">R$ 22.400</td><td class="mononum">R$ 61.200</td></tr>
+        <tr><td>Fijo mensual</td><td class="mononum"><strong>R$ 10.500</strong><br />(JET 6.000 + Sanders 4.500)</td><td class="mononum"><strong>R$ 36.390</strong><br />(Módulos III–VIII)</td></tr>
+        <tr><td>Variable s/ ventas</td><td class="mononum">≈ 2,5% s/ GMV</td><td class="mononum"><strong>15% / 14% / 12%</strong> s/ GMV</td></tr>
+        <tr><td>Equity</td><td>— (ninguno)</td><td><strong>3%</strong> en 4 tramos + Quotaholders' Agreement</td></tr>
+        <tr><td>Medios / performance</td><td>Cubierto por Sanders (+ verba aparte)</td><td>Incluido (piso R$ 5.600 + USD 2.000 verba)</td></tr>
+        <tr><td>SLA</td><td>24/7 vía ticket; WhatsApp horario comercial</td><td>8 h hábiles standard / 4 h urgente</td></tr>
+        <tr><td>Proveedores</td><td>Dos (coordina TE)</td><td>Uno (orchestration incluida)</td></tr>
+        <tr><td>Portabilidad futura</td><td><span class="status-pill"><span class="sb block"><i></i><i></i><i></i></span> Baja — plataforma cerrada</span></td><td><span class="status-pill"><span class="sb go"><i></i><i></i><i></i></span> Mayor — Nuvemshop estándar</span></td></tr>
+        <tr><td>Vetado vs. brief research</td><td>No</td><td>Es el contractor que el research buscaba reemplazar</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="margin-top:24px"><strong>Costo indicativo Año 1</strong> (aprox.; fijo + setup + variable estimado sobre ~R$ 1,3 M de GMV; <span class="q">no es apples-to-apples — los alcances difieren</span>): stack JET+Sanders ≈ <strong>R$ 180 k</strong> · Lucas Godoy ≈ <strong>R$ 558 k</strong> (excl. valor del 3% de equity).</p>
+    <p>El factor que domina la diferencia es el <strong>variable</strong>: 2,5% vs. 12-15% sobre GMV es, en sí mismo, una brecha de seis cifras anuales. Visto al revés: dado lo ajustado que el propio DRE muestra el año 1, la estructura barata del stack JET+Sanders es probablemente <strong>condición necesaria</strong> para que el canal cierre.</p>
+  </div>
+</section>
+
+<!-- ===== 03 EL DRE ===== -->
+<section id="dre">
+  <div class="wrap">
+    <h2><span class="h-num">03</span> El DRE bajo la lupa</h2>
+    <p class="lede">El modelo es el argumento de venta del paquete, y hay que leerlo como tal. La única diferencia estructural entre sus dos escenarios es el CMV (costo de mercadería vendida) — y eso lo decide todo.</p>
+
+    <div class="legend">
+      <span class="status-pill"><span class="sb warn"><i></i><i></i><i></i></span> Marginalmente rentable</span>
+      <span class="status-pill"><span class="sb block"><i></i><i></i><i></i></span> Pierde todos los años</span>
+    </div>
+
+    <div class="scen">
+      <div class="card">
+        <div class="cap"><span class="sb warn"><i></i><i></i><i></i></span> Escenario "Terrible"</div>
+        <h4>CMV 50%</h4>
+        <div class="yr"><span>Faturamento Año 1</span><b>R$ 1,32 M</b></div>
+        <div class="yr"><span>Resultado Año 1</span><b class="neg">−R$ 28,9 k</b></div>
+        <div class="yr"><span>Resultado Año 2</span><b>+R$ 262,9 k</b></div>
+        <div class="yr"><span>Resultado Año 3</span><b>+R$ 273,5 k</b></div>
+        <div class="verdict">Breakeven ~mes 10 (jun-2027) · margen 7% desde Año 2</div>
+      </div>
+      <div class="card">
+        <div class="cap"><span class="sb block"><i></i><i></i><i></i></span> Cenário 1</div>
+        <h4>CMV 70%</h4>
+        <div class="yr"><span>Faturamento Año 1</span><b>R$ 1,09 M</b></div>
+        <div class="yr"><span>Resultado Año 1</span><b class="neg">−R$ 202,3 k</b></div>
+        <div class="yr"><span>Resultado Año 2</span><b class="neg">−R$ 375,1 k</b></div>
+        <div class="yr"><span>Resultado Año 3</span><b class="neg">−R$ 406,5 k</b></div>
+        <div class="verdict">Breakeven: nunca · margen −9% a −19%</div>
+      </div>
+    </div>
+
+    <h3>Supuestos a estresar antes de creerle al modelo</h3>
+    <ol class="bs">
+      <li><strong>CMV — el pivote único.</strong> 50% → marginalmente rentable; 70% → pérdida los tres años. No es sensibilidad: es la decisión. Validar el margen bruto real de TE en Brasil (impuestos, importación, ICMS) es el paso #1.</li>
+      <li><strong>ROAS ramp 5 → 7,39.</strong> El modelo asume que cada real de medios devuelve de 5× a 7,4×, creciendo. Para lujo en lanzamiento es optimista; si arranca más abajo, el año 1 se hunde más.</li>
+      <li><strong>Ticket medio R$ 1.500 / R$ 1.200 y conversión 1%.</strong> Coherentes con lujo, pero son supuestos, no datos.</li>
+      <li><strong>El arranque en sep-2026 es revelador.</strong> El DRE no modela un launch en julio: arranca en septiembre — consistente con un build de ~90 días desde ahora (la ventana de JET). El full launch de julio 2026 no es alcanzable arrancando un build hoy con ninguna vía; hay que reconciliar la fecha.</li>
+      <li><strong>Los números no calzan con las propuestas.</strong> El DRE pone "Plataforma JET" en ~R$ 2.500/mes y "Estrategia Ecommerce" en R$ 8.000/mes (≠ los R$ 6.000 del tier estratégico). Reconciliar antes de tomarlos como verdad.</li>
+    </ol>
+    <div class="note"><span class="warnflag">Sesgo sell-side</span> El escenario base se llama "Terrible" (optimista) y el conservador pierde plata siempre. Correr el modelo con supuestos propios de Hache, no con los del vendedor.</div>
+  </div>
+</section>
+
+<!-- ===== 04 PLATAFORMA ===== -->
+<section id="plataforma">
+  <div class="wrap">
+    <h2><span class="h-num">04</span> La decisión de plataforma (greenfield)</h2>
+    <p class="lede">No hay tienda en vivo, así que no es "quedarse vs. irse": es elegir limpio sobre qué construir, sin costo de cambio presente.</p>
+
+    <figure class="figure">
+      <div class="mermaid">
+flowchart TD
+  G["CANAL D2C BRA · GREENFIELD<br/><b>sin tienda en vivo</b><br/><i>Nuvemshop = propuesta nunca implementada</i>"]
+  G --> N["Construir en NUVEMSHOP<br/>agencia vetada (Wave / Ideia Vertical)"]
+  G --> J["Construir en JET<br/>plataforma propia"]
+  N --> NP["+ portable &nbsp; + alineado a brand-bible<br/>– proveedor original caro / lento"]
+  J --> JP["+ barato &nbsp; + sin equity<br/>– lock-in &nbsp; – no vetado &nbsp; – dos proveedores"]
+  classDef weak fill:#f6f4ef,stroke:#0a0a0a,stroke-dasharray:4 3;
+  class NP,JP weak;
+      </div>
+      <figcaption>Fig. 1 — La bifurcación de plataforma. Ninguna vía pierde trabajo ya hecho; ninguna llega a un launch de julio si arranca ahora.</figcaption>
+    </figure>
+
+    <div class="paths">
+      <div class="path">
+        <div class="path-head"><span class="dot hollow"></span> Construir en Nuvemshop</div>
+        <ul>
+          <li class="pro">Plataforma originalmente prevista; alinea con la brand-bible</li>
+          <li class="pro">Shortlist ya vetado: Wave Commerce, Ideia Vertical (partners certificados)</li>
+          <li class="pro">Más portable a futuro (plataforma estándar)</li>
+          <li class="con">El proveedor original (Lucas Godoy) es caro, pide equity y es lento/hands-off</li>
+        </ul>
+      </div>
+      <div class="path">
+        <div class="path-head"><span class="dot"></span> Construir en JET</div>
+        <ul>
+          <li class="pro">Mucho más barato en fijo, setup y variable; sin equity</li>
+          <li class="con">Plataforma cerrada → lock-in / baja portabilidad futura</li>
+          <li class="con">Proveedor no vetado</li>
+          <li class="con">Dos proveedores (JET + Sanders) que TE debe coordinar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 BANDERAS ===== -->
+<section id="banderas">
+  <div class="wrap">
+    <h2><span class="h-num">05</span> Banderas rojas</h2>
+    <p class="lede">No son tareas. Son cosas a pesar antes de comprometer nada.</p>
+    <ol class="bs">
+      <li><strong>Elección de plataforma de largo plazo, no un replatform.</strong> No hay costo de migración hoy (greenfield), pero JET cerrada compromete la portabilidad futura. No elegir por precio solo.</li>
+      <li><strong>Margen bruto como único pivote.</strong> El caso entero depende de un número que todavía no validamos internamente.</li>
+      <li><strong>Proveedores sin diligencia.</strong> JET y Sanders no pasaron el filtro del research (referencias, SLA verificable, CNPJ, AI-awareness).</li>
+      <li><strong>DRE sell-side.</strong> Modelo armado por/para la venta; correr con supuestos propios.</li>
+      <li><strong>Timing de launch.</strong> El full launch de julio 2026 no es realista con un build desde cero arrancando ahora; el propio DRE asume septiembre. Reconciliar la fecha.</li>
+      <li><strong>Prolijidad.</strong> "Terrible Elefant" en el documento de Sanders. Menor, pero es señal.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== 06 PASOS ===== -->
+<section id="pasos">
+  <div class="wrap">
+    <h2><span class="h-num">06</span> Diligencia y próximos pasos</h2>
+    <p class="lede">Nada de esto compromete a TE; son pasos de evaluación, ruteados por dueño.</p>
+    <div class="tblscroll">
+    <table>
+      <thead><tr><th>Dueño</th><th>Acción</th></tr></thead>
+      <tbody>
+        <tr><td class="who"><strong>Hache</strong><br />comercial / financiero</td><td>Validar el <strong>margen bruto real BRA</strong> (¿CMV ~50% o ~70%?). Correr el DRE con supuestos propios. Decidir si la economía cierra.</td></tr>
+        <tr><td class="who"><strong>Boris</strong><br />plataforma / dirección</td><td>Elegir <strong>sobre qué plataforma construir</strong> (Nuvemshop con agencia vetada vs. JET), pesando ahorro vs. portabilidad futura. Reconciliar la fecha de launch con el build.</td></tr>
+        <tr><td class="who"><strong>Nacho</strong><br />legal</td><td>Revisar contratos JET y Sanders: <strong>lock-in</strong>, rescisión, propiedad y portabilidad de datos en plataforma cerrada, CNPJ de ambas entidades. (Sin equity acá — diferencia clave vs. Lucas Godoy.)</td></tr>
+        <tr><td class="who"><strong>Fanny</strong><br />Asana</td><td>Crear tareas de seguimiento <strong>solo si se avanza</strong> — su dominio. No antes.</td></tr>
+        <tr><td class="who"><strong>Comando</strong></td><td>Sin acción: no hay comunicación externa involucrada en esta etapa.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note"><span class="warnflag">Gobernanza</span> Este documento es análisis interno. No se firmó nada, no se contactó a ningún proveedor, no se creó ninguna tarea en Asana, no se tocó el log de decisiones.</div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="tagline">Elegance born from disobedience.</p>
+    <p class="meta">
+      Terrible Enfant — OS1 · E-commerce BRA · Análisis del paquete JET + Sanders + DRE (19 jun 2026)<br />
+      Generado por Claude Code · Cifras extraídas de los archivos fuente (PDF/XLSX) — verificar contra el original antes de decidir.<br />
+      Documento de evaluación interna. Borrador para revisión de Hache · Boris · Nacho — nada aprobado, nada firmado.<br />
+      <a href="#top">↑ volver arriba</a>
+    </p>
+  </div>
+</footer>
+
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    securityLevel: "strict",
+    fontFamily: "'IBM Plex Mono', monospace",
+    theme: "base",
+    themeVariables: {
+      background: "#ffffff",
+      primaryColor: "#ffffff",
+      primaryBorderColor: "#0a0a0a",
+      primaryTextColor: "#0a0a0a",
+      lineColor: "#0a0a0a",
+      tertiaryColor: "#f6f4ef",
+      clusterBkg: "#f6f4ef",
+      clusterBorder: "#0a0a0a",
+      fontSize: "13px"
+    },
+    flowchart: { curve: "linear", padding: 14, nodeSpacing: 38, rankSpacing: 46 },
+    themeCSS: `
+      .node rect, .node polygon { rx: 0; ry: 0; stroke-width: 1.2px; }
+      .node.weak rect { stroke-dasharray: 4 3; fill:#f6f4ef; }
+      .edgePath path { stroke-width: 1.2px; }
+      .nodeLabel b { font-weight:600; }
+      text { letter-spacing: .01em; }
+    `
+  });
+</script>
+
+</body>
+</html>
