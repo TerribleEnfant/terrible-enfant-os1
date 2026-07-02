@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Velo Studio · TE-OS</title>
+<style>
+:root{
+  --ink:#1b1b19; --muted:#6b6b66; --faint:#94948e;
+  --bg:#f4f3ef; --card:#ffffff; --line:#e4e3dd; --line-strong:#d4d3cb;
+  --accent:#1b1b19; --amber:#9a6a16; --amber-bg:#f6ecd6;
+  --maxw:840px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  font-size:16px; line-height:1.6; letter-spacing:.005em;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:32px 20px 96px}
+code,.mono{font-family:"SF Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+
+/* top nav */
+nav.set{
+  display:flex; gap:6px; flex-wrap:wrap; margin-bottom:24px;
+  font-size:13px;
+}
+nav.set a{
+  text-decoration:none; color:var(--muted); border:1px solid var(--line);
+  background:var(--card); padding:6px 12px; border-radius:999px; transition:.15s;
+}
+nav.set a:hover{color:var(--ink); border-color:var(--line-strong)}
+nav.set a.active{color:var(--card); background:var(--ink); border-color:var(--ink)}
+
+/* hero */
+.hero{margin:0 0 22px}
+.hero .id{
+  font-family:"SF Mono",ui-monospace,Menlo,monospace; font-size:12px;
+  letter-spacing:.06em; color:var(--faint); text-transform:none;
+}
+.hero h1{
+  font-size:30px; line-height:1.2; font-weight:600; margin:6px 0 14px;
+  letter-spacing:-.01em;
+}
+.meta{display:flex; gap:8px; flex-wrap:wrap; margin:0 0 16px}
+.pill{
+  font-size:12px; padding:3px 10px; border-radius:999px; border:1px solid var(--line);
+  background:var(--card); color:var(--muted);
+}
+.pill.status{background:var(--amber-bg); color:var(--amber); border-color:#e8d6ac}
+.pill b{color:var(--ink); font-weight:600}
+.lede{
+  background:var(--card); border:1px solid var(--line); border-left:3px solid var(--ink);
+  border-radius:10px; padding:16px 18px; color:var(--ink); font-size:14.5px;
+}
+.lede p{margin:.5em 0}
+.lede p:first-child{margin-top:0}
+.lede p:last-child{margin-bottom:0}
+.lede a{color:inherit}
+
+/* cards */
+section.card{
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:22px 24px; margin:14px 0; box-shadow:0 1px 2px rgba(0,0,0,.02);
+}
+section.card>h2:first-child{margin-top:0}
+h2{font-size:18px; font-weight:600; letter-spacing:-.005em; margin:0 0 12px; padding-bottom:0}
+h3{font-size:15px; font-weight:600; color:var(--ink); margin:20px 0 8px}
+p{margin:.7em 0}
+a{color:#3a5a8c}
+strong{font-weight:600}
+ul,ol{padding-left:22px; margin:.6em 0}
+li{margin:.3em 0}
+hr{display:none}
+
+/* blockquote callouts inside cards */
+blockquote{
+  margin:14px 0; padding:12px 16px; background:#faf9f5; border:1px solid var(--line);
+  border-left:3px solid var(--amber); border-radius:8px; color:var(--muted); font-size:14px;
+}
+blockquote p{margin:.4em 0}
+blockquote p:first-child{margin-top:0}
+blockquote p:last-child{margin-bottom:0}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:14px 0; border:1px solid var(--line); border-radius:10px}
+table{border-collapse:collapse; width:100%; font-size:13.5px; min-width:520px}
+th,td{text-align:left; padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+thead th{background:#f6f5f1; font-weight:600; color:var(--ink); border-bottom:1px solid var(--line-strong)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:#fcfcfa}
+code{background:#f1f0ec; padding:1px 5px; border-radius:5px; font-size:.86em}
+
+footer.foot{margin-top:30px; color:var(--faint); font-size:12px; text-align:center}
+@media(max-width:560px){ .hero h1{font-size:24px} .wrap{padding:20px 14px 64px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="set"><a href="2026-06-velo-studio-analysis.html" class="active">Análisis</a><a href="2026-06-ecommerce-3way-comparison.html">Comparativo 3-way</a><a href="2026-06-velo-studio-diligence.html">Diligencia</a></nav>
+<header class="hero">
+  <div class="id">PROP_VELO</div>
+  <h1>Velo Studio</h1>
+  <div class="meta"><span class="pill status"><b>status</b>&nbsp;draft</span><span class="pill"><b>owner</b>&nbsp;Boris</span><span class="pill"><b>updated</b>&nbsp;2026-06-25</span></div>
+  <div class="lede"><p>Digest de la <strong>tercera</strong> propuesta de e-commerce + paid media recibida para TE, de <strong>Velo Studio</strong>.
+Origen: propuesta web de una sola página (Netlify). Recibida el <strong>25/06/2026</strong>, marcada
+confidencial, validez <strong>30 días</strong>.
+Fecha: 2026-06-25 · Owner: Boris · Estado: <strong>digest para decisión — nada aprobado, nada firmado,
+nada comprometido.</strong></p>
+<p><strong>Contexto que enmarca el análisis:</strong> la propuesta es greenfield igual que las otras dos
+(<a href="2026-06-jet-sanders-stack-analysis.md">JET+Sanders</a>, <a href="2026-03-lucas-godoy-cronograma.md">Lucas Godoy</a>) —
+no hay tienda en vivo que migrar. La diferencia es que Velo <strong>abarca AR + BR</strong> y junta
+<strong>e-commerce + paid media en un solo proveedor</strong>, sobre <strong>Tienda Nube (= Nuvemshop)</strong>: la misma
+plataforma que el <a href="2026-06-research-ecommerce-agency-alternatives.md">research de junio</a>
+recomendó como path creíble.</p>
+<p><em><code>PROP_VELO</code> estrena un token liviano <code>PROP_</code> para cards de propuesta. Si se adopta, vale para
+retro-etiquetar las otras (<code>PROP_JET_SANDERS</code>, <code>PROP_LUCAS</code>).</em></p></div>
+  <hr />
+
+</header>
+<section class="card">
+<h2>Lectura ejecutiva</h2>
+<p>De las tres propuestas en la mesa, Velo es <strong>la más barata, la única que cubre los dos mercados
+(AR + BR) y la única que pone e-commerce + medios bajo un solo proveedor</strong> — encima sobre la
+plataforma que la diligencia ya señaló como buena (Tienda Nube/Nuvemshop). En estructura comercial
+es la más limpia que vimos: <strong>precio fijo en USD, 0% de variable sobre ventas, sin equity, la pauta
+aparte</strong>. Sobre el papel, marca casi todas las casillas que el research de junio pedía.</p>
+<p>El contrapeso es duro y va al centro: <strong>la propuesta no trae nada que permita verificar quién es
+Velo.</strong> Sin equipo nombrado, sin contacto, sin portfolio, sin casos, sin número de clientes, sin
+CNPJ ni identidad legal. Es exactamente el agujero de credibilidad que en la diligencia de junio
+hundió a Sanders — y <strong>sobre Velo todavía no se corrió ninguna diligencia.</strong> A eso se suma una
+señal de altitud: USD 600–900/mes para construir <strong>dos</strong> tiendas, CRM, creativos y paid media
+multicanal en <strong>dos</strong> mercados es sospechosamente barato; o el alcance real es más liviano de lo
+que el texto sugiere, o la capacidad del equipo es chica. No es contradicción descalificante, pero
+es la pregunta #1 de fit.</p>
+<p><strong>Recomendación de proceso (no de decisión):</strong> no firmar ni contactar todavía. Antes — (a) correr
+sobre Velo <strong>la misma diligencia de proveedor</strong> que tuvieron JET y Sanders (identidad/CNPJ, equipo,
+portfolio real, referencias de clientes hablados); (b) Hache cruza el precio fijo USD contra el
+DRE de BRA (sigue dependiendo del margen bruto, agnóstico al proveedor); (c) Boris pesa "plataforma
+vetada + un solo proveedor + dos mercados" contra "vendor sin credenciales verificables". El bajo
+precio es atractivo <strong>condicionado</strong> a que Velo pase la diligencia.</p>
+<hr />
+</section>
+<section class="card">
+<h2>Qué propone</h2>
+<p>Tagline: <strong>"Estrategia · Pauta · Tienda · CRM"</strong>, para TE, en <strong>AR y BR en paralelo</strong>.</p>
+<p><strong>Mercado AR</strong>
+- <strong>Kick-off</strong> — alineación estratégica y definición de prioridades.
+- <strong>Optimización web</strong> — dos caminos: (A) auditoría del sitio actual (tráfico, conversión,
+  técnico) <strong>o</strong> (B) migración a <strong>Tienda Nube</strong>.
+- <strong>CRM &amp; audiencias</strong> — análisis de compradores, segmentación, reactivación.
+- <strong>Paid media por fases</strong> — Fase 1 Meta Ads → Fase 2 TikTok Ads.</p>
+<p><strong>Mercado BR</strong>
+- <strong>Kick-off + mockup</strong> — presentación de tienda específica para el mercado.
+- <strong>Diseño e implementación de tienda</strong> — ciclos de revisión de 2 semanas.
+- <strong>Decisión de estructura de cuentas</strong> — una cuenta bilingüe vs. cuentas locales separadas.
+- <strong>Business Manager &amp; medición</strong> — pixel, eventos de conversión, estrategia inicial a 3 meses.
+- <strong>Estrategia de comunicación</strong> — calendario de contenido <strong>adaptado</strong> (no traducido).
+- <strong>Lanzamiento + optimización continua</strong> — activación de campañas y ajuste mensual.</p>
+<p><strong>Plataforma:</strong> Tienda Nube (primaria); <strong>Wix</strong> como alternativa para BR según necesidad de
+customización. <strong>Canales:</strong> Meta Ads, TikTok Ads, Google Ads (solo en plan Full).</p>
+<p><strong>Metodología:</strong> sprints con revisiones quincenales o mensuales; comunicación directa
+(WhatsApp/Slack) + reportes mensuales; revisión de estrategia según resultados. Lema: <strong>"precio
+fijo, sin variables ni letra chica."</strong> Proceso de arranque: confirmación → contrato/factura →
+kickoff dentro de <strong>48 h</strong>.</p>
+<p><strong>KPIs declarados:</strong> ROAS, conversión, tráfico/rebote, performance por segmento. <strong>Garantías:</strong>
+ninguna explícita — el enfoque es data-driven y optimización continua, no resultado garantizado.</p>
+<hr />
+</section>
+<section class="card">
+<h2>Precios y condiciones</h2>
+<p><strong>Desarrollo (pago único, no mensual):</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Alcance</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Por mercado, haciendo AR + BR</td>
+<td><strong>USD 750</strong></td>
+</tr>
+<tr>
+<td>Mercado único</td>
+<td><strong>USD 850</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Abierto — ambigüedad de redacción:</strong> no queda claro si "USD 750 por mercado" significa
+750 × 2 = <strong>USD 1.500</strong> por los dos, o <strong>USD 750 total</strong> por el combo. Confirmar antes de comparar.</p>
+</blockquote>
+<p><strong>Planes mensuales de gestión:</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Plan</th>
+<th>1 país</th>
+<th>2 países (c/u)</th>
+<th>Incluye</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Esencial</strong></td>
+<td>USD 700/mes</td>
+<td><strong>USD 600/mes</strong></td>
+<td>Gestión Meta Ads, optimización semanal, diseño de creativos, asesoría comercial, email marketing, reporte mensual (inversión, ventas, ROAS)</td>
+</tr>
+<tr>
+<td><strong>Full</strong></td>
+<td>USD 900/mes</td>
+<td><strong>USD 850/mes</strong></td>
+<td>Todo lo de Esencial + Google Ads (search, display, shopping)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Estructura comercial — lo distintivo:</strong>
+- <strong>0% variable sobre ventas.</strong> No hay take rate ni comisión sobre GMV (vs. ~2,5% JET, 12–15% Lucas Godoy).
+- <strong>Sin equity</strong> (vs. 3% de Lucas Godoy).
+- <strong>Precio en USD</strong> — no en R$ ni ARS.
+- <strong>La pauta (inversión en medios) NO está incluida</strong> — es presupuesto aparte que maneja el cliente
+  directamente. (Igual que la <em>verba</em> de Sanders; a diferencia de Lucas Godoy, que incluía
+  ~USD 2.000 de verba en el módulo de medios.)</p>
+<blockquote>
+<p>Indicativo a 2 países, plan Full: <strong>USD 850 × 2 = USD 1.700/mes</strong> de gestión + desarrollo one-shot.
+Es de otro orden de magnitud que los R$ 10.500/mes del stack JET+Sanders o los R$ 36.390/mes de
+Lucas Godoy. La normalización fina de moneda va en el <a href="2026-06-ecommerce-3way-comparison.html">comparativo</a>.</p>
+</blockquote>
+<hr />
+</section>
+<section class="card">
+<h2>Lo que lo hace distinto</h2>
+<ol>
+<li><strong>Un solo proveedor para todo el stack.</strong> E-commerce + CRM + paid media, sin que TE tenga que
+   coordinar dos contratistas (como sí exige JET+Sanders). Menos superficie de orquestación.</li>
+<li><strong>Cubre AR además de BR.</strong> Las otras dos propuestas son BR-only. Velo trata ARG y Brasil como un
+   solo proyecto en paralelo — relevante si se quiere ordenar el canal argentino a la vez.</li>
+<li><strong>Plataforma alineada con la diligencia.</strong> Tienda Nube = Nuvemshop, el path que el research de
+   junio marcó como creíble y portable. No es plataforma cerrada (vs. JET): la portabilidad futura
+   queda alta.</li>
+<li><strong>Estructura comercial limpia.</strong> Precio fijo USD, 0% variable, sin equity, sin letra chica. Dado
+   lo ajustado que el propio DRE de BRA muestra el año 1, una estructura de costos baja juega a
+   favor del caso financiero.</li>
+<li><strong>Exposición a USD (doble filo).</strong> Para un operador con base en ARG, facturar en USD da
+   estabilidad frente a la inflación local; para el canal BR, mete riesgo FX (USD/R$) sobre un costo
+   que los competidores cotizan en reales.</li>
+</ol>
+<hr />
+</section>
+<section class="card">
+<h2>Banderas rojas / lo que falta</h2>
+<ol>
+<li><strong>Cero credenciales verificables.</strong> Sin equipo nombrado, sin contacto, sin portfolio, sin casos,
+   sin número de clientes, sin CNPJ ni identidad legal. Es <strong>el mismo agujero que hundió a Sanders</strong>
+   en la diligencia de junio — y acá es más grave: Sanders al menos <em>afirmaba</em> 80+ clientes y
+   docentes en FIAP. Velo no afirma nada comprobable.</li>
+<li><strong>Sin diligencia corrida.</strong> A diferencia de JET y Sanders (deep research del 22 jun), sobre Velo
+   <strong>no se verificó nada todavía</strong>. La propuesta entra como claim, no como hecho.</li>
+<li><strong>Sin fit de moda/lujo demostrado.</strong> No hay un solo caso de fashion ni de DTC de lujo. Para una
+   marca "luxury punk", el ajuste vertical está sin evidencia.</li>
+<li><strong>Altitud / profundidad de alcance.</strong> USD 600–900/mes para dos mercados, dos builds, CRM,
+   creativos y paid media multicanal es muy barato. Pregunta abierta: ¿el alcance real es más
+   liviano de lo que el texto promete, o es un equipo chico tomando una cuenta grande? Es el failure
+   mode que el research de junio puso como diligencia obligatoria ("equipo dedicado nombrado,
+   SLA, 2 referencias").</li>
+<li><strong>Sin garantías ni SLA de respuesta.</strong> El enfoque es razonable (data-driven, no promete
+   resultados), pero tampoco hay compromiso de tiempos de respuesta — justo el dolor por el que se
+   está reemplazando a Lucas Godoy (lento/hands-off).</li>
+<li><strong>Ambigüedad en el precio de desarrollo</strong> (750 vs. 850, "por mercado" vs. total) — ver tabla.</li>
+<li><strong>Validez 30 días</strong> — la ventana de decisión es acotada; no presiona a firmar, pero sí a
+   resolver la diligencia rápido si interesa.</li>
+</ol>
+<hr />
+</section>
+<section class="card">
+<h2>Timing</h2>
+<p>El plan es de <strong>12 semanas con AR y BR en paralelo</strong>. Aun arrancando ya, 12 semanas desde fines de
+junio caen a mediados de septiembre — <strong>no alcanza el full launch de julio 2026</strong> de la brand-bible.
+Es la <strong>misma conclusión</strong> a la que llegó el DRE de JET (que modela arranque en septiembre, no
+julio): con cualquier build desde cero arrancando ahora, la fecha de julio no es realista.
+<strong>Reconciliar la fecha de launch con el build elegido</strong>, sea cual sea el proveedor.</p>
+<hr />
+</section>
+<section class="card">
+<h2>Diligencia y próximos pasos (ruteo por dueño)</h2>
+<p>Nada de esto compromete a TE; son pasos de evaluación. Reusar las <em>diligence questions</em> del
+<a href="2026-06-research-ecommerce-agency-alternatives.md">research de junio</a> y la grilla del
+<a href="2026-06-ecommerce-3way-comparison.html">comparativo 3-way</a>.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Dueño</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Boris</strong> (plataforma/dirección)</td>
+<td>Decidir si Velo entra a diligencia formal. Pesar "plataforma vetada + un solo proveedor + AR+BR + barato" contra "vendor sin credenciales verificables". Reconciliar la fecha de launch con el build de 12 semanas.</td>
+</tr>
+<tr>
+<td><strong>Diligencia de proveedor</strong> (correr antes de avanzar)</td>
+<td>Verificar <strong>identidad/CNPJ</strong>, equipo dedicado nombrado, <strong>portfolio real y casos de moda/DTC</strong>, número de clientes, y pedir <strong>2 referencias de clientes hablados</strong>. Mismo pase que tuvieron JET y Sanders. <em>(Ofrecible como deep research; no se corrió en este doc.)</em></td>
+</tr>
+<tr>
+<td><strong>Hache</strong> (comercial/financiero)</td>
+<td>Cruzar el precio fijo USD contra el DRE de BRA; confirmar el supuesto FX (USD/R$ y USD/ARS) y la exposición cambiaria. El caso sigue dependiendo del <strong>margen bruto real</strong> — paso agnóstico al proveedor.</td>
+</tr>
+<tr>
+<td><strong>Nacho</strong> (legal)</td>
+<td>Si Velo avanza: revisar identidad legal/CNPJ, términos de contrato, propiedad y portabilidad de datos. (Sin equity acá — diferencia clave vs. Lucas Godoy.)</td>
+</tr>
+<tr>
+<td><strong>Fanny</strong> (Asana)</td>
+<td>Crear tareas de seguimiento <strong>solo si se avanza</strong> — su dominio. No antes.</td>
+</tr>
+<tr>
+<td><strong>Comando</strong></td>
+<td>Sin acción: no hay comunicación externa en esta etapa.</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>Recordatorio de gobernanza: este documento es análisis interno. No se firmó nada, no se contactó
+a Velo, no se tocó <code>decision_log.md</code>, no se crearon tareas en Asana. La validez de 30 días corre
+desde el envío de la propuesta, no obliga a TE a nada.</p>
+</blockquote>
+</section>
+<footer class="foot">Terrible Enfant · TE-OS · documento interno — nada aprobado, nada firmado</footer>
+</div>
+</body>
+</html>
