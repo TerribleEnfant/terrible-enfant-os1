@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Terrible Enfant — The Lever · Comms Budget · BRA</title>
+
+<style>
+/* ============================================================================
+   TERRIBLE ENFANT · THE LEVER — extracto standalone de la sección 03 del
+   workshop board `comms-reset.html`. Mismo sistema visual sancionado
+   (System B minimal-cards + editorial, tema dark único).
+   Fonts self-hosted-free → system stacks que evocan Fraunces/Inter/Plex.
+   Composición del reparto en escala monocroma; lime = acento interactivo.
+   ============================================================================ */
+:root{
+  --page:#0a0a0a;        /* ground negro */
+  --ground:#ffffff;      /* cards */
+  --ink:#0d0d0d;         /* texto / hairlines */
+  --gray:#6b6b6b;        /* secundario / labels */
+  --soft:#e2e2e2;        /* hairlines suaves */
+  --faint:#f2f1ee;       /* fills sutiles (cálido) */
+  --mint:#aeebc4;        /* ok / on-track */
+  --lime:#e7ff5a;        /* abierto / atención / interactivo */
+  --coral:#ff7a66;       /* crítico / costo */
+  /* tonos sobre negro */
+  --paper:#f6f4ef; --paper-mid:#cfcabd; --paper-lo:#9d968a; --paper-dim:#726c62;
+  --hairline-dk:#232323;
+  /* type */
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,"Cascadia Code",monospace;
+  --maxw:1200px;
+  --radius:20px; --radius-2:13px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--page);color:var(--paper);
+  font-family:var(--sans);line-height:1.5;letter-spacing:-.011em;
+  font-feature-settings:"tnum" 1;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  padding-bottom:70px;
+}
+::selection{background:var(--lime);color:#0d0d0d}
+.shell{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper-lo)}
+.lbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+.tnum{font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--lime);outline-offset:2px;border-radius:5px}
+
+/* ============================ MASTHEAD + HERO ============================ */
+.masthead{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0 18px;border-bottom:1px solid var(--hairline-dk)}
+.mh-brand{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper)}
+.monogram{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid var(--paper-lo);border-radius:7px;font-family:var(--serif);font-size:15px;color:var(--paper)}
+.mh-meta{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper-lo);text-align:right}
+.mh-meta .live{color:var(--mint)}
+.mh-meta a{color:var(--paper-lo);text-decoration:none;border-bottom:1px solid var(--hairline-dk)}
+.mh-meta a:hover{color:var(--lime);border-color:var(--lime)}
+
+.hero{padding:46px 0 30px;border-bottom:1px solid var(--hairline-dk)}
+.hero h1{
+  font-family:var(--serif);font-weight:400;font-size:clamp(34px,5.4vw,62px);line-height:1.0;
+  letter-spacing:-.02em;margin:14px 0 0;color:var(--paper);text-wrap:balance;max-width:20ch;
+}
+.hero h1 em{font-style:italic;color:var(--paper-mid)}
+.hero .sub{font-size:15px;line-height:1.55;color:var(--paper-mid);margin:18px 0 0;max-width:66ch}
+.hero .sub b{color:var(--paper);font-weight:600}
+
+/* ============================ SECTION HEAD ============================ */
+.sec{padding:34px 0 4px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.sec-head .snum{font-family:var(--serif);font-size:26px;color:var(--paper-lo);line-height:1}
+.sec-head h2{font-size:19px;font-weight:600;letter-spacing:-.015em;margin:0;color:var(--paper)}
+.sec-head .sh-es{font-family:var(--mono);font-size:11px;color:var(--paper-dim);letter-spacing:.02em}
+
+/* ============================ BUDGET LEVER ============================ */
+.lever{background:var(--ground);color:var(--ink);border-radius:var(--radius);padding:24px 26px 26px;display:grid;grid-template-columns:340px 1fr;gap:30px}
+.lever-l{display:flex;flex-direction:column;gap:22px}
+.presets .lbl{margin-bottom:9px}
+.preset-btns{display:flex;gap:7px;flex-wrap:wrap}
+.pbtn{font-family:var(--mono);font-size:11px;letter-spacing:.02em;border:1.3px solid var(--ink);background:var(--ground);color:var(--ink);border-radius:999px;padding:7px 13px;cursor:pointer;transition:background .16s,color .16s}
+.pbtn:hover{background:var(--faint)}
+.pbtn[aria-pressed="true"]{background:var(--ink);color:#fff}
+.preset-note{font-size:12px;line-height:1.5;color:var(--gray);margin:11px 0 0;min-height:34px}
+
+.total{border-top:1.5px solid var(--ink);padding-top:16px}
+.total .t-top{display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
+.total .t-val{font-family:var(--serif);font-size:44px;line-height:.9;letter-spacing:-.02em}
+.total .t-val small{font-family:var(--mono);font-size:13px;color:var(--gray);letter-spacing:0}
+.tent{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#8a6d00;background:var(--lime);border-radius:999px;padding:3px 8px;vertical-align:middle}
+.range{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:999px;background:var(--soft);outline-offset:4px;margin:16px 0 4px;cursor:pointer}
+.range::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--ink);border:3px solid var(--ground);box-shadow:0 0 0 1.5px var(--ink);cursor:pointer}
+.range::-moz-range-thumb{width:20px;height:20px;border:3px solid var(--ground);border-radius:50%;background:var(--ink);box-shadow:0 0 0 1.5px var(--ink);cursor:pointer}
+.range.mini{height:5px;margin:0}
+.range.mini::-webkit-slider-thumb{width:15px;height:15px;background:var(--lime);box-shadow:0 0 0 1.3px var(--ink)}
+.range.mini::-moz-range-thumb{width:15px;height:15px;background:var(--lime);box-shadow:0 0 0 1.3px var(--ink)}
+.t-scale{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gray)}
+
+.gauges{display:flex;flex-direction:column;gap:14px;border-top:1.5px solid var(--ink);padding-top:16px}
+.gauge .g-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:7px}
+.gauge .g-name{font-size:12.5px;font-weight:600}
+.gauge .g-name span{font-family:var(--mono);font-size:9.5px;color:var(--gray);font-weight:400;letter-spacing:.04em;display:block;margin-top:1px}
+.gauge .g-tier{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase}
+.meter{height:9px;border-radius:999px;background:var(--faint);overflow:hidden}
+.meter i{display:block;height:100%;border-radius:999px;transition:width .35s cubic-bezier(.22,1,.36,1)}
+.meter.pos i{background:var(--mint)} .meter.cost i{background:var(--coral)}
+
+/* right column: composition + controls */
+.lever-r{display:flex;flex-direction:column;gap:18px}
+.compbar{display:flex;height:56px;border-radius:11px;overflow:hidden;background:var(--faint);gap:2px;padding:0}
+.seg{height:100%;display:flex;align-items:center;justify-content:center;transition:width .35s cubic-bezier(.22,1,.36,1);position:relative;min-width:0}
+.seg span{font-family:var(--mono);font-size:11px;font-weight:600;color:#fff;letter-spacing:.02em;mix-blend-mode:difference;white-space:nowrap}
+.ctrls{display:flex;flex-direction:column;gap:2px}
+.ctrl{display:grid;grid-template-columns:200px 1fr 118px;align-items:center;gap:16px;padding:11px 0;border-bottom:1px solid var(--soft)}
+.ctrl:last-child{border-bottom:0}
+.ctrl .c-id{display:flex;align-items:center;gap:10px;min-width:0}
+.ctrl .sw{flex:none;width:13px;height:13px;border-radius:4px}
+.ctrl .c-nm{font-size:12.5px;font-weight:600;line-height:1.15}
+.ctrl .c-nm span{display:block;font-family:var(--mono);font-size:9.5px;color:var(--gray);font-weight:400;margin-top:1px}
+.ctrl .c-out{text-align:right;font-variant-numeric:tabular-nums}
+.ctrl .c-pct{font-family:var(--serif);font-size:21px;line-height:1}
+.ctrl .c-usd{font-family:var(--mono);font-size:11px;color:var(--gray);margin-top:2px}
+.lever-foot{grid-column:1 / -1;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1.5px solid var(--ink);padding-top:14px;margin-top:2px}
+.lever-foot .lf-note{font-size:11.5px;color:var(--gray);max-width:60ch;line-height:1.45}
+.resetbtn{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;border:1.3px solid var(--soft);background:var(--ground);color:var(--gray);border-radius:999px;padding:7px 13px;cursor:pointer}
+.resetbtn:hover{border-color:var(--ink);color:var(--ink)}
+
+/* ============================ FOOTER ============================ */
+footer{max-width:var(--maxw);margin:44px auto 0;padding:0 28px}
+.disclaimer{font-family:var(--mono);font-size:10.5px;line-height:1.7;color:var(--paper-dim);border-top:1px solid var(--hairline-dk);padding-top:16px}
+.disclaimer b{color:var(--paper-lo)}
+.disclaimer a{color:var(--paper-lo)}
+.sig{text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim);margin-top:20px}
+
+/* ============================ RESPONSIVE ============================ */
+@media(max-width:920px){
+  .lever{grid-template-columns:1fr;gap:24px}
+  .ctrl{grid-template-columns:150px 1fr 96px;gap:12px}
+}
+@media(max-width:680px){
+  .ctrl{grid-template-columns:1fr auto;grid-template-areas:"id out" "sl sl";row-gap:9px}
+  .ctrl .c-id{grid-area:id} .ctrl .c-out{grid-area:out} .ctrl .range{grid-area:sl}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{
+  body{background:#fff;color:#000;padding:0}
+  .lever{border:1px solid #ccc}
+  .hero h1,.sec-head h2{color:#000}
+}
+</style>
+</head>
+<body data-palette="#aeebc4,#e7ff5a,#ff7a66">
+
+<!-- ===================== MASTHEAD ===================== -->
+<div class="shell">
+  <div class="masthead">
+    <div class="mh-brand"><span class="monogram">TE</span> Terrible Enfant</div>
+    <div class="mh-meta">Comms &amp; Marketing Reset · BRA<br><span class="live">● Workshop</span> · <a href="comms-reset.html">board completo ↗</a></div>
+  </div>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<div class="shell">
+  <header class="hero">
+    <div class="kicker">Sección 03 · aislada del board · São Paulo Launch</div>
+    <h1>The <em>lever</em></h1>
+    <p class="sub">Una mesa para <b>repartir la inversión</b> en comunicación. Movés el total, elegís una estrategia de arranque y arrastrás los pesos por bucket — el reparto se <b>re-normaliza a 100%</b> y los montos se recalculan solos. <b>Presupuesto a descubrir en el workshop:</b> todos los números son de trabajo.</p>
+  </header>
+</div>
+
+<div class="shell">
+
+  <!-- ===================== 03 · THE LEVER ===================== -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="snum">03</span>
+      <h2>The lever</h2>
+      <span class="sh-es">— cómo repartir la inversión en comunicación · <b style="color:var(--paper-lo)">presupuesto a descubrir en el workshop</b></span>
+    </div>
+
+    <div class="lever">
+      <!-- LEFT: presets, total, gauges -->
+      <div class="lever-l">
+        <div class="presets">
+          <div class="lbl">Strategy · estrategia</div>
+          <div class="preset-btns" id="presets" role="group" aria-label="Estrategia de distribución"></div>
+          <p class="preset-note" id="presetNote"></p>
+        </div>
+
+        <div class="total">
+          <div class="lbl">Total budget · presupuesto <span class="tent">tentativo</span></div>
+          <div class="t-top">
+            <div class="t-val"><small>$</small><span id="totalVal" class="tnum">10,000</span></div>
+          </div>
+          <input type="range" class="range" id="totalRange" min="2000" max="30000" step="500" value="10000" aria-label="Presupuesto total tentativo (USD)" />
+          <div class="t-scale"><span>Seed · $2k</span><span>Scale · $30k</span></div>
+        </div>
+
+        <div class="gauges">
+          <div class="lbl">A más presupuesto → más resultados esperados · y más costo de sostenerlo</div>
+          <div class="gauge">
+            <div class="g-top"><div class="g-name">Expected results<span>alcance · ritmo · ambición</span></div><div class="g-tier" id="tierResults" style="color:#3fb27a">Momentum</div></div>
+            <div class="meter pos"><i id="meterResults" style="width:40%"></i></div>
+          </div>
+          <div class="gauge">
+            <div class="g-top"><div class="g-name">Cost to sustain<span>carga mensual a bancar</span></div><div class="g-tier" id="tierCost" style="color:#e0503a">Media</div></div>
+            <div class="meter cost"><i id="meterCost" style="width:40%"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: composition + controls -->
+      <div class="lever-r">
+        <div class="lbl">Distribution · reparto (arrastrá los sliders — el % se re-normaliza a 100)</div>
+        <div class="compbar" id="compbar" aria-hidden="true"></div>
+        <div class="ctrls" id="ctrls"></div>
+      </div>
+
+      <div class="lever-foot">
+        <p class="lf-note"><b style="color:#2b2b2b">Los pesos son un punto de partida, no una recomendación cerrada.</b> El default "organic-first" sigue la estrategia BRA declarada (comunidad antes que alcance pago). Todos los montos son de trabajo — se cierran en el workshop.</p>
+        <button class="resetbtn" id="resetBtn">↺ Reset preset</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="disclaimer">
+    <b>Fuente:</b> extracto de la sección 03 de <a href="comms-reset.html">Comms &amp; Marketing Reset · BRA</a> (repo TE-OS, act. 2026-07). ·
+    <b>Nota:</b> montos de presupuesto = exploratorios, no comprometen gasto (gate: Hache). ·
+    <b>Idioma:</b> labels EN · rationale ES (partner BRA, §14 boot spec).
+  </div>
+  <div class="sig">Terrible Enfant · built on COMANDO Canon</div>
+</footer>
+
+<script>
+/* ============================================================================
+   THE LEVER — distribuidor de presupuesto interactivo
+   Pesos crudos por bucket → % = w/Σw (siempre suma 100) → $ = %·total.
+   Total y montos: TENTATIVOS. Gauges acoplan resultados y costo al total.
+   Composición monocroma (no categórica) → colores semánticos = solo estado.
+   ============================================================================ */
+const BUCKETS = [
+  {id:"organic", en:"Organic & Content", es:"orgánico y contenido", sh:"#0d0d0d"},
+  {id:"paid",    en:"Paid Media",        es:"medios pagos",          sh:"#3d3d3d"},
+  {id:"pr",      en:"PR & Seeding",      es:"prensa y seeding",      sh:"#666666"},
+  {id:"collabs", en:"Collabs",           es:"colaboraciones",        sh:"#909090"},
+  {id:"retail",  en:"Retail & Events",   es:"retail y eventos",      sh:"#b6b6b6"},
+  {id:"tools",   en:"Tools, CRM & Data", es:"herramientas · CRM · medición", sh:"#d8d8d8"}
+];
+const PRESETS = {
+  organic:  {label:"Organic-first", w:{organic:35,paid:15,pr:15,collabs:20,retail:10,tools:5},
+             note:"Alineado a la estrategia BRA declarada: comunidad antes que alcance pago. El orgánico y las collabs cargan el peso."},
+  balanced: {label:"Balanced",      w:{organic:25,paid:25,pr:15,collabs:15,retail:12,tools:8},
+             note:"Reparto parejo. Se prueba paid sin abandonar el orgánico; retención empieza a recibir aire."},
+  paid:     {label:"Paid-heavy",    w:{organic:15,paid:40,pr:12,collabs:13,retail:12,tools:8},
+             note:"Empuja performance/BOFU para resultado rápido. Más alcance comprado — y más costo de sostener el ritmo."}
+};
+const PRESET_ORDER = ["organic","balanced","paid"];
+const TIERS_R = [[0,"Seed","#8a8a8a"],[.25,"Presence","#b8b400"],[.5,"Momentum","#3fb27a"],[.75,"Scale","#3fb27a"]];
+const TIERS_C = [[0,"Baja","#3fb27a"],[.25,"Media","#b8b400"],[.5,"Alta","#e0503a"],[.75,"Exigente","#e0503a"]];
+
+let state = {total:10000, w:{...PRESETS.organic.w}, preset:"organic", lastPreset:"organic"};
+const MIN=2000, MAX=30000;
+
+const $ = s => document.querySelector(s);
+function money(n){ return "~$" + (Math.round(n/50)*50).toLocaleString("en-US"); }
+function tierFor(t, table){ let r=table[0]; for(const row of table){ if(t>=row[0]) r=row; } return r; }
+
+/* ---- build preset buttons ---- */
+const presetsWrap = $("#presets");
+presetsWrap.innerHTML = PRESET_ORDER.map(k =>
+  `<button class="pbtn" data-preset="${k}" aria-pressed="${k===state.preset}">${PRESETS[k].label}</button>`).join("");
+presetsWrap.querySelectorAll(".pbtn").forEach(b=>{
+  b.addEventListener("click",()=>applyPreset(b.dataset.preset));
+});
+
+/* ---- build controls ---- */
+const ctrlsWrap = $("#ctrls");
+ctrlsWrap.innerHTML = BUCKETS.map(b=>`
+  <div class="ctrl" data-id="${b.id}">
+    <div class="c-id"><span class="sw" style="background:${b.sh}"></span>
+      <div class="c-nm">${b.en}<span>${b.es}</span></div></div>
+    <input type="range" class="range mini" min="0" max="60" step="1" value="${state.w[b.id]}"
+      data-id="${b.id}" aria-label="Peso de ${b.en}" />
+    <div class="c-out"><div class="c-pct tnum"><span data-pct="${b.id}">0</span>%</div>
+      <div class="c-usd tnum" data-usd="${b.id}">~$0</div></div>
+  </div>`).join("");
+ctrlsWrap.querySelectorAll("input[data-id]").forEach(inp=>{
+  inp.addEventListener("input",()=>{
+    state.w[inp.dataset.id] = +inp.value;
+    state.preset = null;
+    syncPresetButtons();
+    render();
+  });
+});
+
+/* ---- total slider ---- */
+const totalRange = $("#totalRange");
+totalRange.addEventListener("input",()=>{ state.total = +totalRange.value; render(); });
+
+/* ---- reset ---- */
+$("#resetBtn").addEventListener("click",()=>applyPreset(state.lastPreset));
+
+function applyPreset(k){
+  state.preset = k; state.lastPreset = k;
+  state.w = {...PRESETS[k].w};
+  ctrlsWrap.querySelectorAll("input[data-id]").forEach(inp=> inp.value = state.w[inp.dataset.id]);
+  syncPresetButtons();
+  render();
+}
+function syncPresetButtons(){
+  presetsWrap.querySelectorAll(".pbtn").forEach(b=>
+    b.setAttribute("aria-pressed", b.dataset.preset===state.preset));
+  $("#presetNote").textContent = state.preset ? PRESETS[state.preset].note
+    : "Mezcla custom — arrastrada a mano. Elegí un preset para volver a un punto de partida.";
+}
+
+function render(){
+  const sum = BUCKETS.reduce((a,b)=>a+state.w[b.id],0) || 1;
+  // total headline
+  $("#totalVal").textContent = state.total.toLocaleString("en-US");
+  // composition bar
+  const bar = BUCKETS.map(b=>{
+    const pct = state.w[b.id]/sum*100;
+    const show = pct >= 8 ? `<span>${Math.round(pct)}%</span>` : "";
+    return `<div class="seg" style="width:${pct}%;background:${b.sh}" title="${b.en}">${show}</div>`;
+  }).join("");
+  $("#compbar").innerHTML = bar;
+  // per-bucket pct + usd
+  BUCKETS.forEach(b=>{
+    const pct = state.w[b.id]/sum*100;
+    const usd = pct/100*state.total;
+    ctrlsWrap.querySelector(`[data-pct="${b.id}"]`).textContent = Math.round(pct);
+    ctrlsWrap.querySelector(`[data-usd="${b.id}"]`).textContent = money(usd);
+  });
+  // gauges — scale with total (t in 0..1)
+  const t = (state.total - MIN)/(MAX - MIN);
+  const tr = tierFor(t, TIERS_R), tc = tierFor(t, TIERS_C);
+  $("#meterResults").style.width = (18 + t*82).toFixed(0)+"%";
+  $("#meterCost").style.width    = (12 + t*88).toFixed(0)+"%";
+  const tR=$("#tierResults"), tC=$("#tierCost");
+  tR.textContent = tr[1]; tR.style.color = tr[2];
+  tC.textContent = tc[1]; tC.style.color = tc[2];
+}
+
+syncPresetButtons();
+render();
+</script>
+</body>
+</html>
