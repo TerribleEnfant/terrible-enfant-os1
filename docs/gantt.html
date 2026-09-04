@@ -1,0 +1,403 @@
+<title>Gantt Anual Terrible Enfant</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  --page:#0a0a0a;
+  --ground:#ffffff;
+  --ink:#0d0d0d;
+  --gray:#6b6b6b;
+  --soft:#e2e2e2;
+  --faint:#f0efec;
+  --mint:#aeebc4;
+  --lime:#e7ff5a;
+  --coral:#ff7a66;
+  --radius:22px;
+  --sans:"Inter",system-ui,"Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --maxw:1240px;
+  --labelw:212px;
+  --cols:13;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--page); color:var(--ink);
+  font-family:var(--sans); font-size:15px; line-height:1.5;
+  padding:28px 20px 64px;
+}
+.wrap{max-width:var(--maxw); margin:0 auto}
+
+/* — encabezado sobre el negro — */
+.top{
+  display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between;
+  gap:16px; padding:0 6px 20px;
+}
+.top h1{
+  margin:0; color:var(--ground);
+  font-size:clamp(30px,4.4vw,52px); font-weight:800; letter-spacing:-.035em;
+  line-height:.98; text-wrap:balance;
+}
+.top h1 em{display:block; font-style:normal; font-weight:400; color:#8a8a8a}
+.topmeta{font-family:var(--mono); font-size:11.5px; color:#8a8a8a; text-align:right}
+.topmeta b{display:block; color:var(--ground); font-weight:500; letter-spacing:.02em}
+
+/* — card — */
+.card{
+  background:var(--ground); border-radius:var(--radius);
+  padding:26px 26px 22px; overflow:hidden;
+}
+.bar{
+  display:flex; align-items:baseline; justify-content:space-between; gap:14px;
+  border-bottom:1px solid var(--ink); padding-bottom:9px; margin-bottom:22px;
+}
+.bar .lbl{font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.07em}
+.bar .meta{font-family:var(--mono); font-size:11px; color:var(--gray)}
+
+/* — el chart — */
+.scroller{overflow-x:auto; padding-bottom:6px}
+.chart{min-width:940px}
+
+.row{display:grid; grid-template-columns:var(--labelw) 1fr; align-items:stretch}
+.grid{display:grid; grid-template-columns:repeat(var(--cols),1fr)}
+
+/* escala de meses */
+.qband .cell{
+  font-family:var(--mono); font-size:10px; letter-spacing:.06em; color:var(--gray);
+  text-transform:uppercase; padding:0 0 6px 7px; border-left:1px solid var(--soft);
+}
+.qband .cell.q{border-left:1px solid var(--ink); color:var(--ink); font-weight:500}
+.mscale .cell{
+  font-family:var(--mono); font-size:11px; color:var(--ink);
+  padding:6px 0 7px 7px; border-left:1px solid var(--soft); border-top:1px solid var(--ink);
+}
+.mscale .cell.q{border-left:1px solid var(--ink)}
+.mscale .cell.now{background:var(--faint); font-weight:500}
+.mscale .cell em{display:block; font-style:normal; font-size:9px; color:var(--gray); letter-spacing:.06em}
+.rowhead{
+  font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.07em;
+  color:var(--gray); align-self:end; padding:0 12px 7px 0;
+}
+
+/* carriles */
+.lane{border-top:1px solid var(--ink)}
+.lane:first-of-type{border-top:none}
+.lname{padding:16px 14px 16px 0}
+.lname .lnum{
+  font-family:var(--mono); font-size:11px; color:var(--gray); display:block; margin-bottom:2px;
+}
+.lname .lt{font-size:14px; font-weight:700; letter-spacing:-.015em; line-height:1.15; display:block}
+.lname .lcode{font-family:var(--mono); font-size:10px; color:var(--gray); letter-spacing:.06em}
+.tracks{display:flex; flex-direction:column; justify-content:center; gap:6px; padding:14px 0}
+.track{
+  background-image:repeating-linear-gradient(to right,var(--soft) 0 1px,transparent 1px calc(100%/13));
+  background-position:left top;
+}
+.bararea{grid-column:1/-1; grid-row:1; display:grid; grid-template-columns:repeat(var(--cols),1fr)}
+
+.b{
+  grid-row:1; grid-column:var(--s)/var(--e);
+  min-height:30px; display:flex; align-items:center; gap:8px;
+  padding:5px 11px; border-radius:15px; border:1.5px solid var(--ink);
+  font-size:12.5px; font-weight:500; letter-spacing:-.01em;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.b .t{overflow:hidden; text-overflow:ellipsis}
+.b.mint{background:var(--mint)}
+.b.lime{background:var(--lime)}
+.b.coral{background:var(--coral)}
+.b.ink{background:var(--ink); color:var(--ground); border-color:var(--ink)}
+.b.open{background:transparent; border-style:dashed; color:var(--gray)}
+.b.open .t{color:var(--ink)}
+
+/* hitos */
+.mile .tracks{padding:10px 0 4px}
+.mtrack{position:relative}
+.m{grid-row:1; display:flex; align-items:center; gap:7px; padding-left:2px}
+.m .d{
+  width:11px; height:11px; flex:0 0 11px; background:var(--ink); transform:rotate(45deg);
+}
+.m.rt{flex-direction:row-reverse; justify-content:flex-start; padding-left:0; padding-right:2px}
+.m .mt{font-family:var(--mono); font-size:10.5px; letter-spacing:-.005em; white-space:nowrap}
+
+/* pie de card */
+.foot{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(238px,1fr)); gap:18px 26px;
+  border-top:1px solid var(--ink); margin-top:24px; padding-top:16px;
+}
+.foot h3{
+  margin:0 0 8px; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.07em;
+  color:var(--gray);
+}
+.legend{display:flex; flex-direction:column; gap:6px}
+.legend span{display:flex; align-items:center; gap:9px; font-size:12px}
+.sw{width:26px; height:14px; flex:0 0 26px; border:1.5px solid var(--ink); border-radius:7px}
+.sw.mint{background:var(--mint)} .sw.lime{background:var(--lime)}
+.sw.coral{background:var(--coral)} .sw.ink{background:var(--ink)}
+.sw.open{background:transparent; border-style:dashed}
+.foot ul{margin:0; padding-left:16px; font-size:12px; color:#3b3b3b}
+.foot ul li{margin-bottom:6px}
+.foot ul li b{color:var(--ink); font-weight:600}
+.gloss{font-size:11.5px; color:#3b3b3b; line-height:1.65}
+.gloss b{font-family:var(--mono); font-weight:500; color:var(--ink)}
+
+.sign{
+  display:flex; flex-wrap:wrap; gap:10px 18px; justify-content:space-between;
+  padding:16px 8px 0; font-family:var(--mono); font-size:10.5px; color:#7a7a7a;
+}
+
+@media (max-width:640px){
+  body{padding:20px 12px 48px}
+  .card{padding:20px 16px 18px; border-radius:16px}
+  .topmeta{text-align:left}
+}
+@media print{
+  @page{size:A4 landscape; margin:10mm}
+  body{background:#fff; padding:0; font-size:11px}
+  .top h1{color:#000; font-size:26px}
+  .top h1 em, .topmeta{color:#444}
+  .topmeta b{color:#000}
+  .card{border-radius:0; padding:0; border-top:1px solid #000; padding-top:12px}
+  .scroller{overflow:visible} .chart{min-width:0}
+  .lane, .foot{break-inside:avoid}
+}
+@media (prefers-reduced-motion:no-preference){
+  .lane .b{animation:in .5s cubic-bezier(.2,.7,.3,1) both}
+  @keyframes in{from{opacity:0; transform:translateX(-6px)} to{opacity:1; transform:none}}
+}
+</style>
+
+<div class="wrap">
+
+  <div class="top">
+    <h1>Terrible Enfant<em>Fases · ago 2026 → ago 2027</em></h1>
+    <div class="topmeta">
+      <b>TE-OS · 1-PAGER</b>
+      13 meses · 6 dominios · 18 fases<br>
+      fuente: market-expansion-roadmap · brazil-launch<br>
+      generado 2026-08-24 · interno
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="bar">
+      <span class="lbl">Gantt de fases — solo fases y tiempos</span>
+      <span class="meta">GANTT/01 · v1 · borrador para revisión</span>
+    </div>
+
+    <div class="scroller"><div class="chart">
+
+      <!-- escala -->
+      <div class="row qband">
+        <div class="rowhead">Trimestre</div>
+        <div class="grid">
+          <div class="cell q" style="grid-column:1/3">Q3 26</div>
+          <div class="cell q" style="grid-column:3/6">Q4 26</div>
+          <div class="cell q" style="grid-column:6/9">Q1 27</div>
+          <div class="cell q" style="grid-column:9/12">Q2 27</div>
+          <div class="cell q" style="grid-column:12/14">Q3 27</div>
+        </div>
+      </div>
+
+      <div class="row mscale">
+        <div class="rowhead">Mes</div>
+        <div class="grid">
+          <div class="cell q now">ago<em>26</em></div>
+          <div class="cell">sep</div>
+          <div class="cell q">oct</div>
+          <div class="cell">nov</div>
+          <div class="cell">dic</div>
+          <div class="cell q">ene<em>27</em></div>
+          <div class="cell">feb</div>
+          <div class="cell">mar</div>
+          <div class="cell q">abr</div>
+          <div class="cell">may</div>
+          <div class="cell">jun</div>
+          <div class="cell q">jul</div>
+          <div class="cell">ago</div>
+        </div>
+      </div>
+
+      <!-- 00 ESTRATEGIA -->
+      <div class="row lane">
+        <div class="lname">
+          <span class="lnum">00</span>
+          <span class="lt">Estrategia<br>& gobernanza</span>
+          <span class="lcode">STR</span>
+        </div>
+        <div class="tracks">
+          <div class="track grid"><div class="bararea">
+            <div class="b coral" style="--s:1;--e:4"><span class="t">Gaps estructurales BR</span></div>
+          </div></div>
+          <div class="track grid"><div class="bararea">
+            <div class="b lime" style="--s:4;--e:7"><span class="t">Primera medición ARG vs. BR</span></div>
+          </div></div>
+          <div class="track grid"><div class="bararea">
+            <div class="b lime" style="--s:7;--e:10"><span class="t">Brief 2027 + 3.er mercado</span></div>
+          </div></div>
+          <div class="track grid"><div class="bararea">
+            <div class="b open" style="--s:10;--e:14"><span class="t">Evaluación de expansión</span></div>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- 01 CANALES -->
+      <div class="row lane">
+        <div class="lname">
+          <span class="lnum">01</span>
+          <span class="lt">Canales<br>Brasil</span>
+          <span class="lcode">CHN</span>
+        </div>
+        <div class="tracks">
+          <div class="track grid"><div class="bararea">
+            <div class="b coral" style="--s:1;--e:4"><span class="t">Contratos showroom + MataLab</span></div>
+          </div></div>
+          <div class="track grid"><div class="bararea">
+            <div class="b lime" style="--s:1;--e:5"><span class="t">E-commerce BR: plataforma + build</span></div>
+          </div></div>
+          <div class="track grid"><div class="bararea">
+            <div class="b mint" style="--s:5;--e:14"><span class="t">Los 3 canales a régimen</span></div>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- 02 PRODUCTO -->
+      <div class="row lane">
+        <div class="lname">
+          <span class="lnum">02</span>
+          <span class="lt">Producto<br>& colección</span>
+          <span class="lcode">PRD</span>
+        </div>
+        <div class="tracks">
+          <div class="track grid"><div class="bararea">
+            <div class="b mint" style="--s:1;--e:7"><span class="t">Mix BR + reposición (OTB)</span></div>
+          </div></div>
+          <div class="track grid"><div class="bararea">
+            <div class="b lime" style="--s:3;--e:7"><span class="t">Definición colección 2027</span></div>
+          </div></div>
+          <div class="track grid"><div class="bararea">
+            <div class="b open" style="--s:7;--e:12"><span class="t">Producción colección 2027</span></div>
+            <div class="b open" style="--s:12;--e:14"><span class="t">Salida</span></div>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- 03 COLLABS -->
+      <div class="row lane">
+        <div class="lname">
+          <span class="lnum">03</span>
+          <span class="lt">Collabs<br>Brasil</span>
+          <span class="lcode">CLB</span>
+        </div>
+        <div class="tracks">
+          <div class="track grid"><div class="bararea">
+            <div class="b mint" style="--s:2;--e:5"><span class="t">Ciclo 2026 · 3 collabs</span></div>
+          </div></div>
+          <div class="track grid"><div class="bararea">
+            <div class="b lime" style="--s:5;--e:8"><span class="t">Ventana a definir</span></div>
+          </div></div>
+          <div class="track grid"><div class="bararea">
+            <div class="b open" style="--s:8;--e:14"><span class="t">Ciclo collabs 2027</span></div>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- 04 COMUNICACIÓN -->
+      <div class="row lane">
+        <div class="lname">
+          <span class="lnum">04</span>
+          <span class="lt">Comunicación<br>& campaña</span>
+          <span class="lcode">COM</span>
+        </div>
+        <div class="tracks">
+          <div class="track grid"><div class="bararea">
+            <div class="b lime" style="--s:1;--e:5"><span class="t">Los Siete — producción</span></div>
+          </div></div>
+          <div class="track grid"><div class="bararea">
+            <div class="b lime" style="--s:2;--e:8"><span class="t">GIGA-Campaña + documental BA</span></div>
+          </div></div>
+          <div class="track grid"><div class="bararea">
+            <div class="b open" style="--s:8;--e:14"><span class="t">Campaña anual 2027</span></div>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- 05 MÁQUINA -->
+      <div class="row lane">
+        <div class="lname">
+          <span class="lnum">05</span>
+          <span class="lt">Máquina<br>(TE-OS)</span>
+          <span class="lcode">OPS</span>
+        </div>
+        <div class="tracks">
+          <div class="track grid"><div class="bararea">
+            <div class="b mint" style="--s:1;--e:6"><span class="t">OS V2 — STATUS + KPIs reales</span></div>
+          </div></div>
+          <div class="track grid"><div class="bararea">
+            <div class="b lime" style="--s:6;--e:14"><span class="t">OS V3 — automatización</span></div>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- HITOS -->
+      <div class="row lane mile">
+        <div class="lname">
+          <span class="lnum">◆</span>
+          <span class="lt">Hitos</span>
+          <span class="lcode">GATE</span>
+        </div>
+        <div class="tracks">
+          <div class="track grid"><div class="bararea">
+            <div class="m" style="grid-column:2/7"><i class="d"></i><span class="mt">sep 26 · arranca el DRE del modelo (Q3 26)</span></div>
+            <div class="m" style="grid-column:10/14"><i class="d"></i><span class="mt">may 27 · go/no-go 3.er mercado</span></div>
+          </div></div>
+          <div class="track grid"><div class="bararea">
+            <div class="m" style="grid-column:6/10"><i class="d"></i><span class="mt">ene 27 · cierre 2026: P&amp;L ARG + BR</span></div>
+            <div class="m rt" style="grid-column:11/14"><i class="d"></i><span class="mt">jul 27 · colección 2027</span></div>
+          </div></div>
+        </div>
+      </div>
+
+    </div></div>
+
+    <div class="foot">
+      <div>
+        <h3>Lectura de las barras</h3>
+        <div class="legend">
+          <span><i class="sw mint"></i>En marcha o calendarizado</span>
+          <span><i class="sw lime"></i>Abierto — depende de una decisión</span>
+          <span><i class="sw coral"></i>Crítico — bloquea lo que viene detrás</span>
+          <span><i class="sw open"></i>Proyección: fase necesaria, fecha no confirmada</span>
+        </div>
+      </div>
+      <div>
+        <h3>Supuestos que sostienen el gráfico</h3>
+        <ul>
+          <li><b>Arranque en ago 26</b> con los 3 canales BR aún sin contratos firmados (showroom, MataLab) y el e-commerce como greenfield.</li>
+          <li><b>Ciclo de collabs BR</b> calendarizado sólo hasta nov 26 (NORMANDO 21 sep · BARRA CREW 21 oct · DENDEZEIRO 21 nov); de dic en adelante es ventana a definir.</li>
+          <li><b>Colección 2027</b> sin timeline de producción definido — las barras son la secuencia lógica, no fechas acordadas.</li>
+          <li><b>Los Siete</b> sigue con el pivot al set decadente pendiente de aprobación de Comando — es el gate de toda la fase de producción.</li>
+          <li><b>Fecha de full launch</b> en tensión en las fuentes (abril soft / julio plan / DRE desde sep). Acá se toma sep 26 como inicio de medición.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Siglas</h3>
+        <p class="gloss">
+          <b>BR</b> Brasil · <b>ARG</b> Argentina · <b>SP</b> São Paulo ·
+          <b>DRE</b> Demonstração do Resultado do Exercício (estado de resultados) ·
+          <b>P&amp;L</b> Profit and Loss · <b>OTB</b> Open To Buy (presupuesto de compra) ·
+          <b>GTM</b> Go To Market · <b>GHA</b> GitHub Actions ·
+          <b>KPI</b> Key Performance Indicator · <b>TE-OS</b> sistema operativo de Terrible Enfant.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sign">
+    <span>Terrible Enfant · built on COMANDO Canon</span>
+    <span>Documento interno — no distribuir sin aprobación de Comando</span>
+  </div>
+
+</div>

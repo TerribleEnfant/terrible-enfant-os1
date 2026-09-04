@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comparativo de propuestas e-commerce + paid media · TE-OS</title>
+<style>
+:root{
+  --ink:#1b1b19; --muted:#6b6b66; --faint:#94948e;
+  --bg:#f4f3ef; --card:#ffffff; --line:#e4e3dd; --line-strong:#d4d3cb;
+  --accent:#1b1b19; --amber:#9a6a16; --amber-bg:#f6ecd6;
+  --maxw:840px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  font-size:16px; line-height:1.6; letter-spacing:.005em;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:32px 20px 96px}
+code,.mono{font-family:"SF Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+
+/* top nav */
+nav.set{
+  display:flex; gap:6px; flex-wrap:wrap; margin-bottom:24px;
+  font-size:13px;
+}
+nav.set a{
+  text-decoration:none; color:var(--muted); border:1px solid var(--line);
+  background:var(--card); padding:6px 12px; border-radius:999px; transition:.15s;
+}
+nav.set a:hover{color:var(--ink); border-color:var(--line-strong)}
+nav.set a.active{color:var(--card); background:var(--ink); border-color:var(--ink)}
+
+/* hero */
+.hero{margin:0 0 22px}
+.hero .id{
+  font-family:"SF Mono",ui-monospace,Menlo,monospace; font-size:12px;
+  letter-spacing:.06em; color:var(--faint); text-transform:none;
+}
+.hero h1{
+  font-size:30px; line-height:1.2; font-weight:600; margin:6px 0 14px;
+  letter-spacing:-.01em;
+}
+.meta{display:flex; gap:8px; flex-wrap:wrap; margin:0 0 16px}
+.pill{
+  font-size:12px; padding:3px 10px; border-radius:999px; border:1px solid var(--line);
+  background:var(--card); color:var(--muted);
+}
+.pill.status{background:var(--amber-bg); color:var(--amber); border-color:#e8d6ac}
+.pill b{color:var(--ink); font-weight:600}
+.lede{
+  background:var(--card); border:1px solid var(--line); border-left:3px solid var(--ink);
+  border-radius:10px; padding:16px 18px; color:var(--ink); font-size:14.5px;
+}
+.lede p{margin:.5em 0}
+.lede p:first-child{margin-top:0}
+.lede p:last-child{margin-bottom:0}
+.lede a{color:inherit}
+
+/* cards */
+section.card{
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:22px 24px; margin:14px 0; box-shadow:0 1px 2px rgba(0,0,0,.02);
+}
+section.card>h2:first-child{margin-top:0}
+h2{font-size:18px; font-weight:600; letter-spacing:-.005em; margin:0 0 12px; padding-bottom:0}
+h3{font-size:15px; font-weight:600; color:var(--ink); margin:20px 0 8px}
+p{margin:.7em 0}
+a{color:#3a5a8c}
+strong{font-weight:600}
+ul,ol{padding-left:22px; margin:.6em 0}
+li{margin:.3em 0}
+hr{display:none}
+
+/* blockquote callouts inside cards */
+blockquote{
+  margin:14px 0; padding:12px 16px; background:#faf9f5; border:1px solid var(--line);
+  border-left:3px solid var(--amber); border-radius:8px; color:var(--muted); font-size:14px;
+}
+blockquote p{margin:.4em 0}
+blockquote p:first-child{margin-top:0}
+blockquote p:last-child{margin-bottom:0}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:14px 0; border:1px solid var(--line); border-radius:10px}
+table{border-collapse:collapse; width:100%; font-size:13.5px; min-width:520px}
+th,td{text-align:left; padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+thead th{background:#f6f5f1; font-weight:600; color:var(--ink); border-bottom:1px solid var(--line-strong)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:#fcfcfa}
+code{background:#f1f0ec; padding:1px 5px; border-radius:5px; font-size:.86em}
+
+footer.foot{margin-top:30px; color:var(--faint); font-size:12px; text-align:center}
+@media(max-width:560px){ .hero h1{font-size:24px} .wrap{padding:20px 14px 64px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="set"><a href="2026-06-velo-studio-analysis.html">Análisis</a><a href="2026-06-ecommerce-3way-comparison.html" class="active">Comparativo 3-way</a><a href="2026-06-velo-studio-diligence.html">Diligencia</a></nav>
+<header class="hero">
+  <div class="id">PROP_ECOMM_COMPARE</div>
+  <h1>Comparativo de propuestas e-commerce + paid media</h1>
+  <div class="meta"><span class="pill status"><b>status</b>&nbsp;draft</span><span class="pill"><b>owner</b>&nbsp;Boris</span><span class="pill"><b>updated</b>&nbsp;2026-06-25</span></div>
+  <div class="lede"><p>Comparativo lado a lado de las <strong>tres</strong> propuestas vivas para construir el canal D2C desde cero:
+<a href="2026-06-velo-studio-analysis.html"><strong>Velo Studio</strong></a> (Tienda Nube, AR+BR, un proveedor),
+el <a href="2026-06-jet-sanders-stack-analysis.md"><strong>stack JET + Sanders</strong></a> (plataforma propia + agencia,
+BR) y <a href="2026-03-lucas-godoy-cronograma.md"><strong>Lucas Godoy</strong></a> (Nuvemshop + equity, BR).
+Fecha: 2026-06-25 · Owner: Boris · Estado: <strong>digest para decisión — nada aprobado, nada firmado,
+nada comprometido.</strong></p>
+<p><strong>Caveat que manda sobre toda la grilla: NO es apples-to-apples.</strong> Los alcances y mercados
+difieren. Velo abarca <strong>AR + BR</strong> y junta <strong>e-commerce + paid media en un proveedor</strong>; JET+Sanders
+y Lucas Godoy son <strong>BR-only</strong>. Velo cobra <strong>menos por un alcance mensual más liviano</strong> (gestión de
+medios + reporte) que el de JET estratégico + Sanders o el de los módulos de Lucas Godoy. Leer la
+grilla como mapa de estructura, no como ranking de precio puro.</p></div>
+  <hr />
+
+</header>
+<section class="card">
+<h2>Lectura ejecutiva</h2>
+<p>Tres formas distintas de construir el mismo canal greenfield. No compiten en el mismo eje:</p>
+<ul>
+<li><strong>Velo Studio</strong> — la más <strong>barata, amplia (AR+BR) y limpia</strong> (precio fijo USD, 0% variable, sin
+  equity, un solo proveedor), sobre la plataforma <strong>vetada</strong> (Tienda Nube/Nuvemshop). Su talón:
+  <strong>vendor sin credenciales verificables y sin diligencia corrida</strong> — el mismo agujero que hundió a
+  Sanders.</li>
+<li><strong>JET + Sanders</strong> — barata en variable (~2,5%) y sin equity, pero <strong>plataforma propietaria
+  (lock-in futuro)</strong>, <strong>dos proveedores a coordinar</strong>, BR-only, y con diligencia ya hecha que
+  <strong>debilita a ambos</strong> (JET mal fit/defectos; Sanders es shop de CRO sin fit de moda).</li>
+<li><strong>Lucas Godoy</strong> — la más <strong>cara y la única con equity (3%)</strong>, sobre Nuvemshop (portable), un solo
+  orquestador — pero es justo <strong>el contractor que el research de junio buscaba reemplazar</strong> por
+  lento/hands-off.</li>
+</ul>
+<p>En plata, el orden es claro: <strong>Velo ≪ JET+Sanders ≪ Lucas Godoy</strong>. Pero el precio no decide solo: el
+research de junio inclinó el fork hacia <strong>Nuvemshop + una agencia vetada (Wave Commerce, ganadora
+ABComm 2025)</strong>. Velo aparece como "plataforma vetada a una fracción del costo y con AR incluido" —
+atractivo <strong>condicionado</strong> a que pase la diligencia que todavía no se le corrió.</p>
+<hr />
+</section>
+<section class="card">
+<h2>Grid principal</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Dimensión</th>
+<th><strong>Velo Studio</strong></th>
+<th><strong>JET + Sanders</strong></th>
+<th><strong>Lucas Godoy</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Tienda Nube (= Nuvemshop); Wix alt. BR</td>
+<td>JET propia (SaaS cerrada)</td>
+<td>Nuvemshop</td>
+</tr>
+<tr>
+<td><strong>Mercados cubiertos</strong></td>
+<td><strong>AR + BR</strong></td>
+<td>BR</td>
+<td>BR</td>
+</tr>
+<tr>
+<td><strong>Cobertura</strong></td>
+<td>E-commerce + CRM + paid media — <strong>1 proveedor</strong></td>
+<td>Plataforma (JET) + medios (Sanders) — <strong>2 proveedores</strong></td>
+<td>Full — <strong>1 orquestador</strong></td>
+</tr>
+<tr>
+<td><strong>Setup (one-shot)</strong></td>
+<td>USD 750/mercado (o 850 único)¹</td>
+<td>R$ 22.400 (c/desc.)</td>
+<td>R$ 61.200</td>
+</tr>
+<tr>
+<td><strong>Fijo mensual</strong></td>
+<td>USD 600–900/país (USD 850 ×2 = <strong>1.700</strong>, Full 2 países)</td>
+<td>R$ 6.000 (JET estrat.) + R$ 4.500 (Sanders) = <strong>R$ 10.500</strong></td>
+<td><strong>R$ 36.390</strong> (Módulos III–VIII)</td>
+</tr>
+<tr>
+<td><strong>Variable s/ GMV</strong></td>
+<td><strong>0%</strong></td>
+<td>≈ 2,5% (JET)</td>
+<td><strong>15% / 14% / 12%</strong> por tramos</td>
+</tr>
+<tr>
+<td><strong>Equity</strong></td>
+<td>—</td>
+<td>—</td>
+<td><strong>3%</strong> (4 tramos + Quotaholders' Agreement)</td>
+</tr>
+<tr>
+<td><strong>Pauta (verba)</strong></td>
+<td>Aparte, la maneja el cliente</td>
+<td>Aparte (verba de Sanders)</td>
+<td>Incluida (Módulo VI, piso R$ 5.600 + USD 2.000)</td>
+</tr>
+<tr>
+<td><strong>Portabilidad futura</strong></td>
+<td><strong>Alta</strong> (Nuvemshop estándar)</td>
+<td><strong>Baja</strong> (propietaria; salir = migración)</td>
+<td>Alta (Nuvemshop estándar)</td>
+</tr>
+<tr>
+<td><strong>Estado de diligencia / credibilidad</strong></td>
+<td><strong>Ninguna corrida</strong> — sin equipo/portfolio/casos/CNPJ; <strong>lo mismo que hundió a Sanders</strong></td>
+<td>Corrida (22 jun) — <strong>debilita a ambos</strong>: JET mal fit/defectos; Sanders CRO sin fit moda, identidad no verificable</td>
+<td>Research buscaba <strong>reemplazarlo</strong> (lento/hands-off); caro y pide equity</td>
+</tr>
+<tr>
+<td><strong>SLA / comms</strong></td>
+<td>Sin SLA; WhatsApp/Slack + reporte mensual</td>
+<td>24/7 vía ticket; tel/WA horario comercial</td>
+<td>8 h hábiles std / 4 h urgente</td>
+</tr>
+<tr>
+<td><strong>Timeline</strong></td>
+<td>12 semanas AR+BR en paralelo</td>
+<td>Build 90 días post-aprobación de layout</td>
+<td>Cronograma propio (Service Agreement v17)</td>
+</tr>
+<tr>
+<td><strong>Moneda</strong></td>
+<td><strong>USD</strong></td>
+<td>R$</td>
+<td>R$ (+ USD 2.000 verba)</td>
+</tr>
+<tr>
+<td><strong>Vetado vs. brief research</strong></td>
+<td>No (plataforma vetada)</td>
+<td>JET fuera del shortlist; plataforma cerrada</td>
+<td>Es el contractor a reemplazar</td>
+</tr>
+</tbody>
+</table></div>
+<p>¹ Ambigüedad de redacción en Velo: ver <a href="2026-06-velo-studio-analysis.html#precios-y-condiciones">análisis</a>.</p>
+<hr />
+</section>
+<section class="card">
+<h2>Costo indicativo Año 1</h2>
+<blockquote>
+<p><strong>Supuesto FX (a confirmar por Hache): USD/R$ ≈ 5,5.</strong> Cifras BR de JET y Lucas tomadas del
+<a href="2026-06-jet-sanders-stack-analysis.md">stack analysis</a> (aproximadas, incluyen variable estimado
+sobre ~R$ 1,3 M de GMV). <strong>No es apples-to-apples</strong> — Velo incluye AR y tiene alcance mensual más
+liviano.</p>
+</blockquote>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Costo indicativo Año 1</th>
+<th>Notas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Velo — solo BR</strong></td>
+<td>≈ USD 11.650 (≈ <strong>R$ 64 k</strong>)</td>
+<td>Full 1 país (USD 900 ×12) + dev USD 850. 0% variable. Pauta aparte.</td>
+</tr>
+<tr>
+<td><strong>Velo — AR + BR</strong></td>
+<td>≈ USD 21.900 (≈ <strong>R$ 120 k</strong>)</td>
+<td>Full 2 países (USD 850 ×2 ×12) + dev. Cubre <strong>dos</strong> mercados. Pauta aparte.</td>
+</tr>
+<tr>
+<td><strong>JET + Sanders (BR)</strong></td>
+<td>≈ <strong>R$ 180 k</strong></td>
+<td>Fijo + setup + ≈ 2,5% s/ ~R$ 1,3 M GMV. Sin equity.</td>
+</tr>
+<tr>
+<td><strong>Lucas Godoy (BR)</strong></td>
+<td>≈ <strong>R$ 558 k</strong></td>
+<td>Fijo + setup + take rate 12–15%. <strong>Excl. valor del 3% de equity.</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>El factor que domina la brecha entre las tres es el <strong>variable</strong>: 0% (Velo) vs. ~2,5% (JET) vs.
+12–15% (Lucas) sobre GMV es, por sí solo, una diferencia de seis cifras anuales. Dado lo ajustado
+que el propio DRE de BRA muestra el año 1, <strong>una estructura de costos baja es probablemente
+condición necesaria</strong> para que el canal cierre — eje en el que Velo es el más fuerte y Lucas Godoy
+el más débil. Pero el costo bajo de Velo viene con alcance mensual más fino: parte de la diferencia
+es menor profundidad de servicio, no solo mejor precio.</p>
+<hr />
+</section>
+<section class="card">
+<h2>Fit vs. el research de junio</h2>
+<p>El <a href="2026-06-research-ecommerce-agency-alternatives.md">research de junio</a> fijó el brief: Nuvemshop
+ideal, fit de moda/lujo/DTC, paid media Meta/Google, alta capacidad de respuesta, y reemplazar a
+Lucas Godoy. Contra eso:</p>
+<ul>
+<li><strong>Plataforma:</strong> Velo y Lucas alinean (Tienda Nube/Nuvemshop, portable). <strong>JET es el outlier</strong> —
+  plataforma cerrada, misma categoría por la que el research desclasificó a WX3.</li>
+<li><strong>Un solo proveedor:</strong> Velo y Lucas lo cumplen; JET+Sanders obliga a TE a coordinar dos.</li>
+<li><strong>Fit de moda/lujo:</strong> ninguna de las tres lo tiene demostrado. La recomendación del research
+  (<strong>Wave Commerce</strong>, partner Nuvemshop certificado + ganadora ABComm 2025) sigue siendo el
+  benchmark de credibilidad contra el cual medir a Velo.</li>
+<li><strong>Diligencia de proveedor — todas con asterisco abierto:</strong></li>
+<li><strong>Velo:</strong> ninguna corrida (claim, no hecho).</li>
+<li><strong>JET / Sanders:</strong> corrida → debilitados (fit, defectos, identidad de Sanders no verificable).</li>
+<li><strong>Lucas Godoy:</strong> el research existe para reemplazarlo.</li>
+</ul>
+<p>Lectura: <strong>Velo se parece a "la recomendación del research (Nuvemshop + agencia vetada) a fracción
+del costo y con AR incluido"</strong> — pero la palabra que falta es <em>vetada</em>. Wave Commerce está
+verificada; Velo no. Esa es la asimetría que decide.</p>
+<hr />
+</section>
+<section class="card">
+<h2>Cómo se inclina la decisión (proceso, no decisión)</h2>
+<ol>
+<li><strong>Margen bruto primero (Hache).</strong> El caso financiero de BRA vive o muere por el CMV real
+   (50% → marginal; 70% → pierde). Es agnóstico al proveedor — paso #1 antes de cualquier elección.</li>
+<li><strong>Diligencia de Velo (antes de avanzar).</strong> Correr sobre Velo el mismo pase que tuvieron JET y
+   Sanders: identidad/CNPJ, equipo, portfolio/casos de moda, referencias habladas. Sin esto, Velo no
+   es comparable a Wave Commerce, solo más barato.</li>
+<li><strong>Elección de plataforma + proveedor (Boris).</strong> Con margen validado y diligencia de Velo en mano:
+   pesar el atractivo de Velo (plataforma vetada + un proveedor + AR+BR + el más barato) contra la
+   opción verificada del research (Nuvemshop + Wave Commerce) y contra el ahorro-con-lock-in de JET.
+   Reconciliar la fecha de launch — <strong>ninguna de las tres llega a julio 2026</strong> arrancando ahora.</li>
+<li><strong>Legal (Nacho).</strong> Según el finalista: lock-in/portabilidad de datos (JET), equity y Quotaholders'
+   Agreement (Lucas), identidad legal/CNPJ (Velo).</li>
+</ol>
+<hr />
+</section>
+<section class="card">
+<h2>Diligencia y próximos pasos (ruteo por dueño)</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Dueño</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hache</strong> (comercial/financiero)</td>
+<td>Validar <strong>margen bruto real BRA</strong>; correr el DRE con supuestos propios; confirmar el <strong>supuesto FX USD/R$</strong> que sostiene este comparativo.</td>
+</tr>
+<tr>
+<td><strong>Boris</strong> (plataforma/dirección)</td>
+<td>Decidir si Velo entra a diligencia formal; elegir plataforma + proveedor; reconciliar fecha de launch.</td>
+</tr>
+<tr>
+<td><strong>Diligencia de proveedor</strong></td>
+<td>Correr el pase de verificación sobre <strong>Velo</strong> (pendiente); confirmar <strong>referencias directas</strong> de cualquier finalista — la diligencia previa es de fuentes públicas, no de clientes hablados.</td>
+</tr>
+<tr>
+<td><strong>Nacho</strong> (legal)</td>
+<td>Revisar el contrato del finalista (lock-in/datos en JET, equity en Lucas, identidad/CNPJ en Velo).</td>
+</tr>
+<tr>
+<td><strong>Fanny</strong> (Asana)</td>
+<td>Crear tareas <strong>solo si se avanza</strong> — su dominio. No antes.</td>
+</tr>
+<tr>
+<td><strong>Comando</strong></td>
+<td>Sin acción: no hay comunicación externa en esta etapa.</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>Recordatorio de gobernanza: este documento es análisis interno. No se firmó nada, no se contactó a
+ningún proveedor, no se tocó <code>decision_log.md</code>, no se crearon tareas en Asana. Las cifras de JET y
+Lucas Godoy se reusan del <a href="2026-06-jet-sanders-stack-analysis.md">stack analysis</a>; las de Velo, del
+<a href="2026-06-velo-studio-analysis.html">análisis Velo</a>. La normalización de moneda es un supuesto
+indicativo, no una cotización.</p>
+</blockquote>
+</section>
+<footer class="foot">Terrible Enfant · TE-OS · documento interno — nada aprobado, nada firmado</footer>
+</div>
+</body>
+</html>

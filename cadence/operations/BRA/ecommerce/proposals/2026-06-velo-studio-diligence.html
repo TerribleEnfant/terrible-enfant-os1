@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diligencia de proveedor — Velo Studio · TE-OS</title>
+<style>
+:root{
+  --ink:#1b1b19; --muted:#6b6b66; --faint:#94948e;
+  --bg:#f4f3ef; --card:#ffffff; --line:#e4e3dd; --line-strong:#d4d3cb;
+  --accent:#1b1b19; --amber:#9a6a16; --amber-bg:#f6ecd6;
+  --maxw:840px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  font-size:16px; line-height:1.6; letter-spacing:.005em;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:32px 20px 96px}
+code,.mono{font-family:"SF Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+
+/* top nav */
+nav.set{
+  display:flex; gap:6px; flex-wrap:wrap; margin-bottom:24px;
+  font-size:13px;
+}
+nav.set a{
+  text-decoration:none; color:var(--muted); border:1px solid var(--line);
+  background:var(--card); padding:6px 12px; border-radius:999px; transition:.15s;
+}
+nav.set a:hover{color:var(--ink); border-color:var(--line-strong)}
+nav.set a.active{color:var(--card); background:var(--ink); border-color:var(--ink)}
+
+/* hero */
+.hero{margin:0 0 22px}
+.hero .id{
+  font-family:"SF Mono",ui-monospace,Menlo,monospace; font-size:12px;
+  letter-spacing:.06em; color:var(--faint); text-transform:none;
+}
+.hero h1{
+  font-size:30px; line-height:1.2; font-weight:600; margin:6px 0 14px;
+  letter-spacing:-.01em;
+}
+.meta{display:flex; gap:8px; flex-wrap:wrap; margin:0 0 16px}
+.pill{
+  font-size:12px; padding:3px 10px; border-radius:999px; border:1px solid var(--line);
+  background:var(--card); color:var(--muted);
+}
+.pill.status{background:var(--amber-bg); color:var(--amber); border-color:#e8d6ac}
+.pill b{color:var(--ink); font-weight:600}
+.lede{
+  background:var(--card); border:1px solid var(--line); border-left:3px solid var(--ink);
+  border-radius:10px; padding:16px 18px; color:var(--ink); font-size:14.5px;
+}
+.lede p{margin:.5em 0}
+.lede p:first-child{margin-top:0}
+.lede p:last-child{margin-bottom:0}
+.lede a{color:inherit}
+
+/* cards */
+section.card{
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:22px 24px; margin:14px 0; box-shadow:0 1px 2px rgba(0,0,0,.02);
+}
+section.card>h2:first-child{margin-top:0}
+h2{font-size:18px; font-weight:600; letter-spacing:-.005em; margin:0 0 12px; padding-bottom:0}
+h3{font-size:15px; font-weight:600; color:var(--ink); margin:20px 0 8px}
+p{margin:.7em 0}
+a{color:#3a5a8c}
+strong{font-weight:600}
+ul,ol{padding-left:22px; margin:.6em 0}
+li{margin:.3em 0}
+hr{display:none}
+
+/* blockquote callouts inside cards */
+blockquote{
+  margin:14px 0; padding:12px 16px; background:#faf9f5; border:1px solid var(--line);
+  border-left:3px solid var(--amber); border-radius:8px; color:var(--muted); font-size:14px;
+}
+blockquote p{margin:.4em 0}
+blockquote p:first-child{margin-top:0}
+blockquote p:last-child{margin-bottom:0}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:14px 0; border:1px solid var(--line); border-radius:10px}
+table{border-collapse:collapse; width:100%; font-size:13.5px; min-width:520px}
+th,td{text-align:left; padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+thead th{background:#f6f5f1; font-weight:600; color:var(--ink); border-bottom:1px solid var(--line-strong)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:#fcfcfa}
+code{background:#f1f0ec; padding:1px 5px; border-radius:5px; font-size:.86em}
+
+footer.foot{margin-top:30px; color:var(--faint); font-size:12px; text-align:center}
+@media(max-width:560px){ .hero h1{font-size:24px} .wrap{padding:20px 14px 64px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="set"><a href="2026-06-velo-studio-analysis.html">Análisis</a><a href="2026-06-ecommerce-3way-comparison.html">Comparativo 3-way</a><a href="2026-06-velo-studio-diligence.html" class="active">Diligencia</a></nav>
+<header class="hero">
+  <div class="id">PROP_VELO_DILIGENCE</div>
+  <h1>Diligencia de proveedor — Velo Studio</h1>
+  <div class="meta"><span class="pill status"><b>status</b>&nbsp;draft</span><span class="pill"><b>owner</b>&nbsp;Boris</span><span class="pill"><b>updated</b>&nbsp;2026-06-25</span></div>
+  <div class="lede"><p>Pase de verificación sobre <strong>Velo Studio</strong>, el proveedor de la <a href="2026-06-velo-studio-analysis.html">propuesta <code>PROP_VELO</code></a>.
+Equivalente al pase que tuvieron JET y Sanders en el <a href="2026-06-jet-sanders-stack-analysis.md#diligencia-de-proveedores--deep-research-22-jun-2026">stack analysis</a>.
+Fecha: 2026-06-25 · Owner: Boris · Estado: <strong>diligencia para decisión — nada aprobado, nada
+firmado, nada comprometido.</strong></p>
+<p><strong>Veredicto: Velo Studio es <em>no identificable</em> en fuentes públicas.</strong> No se pudo confirmar
+identidad legal, equipo, portfolio ni un solo cliente. Es un agujero de credibilidad <strong>más
+profundo que el de Sanders</strong> — Sanders al menos tenía sitio propio y afirmaba credenciales
+(aunque no verificables); Velo no ofrece ni eso.</p></div>
+  <hr />
+
+</header>
+<section class="card">
+<h2>Lectura ejecutiva</h2>
+<p>La propuesta de Velo llegó como un <strong>deploy-preview anónimo de Netlify</strong> (subdominio hash +
+nombre random <code>heartfelt-longma-0d8820.netlify.app</code>), <strong>sin dominio propio, sin contacto, sin
+equipo, sin portfolio, sin CNPJ/CUIT</strong>. La diligencia partió de lo único que había — el nombre
+"Velo Studio" — y no encontró ninguna entidad pública que coincida con el perfil de la propuesta
+(agencia AR+BR de e-commerce + paid media sobre Tiendanube).</p>
+<p>El nombre es <strong>genérico y colisiona</strong> con varias agencias no relacionadas (ciclismo, B2B, branding,
+una performance brasileña distinta). Ninguna calza. Velo <strong>no aparece</strong> en el directorio de
+especialistas/partners de Tiendanube. En síntesis: <strong>no hay nada que verificar porque no hay nada
+publicado.</strong> Eso no prueba que Velo sea ilegítimo — prueba que, al día de hoy, es <strong>imposible de
+evaluar</strong>, y contratar a ciegas a un proveedor del que no se puede confirmar ni la existencia legal
+es exactamente el failure mode que el research de junio pedía evitar.</p>
+<hr />
+</section>
+<section class="card">
+<h2>Método</h2>
+<p>Pase focalizado (no el deep-research adversarial completo de JET/Sanders): <strong>4 ángulos de búsqueda
+web + 2 inspecciones del sitio de la propuesta</strong>, ~12 fuentes tocadas (directorio de especialistas
+de Tiendanube, LinkedIn, Instagram, sitios de agencias homónimas). Las confianzas se reportan como
+<strong>Alta / Media / Baja</strong> según convergencia de fuentes — sin notación de votos, porque no se corrió
+votación adversarial. Lo no verificable se reporta como <strong>abierto</strong>, no como negativo probado.</p>
+<hr />
+</section>
+<section class="card">
+<h2>Hallazgos</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Hallazgo</th>
+<th>Confianza</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>La propuesta se sirve desde un <strong>deploy-preview anónimo de Netlify</strong> (hash + nombre random), <strong>sin dominio propio</strong>. Señal de informalidad / falta de infraestructura de marca.</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td><strong>Sin identidad de contacto en el documento:</strong> sin nombres, sin email, sin teléfono/WhatsApp, sin redes, sin dirección, sin CNPJ/CUIT. Solo el logotipo "VELO STUDIO".</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td><strong>Ninguna entidad pública coincide</strong> con el perfil (agencia AR+BR e-commerce + paid media / Tiendanube llamada "Velo Studio").</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>El nombre <strong>colisiona</strong> con agencias no relacionadas: Velo Creative (ciclismo), Velo B2B, Velo Media, <strong>Velo Digital Performance (BR, VTEX/Shopify/Tray — distinta)</strong>, Vélos Agência Digital, Velos Branding Studio. Riesgo de confusión de identidad.</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td><strong>No figura</strong> en el directorio de especialistas/partners de Tiendanube — pese a que la propuesta ofrece construir sobre Tienda Nube. La afirmación implícita de capacidad en la plataforma <strong>no está respaldada</strong> por certificación pública.</td>
+<td>Media</td>
+</tr>
+<tr>
+<td><strong>Sin portfolio, sin casos, sin número de clientes, sin fit de moda/lujo demostrado</strong> — cero evidencia de trabajos anteriores.</td>
+<td>Alta</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section>
+<section class="card">
+<h2>Lo que sigue abierto (no verificable)</h2>
+<ul>
+<li><strong>Identidad legal / registro (CNPJ o CUIT)</strong> — desconocida. No se pudo determinar si Velo es una
+  empresa, un monotributista, o un nombre de fantasía sin entidad detrás.</li>
+<li><strong>Equipo</strong> — tamaño, nombres, dedicación: sin dato.</li>
+<li><strong>Track record real</strong> — clientes, resultados, antigüedad: sin dato.</li>
+<li><strong>Capacidad técnica en Tiendanube</strong> — afirmada en la propuesta, sin certificación ni caso que la
+  respalde.</li>
+</ul>
+<blockquote>
+<p>Importante: "no verificable" ≠ "fraudulento". Puede ser un equipo chico y nuevo, o alguien del
+entorno de TE que mandó una propuesta informal. Pero <strong>a este nivel de opacidad, la única forma
+de saberlo es que Velo se identifique</strong> — y eso debe pasar <strong>antes</strong> de cualquier conversación
+comercial, no después.</p>
+</blockquote>
+<hr />
+</section>
+<section class="card">
+<h2>Cómo cambia la decisión</h2>
+<p>El <a href="2026-06-velo-studio-analysis.html">análisis <code>PROP_VELO</code></a> ya marcaba la falta de credenciales como
+la bandera roja central. La diligencia <strong>la confirma y la agrava</strong>: no es que las credenciales sean
+débiles, es que <strong>no existe forma pública de confirmar quién es el proveedor.</strong></p>
+<p>Esto recalibra la economía atractiva de Velo (el más barato, AR+BR, plataforma vetada): el precio
+bajo deja de leerse como "ganga" y pasa a leerse como <strong>coherente con un proveedor sin estructura
+ni track record</strong>. Frente al benchmark del research de junio — <strong>Wave Commerce</strong>, partner Nuvemshop
+certificado y ganador ABComm 2025, plenamente verificable — Velo queda en el extremo opuesto del eje
+de credibilidad. <strong>Mismo platform-fit, lados opuestos de la confianza.</strong></p>
+<p><strong>No descalifica automáticamente</strong> (un proveedor nuevo y barato puede ser legítimo), pero <strong>invierte
+la carga de la prueba</strong>: TE no debería avanzar hasta que Velo entregue identidad y referencias
+verificables por iniciativa propia.</p>
+<hr />
+</section>
+<section class="card">
+<h2>Caveats</h2>
+<ul>
+<li>Pase focalizado, no deep-research adversarial; es posible que Velo exista bajo otro nombre o con
+  presencia mínima no indexada. La ausencia de evidencia no es evidencia de ausencia — pero <strong>la
+  carga de identificarse es del proveedor</strong>, no nuestra.</li>
+<li>Búsqueda US-céntrica; podría haber presencia local (AR/BR) débilmente indexada.</li>
+<li>El nombre genérico hace ruido: confirmar que cualquier hallazgo futuro sea <strong>este</strong> Velo Studio y
+  no un homónimo.</li>
+</ul>
+<hr />
+</section>
+<section class="card">
+<h2>Próximos pasos (ruteo por dueño)</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Dueño</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Boris</strong> (dirección)</td>
+<td>Decidir si vale pedirle a Velo que se identifique. <strong>Gate sugerido:</strong> no avanzar sin identidad legal + 2 referencias verificables. Si interesa el perfil "Nuvemshop barato + AR", <strong>Wave Commerce</strong> (verificada) es el comparable a poner sobre la mesa.</td>
+</tr>
+<tr>
+<td><strong>Quien tenga el canal de contacto</strong></td>
+<td>Pedirle a Velo (por la vía por la que llegó la propuesta): identidad legal/CNPJ-CUIT, equipo, portfolio con casos, y 2 referencias de clientes contactables. <em>No es comunicación externa de marca — es calificación de proveedor; aun así, coordinar con Boris antes de escribir.</em></td>
+</tr>
+<tr>
+<td><strong>Nacho</strong> (legal)</td>
+<td>Solo si Velo se identifica y avanza: validar la entidad legal antes de cualquier contrato/factura.</td>
+</tr>
+<tr>
+<td><strong>Hache / Fanny / Comando</strong></td>
+<td>Sin acción en esta etapa.</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>Recordatorio de gobernanza: documento de análisis interno. No se contactó a Velo, no se firmó
+nada, no se tocó <code>decision_log.md</code>, no se crearon tareas en Asana. La diligencia se hizo sobre
+fuentes públicas; cualquier dato directo del proveedor reabre y actualiza este documento.</p>
+</blockquote>
+</section>
+<footer class="foot">Terrible Enfant · TE-OS · documento interno — nada aprobado, nada firmado</footer>
+</div>
+</body>
+</html>

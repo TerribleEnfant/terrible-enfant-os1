@@ -1,0 +1,66 @@
+{
+  "_about": "Config TE-nativo del auto-miner de reuniones (WF_OPS_MINE). El prompt de minado lee este archivo para que tags, assignees y destinatarios queden consistentes. Editar acá — NO hardcodear en los scripts. Secretos NUNCA acá (van a 1Password / GitHub Actions secrets).",
+
+  "model": "claude-opus-4-8",
+
+  "quality_gate": {
+    "max_unattributed_ratio": 0.5,
+    "note": "Si >50% de las líneas con contenido no tienen speaker atribuido, el job falla fuerte y no mina (incidente de transcript corrupto → fabricación). workflow_dispatch con force=true puede saltearlo, pero queda logueado."
+  },
+
+  "extraction": {
+    "max_items_per_meeting": 7,
+    "require_source_quote": true,
+    "action_item_requires": ["owner", "deliverable", "deadline_or_trigger"],
+    "asana_min_confidence": "medium",
+    "note": "Solo action items completos (los 3 elementos) y con confidence >= medium llegan a Asana. El resto queda solo en el recap."
+  },
+
+  "markets": ["ARG", "BRA", "Ambos"],
+
+  "areas": [
+    "Finance & Admin",
+    "Legal & Contable",
+    "Producto",
+    "Operations",
+    "Logistics",
+    "Marketing & Comms"
+  ],
+
+  "projects": [
+    "estado-de-gracia",
+    "brazil-launch",
+    "campaign-los-siete",
+    "collab-edgar",
+    "collab-notthesamo",
+    "gtm-sao-paulo"
+  ],
+
+  "ventures_note": "TE es una sola marca: el equivalente a 'venture' es proyecto/área/mercado. Un risk solo se registra si la entidad (un proyecto de 'projects' o un área de 'areas') ya existe acá.",
+
+  "people": {
+    "_note": "name → { email, asana_gid }. email se usa para destinatarios del recap (filtrado por allowlist); asana_gid para asignar la tarea. Completar gids reales desde Asana (API: /users); null = sin asignar (la tarea se crea sin assignee).",
+    "Boris":   { "email": "TODO@terribleenfant.com", "asana_gid": null },
+    "Hache":   { "email": "TODO@terribleenfant.com", "asana_gid": null },
+    "Comando": { "email": "TODO@terribleenfant.com", "asana_gid": null },
+    "Fanny":   { "email": "TODO@terribleenfant.com", "asana_gid": null },
+    "Jorge":   { "email": "TODO@terribleenfant.com", "asana_gid": null },
+    "Guada":   { "email": "TODO@terribleenfant.com", "asana_gid": null },
+    "Nacho":   { "email": "TODO@terribleenfant.com", "asana_gid": null },
+    "Tiago":   { "email": "TODO@terribleenfant.com", "asana_gid": null }
+  },
+
+  "email": {
+    "from": "TE Auto-Miner <recap@TODO-sender-domain>",
+    "internal_allowlist_domains": ["TODO-terribleenfant-domain"],
+    "internal_allowlist_emails": [],
+    "note": "Destinatarios del recap = participantes de la llamada (de Read AI) ∩ (dominio interno O email explícito en allowlist). Invitados externos (clientes, contractors) se descartan. Si no queda nadie interno, no se manda email (no es error). Confirmar dominio sender + DKIM en Resend."
+  },
+
+  "asana": {
+    "workspace_gid": "1214079921372448",
+    "project_gid": "1214109688126860",
+    "section_gid": "1214103633061371",
+    "note": "Board live de TE. El miner crea tareas acá (excepción de gobierno M2). Dedup por nombre antes de crear. Para crear en una sección distinta (p. ej. una de triage), cambiar section_gid."
+  }
+}
